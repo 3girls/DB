@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+        <title>DataCollector</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="js/sign_validation.js"></script>
+        <!--Repond.js for IE 8 or less only-->
+        <!--[if (lt IE 9) & (IEMobile)]>
+        <script src="js/vendor/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <main role="main">
+          <div class="page-contents container">
+            <div class="row">
+              <div class="col-md-4 col-md-offset-4">
+                <div style="text-align:center; margin-top:50px; margin-bottom:30px;">
+                  <a href="login.html"><img src="img/logo.png" alt="Data_Collector" width="300"></a>
+                </div>
+                <div class="login-panel panel panel-default" style="padding-top:10px;margin-top:10px;">
+                  <div class="panel-body">
+                    <form role="form" name="form-signup" method="post" action="signup.php" onsubmit="return CheckSignupForm();">
+                      <fieldset>
+                        <div class="form-group">
+                          <label>아이디</label>
+                          <input class="form-control" placeholder="아이디" name="ID" id="ID" type="text" required autofocus maxlength="10">
+                        </div>
+                        <p style="color:#d9534f;" id="id_msg"></p> <!--id_msg-->
+                        <div class="form-group">
+                          <label>비밀번호</label>
+                          <input class="form-control" placeholder="비밀번호" name="PW" id="PW" type="password" required maxlength="15">
+                        </div>
+                        <p style="color:#d9534f;" id="pw_msg"></p> <!--pw_msg-->
+                        <div class="form-group">
+                          <input class="form-control" placeholder="비밀번호 확인" name="PW_check" id="PW_check" type="password" required maxlength="15">
+                        </div>
+                        <p style="color:#d9534f;" id="pwrecheck_msg"></p> <!--pwrecheck_msg-->
+                        <div class="form-group">
+                          <label>회원유형</label>
+                          <select class="form-control" name="usertype" id="usertype">
+                            <option value="Submitter">제출자</option>
+                            <option value="Evaluator">평가자</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>이름</label>
+                          <input class="form-control" placeholder="이름" name="name" id="Name" type="text" required maxlength="15">
+                        </div>
+                        <div class="form-group">
+                          <label>성별</label>
+                          <select class="form-control" name="Gender" id="Gender">
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>생년월일</label>
+                          <input class="form-control" placeholder="2000-01-01" name="Birth" id="Birth" type="date">
+                        </div>
+                        <div class="form-group">
+                          <label>이메일</label>
+                          <input class="form-control" placeholder="name@domain.com" name="Email" id="Email" type="mail" maxlength="35">
+                        </div>
+                        <div class="form-group">
+                          <label>휴대폰</label>
+                          <input class="form-control" placeholder="01012345678" name="Phone" id="Phone" type="number" maxlength="11">
+                        </div>
+                        <div style="text-align:center">
+                          <button class="btn btn-lg btn-info btn-block" type="submit" name="button">가입하기</button>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div><!--/.row-->
+          </div><!--/.container-->
+        </main>
+        <footer role="contentinfo">
+          <p><small>Copyright &copy; 3girls</small></p>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
