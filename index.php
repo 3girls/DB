@@ -8,17 +8,6 @@
 </script>
 </head>
 <body>
-  <?php
-  $host = "165.132.121.29";
-  $user = "team37";
-  $password = "3737";
-
-  $con = mysql_connect($host, $user, $password);
-  if($con) {
-    $db = mysql_select_db("team3737");
-  }
-
-?>
 Go to <a href="login.php">login page</a>
 </body>
 </html>
