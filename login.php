@@ -32,7 +32,7 @@
                 </div>
                 <div class="login-panel panel panel-default" style="padding-top:10px;margin-top:10px;">
                   <div class="panel-body">
-                    <form role="form" action="php/login_validation.php" method="post">
+                    <form role="form" action="login_validation.php" method="post">
                       <fieldset>
                         <div class="form-group">
                           <input class="form-control" placeholder="아이디" name="ID" id="ID" type="text" autofocus>
