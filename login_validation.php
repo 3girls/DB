@@ -20,27 +20,42 @@
 	// id, pw가 db에 있는지 확인
   $query = "select * from Administrator where ID='$id' and PW='$pw'";
   $result = mysql_query($query, $con);
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
   $count1 = mysql_num_rows($result);
 
   $query = "select * from Submitter where ID='$id' and PW='$pw'";
   $result = mysql_query($query, $con);
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
   $count2 = mysql_num_rows($result);
 
   $query = "select * from Evaluator where ID='$id' and PW='$pw'";
   $result = mysql_query($query, $con);
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
   $count3 = mysql_num_rows($result);
 
-	if($count1 == 1 || $count2==1 || $count3==1) {
+  if($count1 == 1 || $count2==1 || $count3==1) {
 		$_SESSION['login'] = 'YES';
 		$_SESSION['id'] = $id;
 
-    echo "로그인성공";
-	}
-	else {
+  		echo "로그인성공";
+  }
+  else {
 		echo "<script>alert('아이디 또는 비밀번호가 잘못되었습니다.'); history.back();</script>";
-	}
-
-	mysql_close($con);
+  }
+  mysql_close($con);
+  
 ?>
 </body>
 </html>
