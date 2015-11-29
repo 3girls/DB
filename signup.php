@@ -6,7 +6,7 @@
   $_SESSION['login'] = 'NO';
   $_SESSION['id'] = 'NO';
 
-  $myhost = 'mysql.hostinger.kr';
+  $myhost = '31.170.164.40';
   $myid = 'u729743068_37';
   $mypw = '123456';
   $con = mysql_connect($myhost, $myid, $mypw);
@@ -24,35 +24,54 @@
   $email = $_POST['Email'];
   $phone = $_POST['Phone'];
 
+
   $query = "select count(*) from Administrator where ID='$id'";
   $result = mysql_query($query,$con);
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
   $r1 = mysql_fetch_row($result);
 
-  $query = "select count(*) from Administrator where ID='$id'";
+  $query = "select count(*) from Submitter where ID='$id'";
   $result = mysql_query($query,$con);
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
   $r2 = mysql_fetch_row($result);
 
-  $query = "select count(*) from Administrator where ID='$id'";
+  $query = "select count(*) from Evaluator where ID='$id'";
   $result = mysql_query($query,$con);
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
   $r3 = mysql_fetch_row($result);
-  echo $r1[0].$r2[0].$r3[0];
   $reg_num = $r1[0] + $r2[0] + $r3[0];
+  //echo "$id $pw $pw_check $usertype $name $gender $birth $email $phone";
 
   if($reg_num>0){
-  echo "<script>
-  alert('[중복된 아이디]\r\n\r\n 다른 아이디를 선택하세요.');
-  history.back();
-  </script>";
-  die;
+  echo "<script>alert('중복된아이디입니다.');history.back();</script>";
   }
-
-  $query = "insert into '$usertype' (ID, PW, Name, Gender, Email, Birth, Phone) ";
+  else{
+  $query = "insert into $usertype (ID, PW, Name, Gender, Email, Birth, Phone) ";
   $query.= "values ('$id','$pw','$name','$gender','$email','$birth','$phone')";
   $result = mysql_query($query, $con);
-
+  if(!$result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
+  else{
   echo "<script>alert('회원가입 성공!');
   location.replace('login.php');
   </script>";
+  }
+  }
 ?>
 </body>
 </html>
