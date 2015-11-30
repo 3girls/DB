@@ -116,84 +116,42 @@
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
-                          <h1 class="page-header"><i class="fa fa-users fa-fw"></i> 회원관리: 제출자</h1>
+                          <h1 class="page-header"><i class="fa fa-gear fa-fw"></i> 회원정보</h1>
                       </div>
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-8">
-                        <div class="panel panel-info">
-                          <div class="panel-heading">
-                            제출자 목록
-                          </div>
-                          <div class="panel-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>아이디</th>
-                                  <th>이름</th>
-                                  <th>성별</th>
-                                  <th>이메일</th>
-                                  <th>휴대폰</th>
-                                  <th>평가점수</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td><a href="">thisisid1</a></td>
-                                  <td>김한나</td>
-                                  <td>여자</td>
-                                  <td>cs.hannakim@gmail.com</td>
-                                  <td>01000000000</td>
-                                  <td>0</td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td><a href="">thisisid2</a></td>
-                                  <td>김경민</td>
-                                  <td>여자</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>0</td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td><a href="">thisisid3</a></td>
-                                  <td>임민영</td>
-                                  <td>여자</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>0</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.col-lg-8 -->
                       <div class="page-contents col-lg-4">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <strong>thisisid1</strong> 회원이 참여 중인 태스크
-                          </div>
-                          <div class="panel-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>태스크 이름</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>태스크1</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
                       </div>
+                      <div class="page-contents col-lg-4">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <th>아이디</th>
+                              <td>admin</td>
+                            </tr>
+                            <tr>
+                              <th>이름</th>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th>성별</th>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th>생년월일</th>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th>이메일</th>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th>휴대폰</th>
+                              <td>-</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.col-lg-12 -->
                   </div>
                   <!-- /.row -->
               </div>
