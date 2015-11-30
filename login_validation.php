@@ -11,8 +11,8 @@ session_start();
 
 
 
-  $myhost = '31.170.164.40';
-  #$myhost = 'mysql.hostinger.kr';
+  #myhost = '31.170.164.40';
+  $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';
   $mypw = '123456';
   $con = mysql_connect($myhost, $myid, $mypw);
