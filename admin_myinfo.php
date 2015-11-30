@@ -184,9 +184,10 @@
                             </form>
                           </div>
                         </div>
-                        <div style="text-align:center; padding-top:14px; padding-bottom:0; margin-bottom:0;">
+ <!--                       <div style="text-align:center; padding-top:14px; padding-bottom:0; margin-bottom:0;">
                           <p><a href="">회원탈퇴 하시겠습니까?</a></p>
                         </div>
+-->
                       </div>
                       <!-- /.col-lg-6 -->
                   </div>
