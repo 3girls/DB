@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+// Start the session
+session_start();
+?>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -50,7 +53,7 @@
                               <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                           </a>
                           <ul class="dropdown-menu dropdown-user">
-                              <li><a href="#"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
+                              <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
                               </li>
                               <li class="divider"></li>
                               <li><a href="_login.html"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
