@@ -119,39 +119,76 @@
                           <h1 class="page-header"><i class="fa fa-gear fa-fw"></i> 회원정보</h1>
                       </div>
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-4">
+                      <div class="page-contents col-lg-3">
                       </div>
-                      <div class="page-contents col-lg-4">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <th>아이디</th>
-                              <td>admin</td>
-                            </tr>
-                            <tr>
-                              <th>이름</th>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <th>성별</th>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <th>생년월일</th>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <th>이메일</th>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <th>휴대폰</th>
-                              <td>-</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      <div class="page-contents col-lg-6">
+                        <div class="panel panel-default">
+                          <!--
+                          <div class="panel-heading">
+                            회원정보
+                          </div>
+                        -->
+                          <div class="panel-body">
+                            <form class="form-inline" action="" method="post">
+                              <table class="table table-bordered">
+                                <tbody>
+                                  <tr>
+                                    <th>아이디</th>
+                                    <td>admin</td>
+                                  </tr>
+                                  <tr>
+                                    <th>비밀번호</th>
+                                    <td>
+                                      <input class="form-control" type="password" name="PW" id="PW" required maxlength="15"
+                                       placeholder="">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>비밀번호 확인</th>
+                                    <td>
+                                      <input class="form-control" type="password" name="PW_check" id="PW_check" required maxlength="15"
+                                       placeholder="">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>회원유형</th>
+                                    <td>관리자</td>
+                                  </tr>
+                                  <tr>
+                                    <th>이름</th>
+                                    <td>-</td>
+                                  </tr>
+                                  <tr>
+                                    <th>성별</th>
+                                    <td>-</td>
+                                  </tr>
+                                  <tr>
+                                    <th>생년월일</th>
+                                    <td>-</td>
+                                  </tr>
+                                  <tr>
+                                    <th>이메일</th>
+                                    <td><input class="form-control" type="email" name="Email" id="Email" maxlength="35"
+                                       placeholder=""></td>
+                                  </tr>
+                                  <tr>
+                                    <th>휴대폰</th>
+                                    <td><input class="form-control" type="number" name="Phone" id="Phone" maxlength="11"
+                                       placeholder=""></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div style="text-align: center;">
+                                <button class="btn btn-info" type="submit" name="button">수정하기</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        <div style="text-align:center; padding-top:14px; padding-bottom:0; margin-bottom:0;">
+                          <p><a href="">회원탈퇴 하시겠습니까?</a></p>
+                        </div>
                       </div>
-                      <!-- /.col-lg-12 -->
+                      <!-- /.col-lg-6 -->
                   </div>
                   <!-- /.row -->
               </div>
