@@ -6,12 +6,17 @@ session_start();
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
 <?php
-  $_SESSION['login'] = 'NO';
-  $_SESSION['id'] = 'NO';
+  #$_SESSION['login'] = 'NO';
+  #$_SESSION['id'] = 'NO';
 
-
-
-  #myhost = '31.170.164.40';
+  #빈칸일 때 다시 redirect
+  if(empty($_POST["ID"]) || empty($_POST["PW"])) {
+    echo "<meta http-equiv='refresh' content='0;url=login.php'>";
+    exit;
+  }
+  
+  #$myhost = '202.150.213.98';
+  #$myhost = '31.170.164.40';
   $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';
   $mypw = '123456';

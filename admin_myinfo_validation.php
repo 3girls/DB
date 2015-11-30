@@ -4,6 +4,7 @@
 <body>
 <?php
 
+  #$myhost = '202.150.213.98';
   #$myhost = '31.170.164.40';
   $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';

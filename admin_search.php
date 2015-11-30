@@ -30,6 +30,14 @@ session_start();
         <![endif]-->
     </head>
     <body>
+    <?php
+      if(!isset($_SESSION["id"])){
+       echo "<script>location.replace('login.php');</script>";
+      }
+      else if($_SESSION["id"]!="admin"){
+        echo "<script>alert('사용자 권한이 없습니다.'); history.back();</script>";
+      }
+      ?>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -56,7 +64,7 @@ session_start();
                               <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
                               </li>
                               <li class="divider"></li>
-                              <li><a href="_login.html"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
+                              <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
                               </li>
                           </ul>
                           <!-- /.dropdown-user -->

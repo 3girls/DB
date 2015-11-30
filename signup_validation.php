@@ -1,3 +1,4 @@
+
 <?session_start()?>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
@@ -7,6 +8,7 @@
   $_SESSION['id'] = 'NO';
 
 
+  #$myhost = '202.150.213.98';
   #$myhost = '31.170.164.40';
   $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';
