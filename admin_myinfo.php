@@ -20,7 +20,7 @@
         <!-- Custom Fonts -->
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="js/sign_validation.js"></script>
+        <script src="js/admin_myinfo_validation.js"></script>
         <!--Repond.js for IE 8 or less only-->
         <!--[if (lt IE 9) & (IEMobile)]>
         <script src="js/vendor/respond.min.js"></script>
@@ -50,7 +50,7 @@
                               <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                           </a>
                           <ul class="dropdown-menu dropdown-user">
-                              <li><a href="#"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
+                              <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
                               </li>
                               <li class="divider"></li>
                               <li><a href="_login.html"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
@@ -129,7 +129,7 @@
                           </div>
                         -->
                           <div class="panel-body">
-                            <form class="form-inline" action="" method="post">
+                            <form class="form-inline" action="admin_myinfo_validation.php" method="post" onsubmit="return CheckSignupForm()">
                               <table class="table table-bordered">
                                 <tbody>
                                   <tr>
@@ -140,14 +140,16 @@
                                     <th>비밀번호</th>
                                     <td>
                                       <input class="form-control" type="password" name="PW" id="PW" required maxlength="15"
-                                       placeholder="">
+                                       placeholder="수정할 비밀번호">
+                                       <p style="color:#d9534f;" id="pw_msg"></p> <!--pw_msg-->             
                                     </td>
                                   </tr>
                                   <tr>
                                     <th>비밀번호 확인</th>
                                     <td>
                                       <input class="form-control" type="password" name="PW_check" id="PW_check" required maxlength="15"
-                                       placeholder="">
+                                       placeholder="비밀번호 확인">
+                                       <p style="color:#d9534f;" id="pwrecheck_msg"></p> <!--pwrecheck_msg-->
                                     </td>
                                   </tr>
                                   <tr>
@@ -169,12 +171,12 @@
                                   <tr>
                                     <th>이메일</th>
                                     <td><input class="form-control" type="email" name="Email" id="Email" maxlength="35"
-                                       placeholder=""></td>
+                                       placeholder="이메일 수정"></td>
                                   </tr>
                                   <tr>
                                     <th>휴대폰</th>
                                     <td><input class="form-control" type="number" name="Phone" id="Phone" maxlength="11"
-                                       placeholder=""></td>
+                                       placeholder="휴대폰 번호 수정"></td>
                                   </tr>
                                 </tbody>
                               </table>
