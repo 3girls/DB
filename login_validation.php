@@ -6,7 +6,7 @@
 	$_SESSION['login'] = 'NO';
 	$_SESSION['id'] = 'NO';
 
-	$myhost = 'mysql.hostinger.kr';
+	$myhost = '31.170.164.40';
 	$myid = 'u729743068_37';
 	$mypw = '123456';
 	$con = mysql_connect($myhost, $myid, $mypw);
