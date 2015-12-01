@@ -141,10 +141,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                       </div>
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
-                        <form class="form-inline" method="post" action="admin_search.php">
+                        <form class="form-inline" method="post" action="admin_search_do.php">
                           <div class="form-group">
                             <label for="usertype">회원유형</label>
-                            <select class="form-control" style="width:80px;" id="usertype">
+                            <select class="form-control" style="width:80px;" name="usertype" id="usertype">
                               <option value="none">전체</option>
                               <option value="submitter">제출자</option>
                               <option value="evaluator">평가자</option>
@@ -152,13 +152,13 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </div>
                           <div class="form-group">
                             <label for="age">나이</label>
-                            <input class="form-control" style="width:80px;" type="number" id="ageStart" placeholder="0">
+                            <input class="form-control" style="width:80px;" type="number" name="ageStart" id="ageStart" placeholder="0">
                             ~
-                            <input class="form-control" style="width:80px;" type="number" id="ageEnd" placeholder="99">
+                            <input class="form-control" style="width:80px;" type="number" name="ageEnd" id="ageEnd" placeholder="99">
                           </div>
                           <div class="form-group">
                             <label for="usertype">성별</label>
-                            <select class="form-control" style="width:80px;" id="gender">
+                            <select class="form-control" style="width:80px;" name="gender" id="gender">
                               <option value="none">전체</option>
                               <option value="M">남자</option>
                               <option value="F">여자</option>
@@ -166,14 +166,14 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </div>
                           <div class="form-group">
                             <label for="usertype">참여 태스크</label>
-                            <select class="form-control" style="width:160px;" id="task">
+                            <select class="form-control" style="width:160px;" naem="task" id="task">
                               <option value="none">전체</option>
                               <option value="task1">태스크1</option>
                             </select>
                           </div>
                           <div class="form-group">
                             <label for="ID">아이디</label>
-                            <input class="form-control" style="width:160px;" type="text" id="ID">
+                            <input class="form-control" style="width:160px;" type="text" name="ID" id="ID">
                           </div>
                           <div class="form-group">
                             <button class="btn btn-info" type="submit" name="button">Search</button>
