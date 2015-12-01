@@ -197,7 +197,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </thead>
                           <tbody>
                             <?php
-                            $query = "SELECT * FROM Administrator, Submitter";
+                            $query = "SELECT * FROM Submitter";
                             $result = mysql_query($query, $con);
                             $count = mysql_num_rows($result);
                             for($i = 0; $i < $count; $i++) {
@@ -205,12 +205,27 @@ mysql_query("SET NAMES utf8"); //한글처리
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr[0]."</td>"; #id
-                              echo "<td>"."-"."</td>"; #usertype
+                              echo "<td>"."제출자"."</td>"; #usertype
                               echo "<td>".$arr[2]."</td>"; #name
                               echo "<td>".$arr[3]."</td>"; #gender
                               echo "<td>".$arr[4]."</td>"; #email
                               echo "<td>".$arr[6]."</td>"; #phone
                               echo "<td>".$arr[7]."</td>"; #grade
+                            }
+                            $query = "SELECT * FROM Evaluator";
+                            $result = mysql_query($query, $con);
+                            $count = mysql_num_rows($result);
+                            for($i = 0; $i < $count; $i++) {
+                              $arr = mysql_fetch_array($result);
+                              echo "<tr>";
+                              echo "<td>".($i+1)."</td>"; #index
+                              echo "<td>".$arr[0]."</td>"; #id
+                              echo "<td>"."평가자"."</td>"; #usertype
+                              echo "<td>".$arr[2]."</td>"; #name
+                              echo "<td>".$arr[3]."</td>"; #gender
+                              echo "<td>".$arr[4]."</td>"; #email
+                              echo "<td>".$arr[6]."</td>"; #phone
+                              echo "<td>-</td>"; #grade
                             }
                              ?>
                             <!-- This is Sample input
