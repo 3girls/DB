@@ -27,6 +27,12 @@
   $email = $_POST['Email'];
   $phone = $_POST['Phone'];
 
+  if($email == "name@domain.com"){
+      $email = "";
+  }
+  if($phone == "12345678"){
+      $phone = "";
+  }
 
   $query = "select count(*) from Administrator where ID='$id'";
   $result = mysql_query($query,$con);
