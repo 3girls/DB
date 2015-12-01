@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+// Start the session
+session_start();
+?>
+
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -87,71 +91,52 @@
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
-                          <h1 class="page-header"><i class="fa fa-users fa-fw"></i> 참가 중인 태스크: 태스크1</h1>
+                          <h1 class="page-header"><i class="fa fa-users fa-fw"></i> 태스크 참가 관리</h1>
                       </div>
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-12">
-                        <form class="form-inline">
-                          <div class="form-group">
-                            <label for="origintype">원본데이터 타입</label>
-                            <select class="form-control" id="type">
-                              <option value="1">1</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="age">기간</label>
-                            <input class="form-control" type="date">
-                            ~
-                            <input class="form-control" type="date">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control" type="file">
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-info" type="submit" name="button">등록하기</button>
-                          </div>
-                        </form>
-                      </div>
-                      <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-12">
-                        <div class="panel panel-default">
+                      <div class="page-contents col-lg-7">
+                        <div class="panel panel-info">
                           <div class="panel-heading">
-                            <form class="form-inline">
-                              <div class="form-group">
-                                <select class="form-control">
-                                  <option value="null">전체</option>
-                                  <option value="">옵션1</option>
-                                  <option value="">옵션2</option>
-                                </select>
-                                <label for="">원본데이터 타입 제출 파일 현황</label>
-                                <div class="form-group">
-                                  <button class="btn btn-info btn-sm" type="submit" name="button">
-                                    <i class="fa fa-search fa-fw"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            </form>
+                            참여신청 가능 태스크
                           </div>
                           <div class="panel-body">
                             <table class="table table-striped">
                               <thead>
                                 <tr>
-                                  <th>회차</th>
-                                  <th>원본데이터 타입</th>
-                                  <th>튜플 수</th>
-                                  <th>null 비율(%)</th>
-                                  <th>정성평가점수</th>
-                                  <th>Pass 여부</th>
+                                  <th>#</th>
+                                  <th>태스크 이름</th>
+                                  <th>-</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr>
                                   <td>1</td>
-                                  <td>option</td>
-                                  <td>20</td>
+                                  <td>태스크1</td>
+                                  <td><button class="btn btn-sm btn-success" type="button" name="button">참여신청</button></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.col-lg-8 -->
+                      <div class="page-contents col-lg-5">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <strong>thisisid1</strong> 참여신청 대기 태스크
+                          </div>
+                          <div class="panel-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>태스크 이름</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
                                   <td>1</td>
-                                  <td>null</td>
-                                  <td>대기</td>
+                                  <td>태스크1</td>
                                 </tr>
                               </tbody>
                             </table>

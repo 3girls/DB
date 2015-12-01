@@ -11,7 +11,7 @@ session_start();
 
 
 
-  #myhost = '31.170.164.40';
+  #$myhost = '202.150.213.98';
   $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';
   $mypw = '123456';
@@ -61,7 +61,7 @@ session_start();
 
     }
     else if($count2==1){
-      echo "submitter";
+      echo "<script>location.replace('submitter_task.php');</script>";
 
     }
     else if($count3==1){

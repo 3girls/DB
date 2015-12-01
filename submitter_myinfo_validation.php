@@ -13,14 +13,13 @@
   $db = mysql_select_db("u729743068_37");
   mysql_query("SET NAMES utf8"); //한글처리
 
-
   $pw = $_POST['PW'];
   $pw_check = $_POST['PW_check'];
   $email = $_POST['Email'];
   $phone = $_POST['Phone'];
   
-  $query = "update Administrator set PW = '$pw', Email = '$email', Phone = '$phone'";
-  $qudry.= "where ID = 'admin'";
+  $query = "update Submitter set PW = '$pw', Email = '$email', Phone = '$phone'";
+  $qudry.= "where ID = '$id'";
   $result = mysql_query($query, $con);
 
   if(!$result){
@@ -30,7 +29,7 @@
   }
   else{
   echo "<script>alert('회원정보가 수정되었습니다.');
-  location.replace('admin_search.php');
+  location.replace('submitter_task.php');
   </script>";
   }
   
