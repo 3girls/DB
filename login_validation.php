@@ -9,9 +9,6 @@ session_start();
   #$_SESSION['login'] = 'NO';
   #$_SESSION['id'] = 'NO';
 
-
-
-  #$myhost = '202.150.213.98';
   #빈칸일 때 다시 redirect
   if(empty($_POST["ID"]) || empty($_POST["PW"])) {
     echo "<meta http-equiv='refresh' content='0;url=login.php'>";
@@ -19,7 +16,7 @@ session_start();
   }
   
   #$myhost = '202.150.213.98';
-$myhost = 'mysql.hostinger.kr';
+  $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';
   $mypw = '123456';
   $con = mysql_connect($myhost, $myid, $mypw);

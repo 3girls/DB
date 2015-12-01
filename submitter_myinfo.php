@@ -186,7 +186,7 @@ session_start();
                           </div>
                         </div>
                          <div style="text-align:center; padding-top:14px; padding-bottom:0; margin-bottom:0;">
-                          <p><a href="deleteID.php">회원탈퇴 하시겠습니까?</a></p>
+                          <p><a href="submitter_deleteID.php">회원탈퇴 하시겠습니까?</a></p>
                          </div>
 
                       </div>
