@@ -1,6 +1,16 @@
 <?php
 // Start the session
 session_start();
+// connect mysqldb and $id = session id
+$id = $_SESSION['id'];
+$myhost = '202.150.213.98';
+#$myhost = 'mysql.hostinger.kr';
+$myid = 'u729743068_37';
+$mypw = '123456';
+$con = @mysql_connect($myhost, $myid, $mypw);
+
+$db = mysql_select_db("u729743068_37");
+mysql_query("SET NAMES utf8"); //한글처리
 ?>
 <html class="no-js" lang="">
     <head>
@@ -186,6 +196,24 @@ session_start();
                             </tr>
                           </thead>
                           <tbody>
+                            <?php
+                            $query = "SELECT * FROM Administrator, Submitter";
+                            $result = mysql_query($query, $con);
+                            $count = mysql_num_rows($result);
+                            for($i = 0; $i < $count; $i++) {
+                              $arr = mysql_fetch_array($result);
+                              echo "<tr>";
+                              echo "<td>".($i+1)."</td>"; #index
+                              echo "<td>".$arr[0]."</td>"; #id
+                              echo "<td>"."-"."</td>"; #usertype
+                              echo "<td>".$arr[2]."</td>"; #name
+                              echo "<td>".$arr[3]."</td>"; #gender
+                              echo "<td>".$arr[4]."</td>"; #email
+                              echo "<td>".$arr[6]."</td>"; #phone
+                              echo "<td>".$arr[7]."</td>"; #grade
+                            }
+                             ?>
+                            <!-- This is Sample input
                             <tr>
                               <td>1</td>
                               <td>thisisid1</td>
@@ -225,7 +253,7 @@ session_start();
                               <td></td>
                               <td></td>
                               <td>none</td>
-                            </tr>
+                            </tr> -->
                           </tbody>
                         </table>
                       </div>
