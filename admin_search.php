@@ -141,7 +141,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                       </div>
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
-                        <form class="form-inline" action="admin_search.php">
+                        <form class="form-inline" method="post" action="admin_search.php">
                           <div class="form-group">
                             <label for="usertype">회원유형</label>
                             <select class="form-control" style="width:80px;" id="usertype">
