@@ -141,7 +141,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                       </div>
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
-                        <form class="form-inline" method="post" action="admin_search_do.php">
+                        <form class="form-inline" method="post" action="admin_search.php">
                           <div class="form-group">
                             <label for="usertype">회원유형</label>
                             <select class="form-control" style="width:80px;" id="usertype">
@@ -197,17 +197,33 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </thead>
                           <tbody>
                             <?php
+                            $search_usertype = $_POST('usertype');
+                            $search_gender = $_POST('gender');
+                            $search_id = $_POST('ID');
+
                             #전체
-
-                            #제출자
-                            $query1 = "SELECT * FROM Submitter";
-                            $result1 = mysql_query($query1, $con);
-                            $count1 = mysql_num_rows($result1);
-                            #평가자
-                            $query2 = "SELECT * FROM Evaluator";
-                            $result2 = mysql_query($query2, $con);
-                            $count2 = mysql_num_rows($result2);
-
+                            if($search_usertype == "none") {
+                              #제출자
+                              $query1 = "SELECT * FROM Submitter";
+                              $result1 = mysql_query($query1, $con);
+                              $count1 = mysql_num_rows($result1);
+                              #평가자
+                              $query2 = "SELECT * FROM Evaluator";
+                              $result2 = mysql_query($query2, $con);
+                              $count2 = mysql_num_rows($result2);
+                            }
+                            else if($search_usertype == "submitter") {
+                              #제출자
+                              $query1 = "SELECT * FROM Submitter";
+                              $result1 = mysql_query($query1, $con);
+                              $count1 = mysql_num_rows($result1);
+                            }
+                            else if($search_usertype == "evaluator") {
+                              #평가자
+                              $query2 = "SELECT * FROM Evaluator";
+                              $result2 = mysql_query($query2, $con);
+                              $count2 = mysql_num_rows($result2);
+                            }
                             #제출자
                             for($i = 0; $i < $count1; $i++) {
                               $arr = mysql_fetch_array($result1);
@@ -235,7 +251,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                               echo "<td>-</td>"; #grade
                             }
                              ?>
-                          </tbody>
+                            </tbody>
                         </table>
                       </div>
                       <!-- /.col-lg-12 -->
