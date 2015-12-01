@@ -30,7 +30,7 @@
   if($email == "name@domain.com"){
       $email = "";
   }
-  if($phone == "12345678"){
+  if($phone == "01012345678"){
       $phone = "";
   }
 
