@@ -213,18 +213,18 @@ mysql_query("SET NAMES utf8"); //한글처리
 
                               #성별 조건
                               if($search_gender != "none") {
-                                $query1 = $query1." WHERE Gender = ".$search_gender;
-                                $query2 = $query2." WHERE Gender = ".$search_gender;
+                                $query1 = $query1." WHERE Gender = '".$search_gender."'";
+                                $query2 = $query2." WHERE Gender = '".$search_gender."'";
 
                                 if($search_id != "") {
-                                  $query1 = $query1." AND Gender LIKE '%".$search_id."%'";
-                                  $query2 = $query2." AND Gender LIKE '%".$search_id."%'";
+                                  $query1 = $query1." AND ID LIKE '%".$search_id."%'";
+                                  $query2 = $query2." AND ID LIKE '%".$search_id."%'";
                                 }
                               }
                               else {
                                 if($search_id != "") {
-                                  $query1 = $query1." WHERE Gender LIKE '%".$search_id."%'";
-                                  $query2 = $query2." WHERE Gender LIKE '%".$search_id."%'";
+                                  $query1 = $query1." WHERE ID LIKE '%".$search_id."%'";
+                                  $query2 = $query2." WHERE ID LIKE '%".$search_id."%'";
                                 }
                               }
 
