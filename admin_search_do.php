@@ -197,9 +197,9 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </thead>
                           <tbody>
                             <?php
-                            $search_usertype = $_POST("usertype");
-                            $search_gender = $_POST("gender");
-                            $search_id = $_POST("ID");
+                            $search_usertype = $_POST['usertype'];
+                            $search_gender = $_POST['gender'];
+                            $search_id = $_POST['ID'];
 
                             #전체
                             if($search_usertype == "none") {
