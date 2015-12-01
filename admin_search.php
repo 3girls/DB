@@ -141,7 +141,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                       </div>
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
-                        <form class="form-inline">
+                        <form class="form-inline" action="admin_search.php">
                           <div class="form-group">
                             <label for="usertype">회원유형</label>
                             <select class="form-control" style="width:80px;" id="usertype">
@@ -152,13 +152,13 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </div>
                           <div class="form-group">
                             <label for="age">나이</label>
-                            <input class="form-control" style="width:80px;" type="number" placeholder="0">
+                            <input class="form-control" style="width:80px;" type="number" id="ageStart" placeholder="0">
                             ~
-                            <input class="form-control" style="width:80px;" type="number" placeholder="99">
+                            <input class="form-control" style="width:80px;" type="number" id="ageEnd" placeholder="99">
                           </div>
                           <div class="form-group">
                             <label for="usertype">성별</label>
-                            <select class="form-control" style="width:80px;" id="usertype">
+                            <select class="form-control" style="width:80px;" id="gender">
                               <option value="none">전체</option>
                               <option value="M">남자</option>
                               <option value="F">여자</option>
@@ -166,7 +166,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </div>
                           <div class="form-group">
                             <label for="usertype">참여 태스크</label>
-                            <select class="form-control" style="width:160px;" id="usertype">
+                            <select class="form-control" style="width:160px;" id="task">
                               <option value="none">전체</option>
                               <option value="task1">태스크1</option>
                             </select>
@@ -197,11 +197,36 @@ mysql_query("SET NAMES utf8"); //한글처리
                           </thead>
                           <tbody>
                             <?php
-                            $query = "SELECT * FROM Submitter";
-                            $result = mysql_query($query, $con);
-                            $count = mysql_num_rows($result);
-                            for($i = 0; $i < $count; $i++) {
-                              $arr = mysql_fetch_array($result);
+                            $search_usertype = $_POST('usertype');
+                            $search_gender = $_POST('gender');
+                            $search_id = $_POST('ID');
+
+                            #전체
+                            if($search_usertype == "none") {
+                              #제출자
+                              $query1 = "SELECT * FROM Submitter";
+                              $result1 = mysql_query($query1, $con);
+                              $count1 = mysql_num_rows($result1);
+                              #평가자
+                              $query2 = "SELECT * FROM Evaluator";
+                              $result2 = mysql_query($query2, $con);
+                              $count2 = mysql_num_rows($result2);
+                            }
+                            else if($search_usertype == "submitter") {
+                              #제출자
+                              $query1 = "SELECT * FROM Submitter";
+                              $result1 = mysql_query($query1, $con);
+                              $count1 = mysql_num_rows($result1);
+                            }
+                            else if($search_usertype == "evaluator") {
+                              #평가자
+                              $query2 = "SELECT * FROM Evaluator";
+                              $result2 = mysql_query($query2, $con);
+                              $count2 = mysql_num_rows($result2);
+                            }
+                            #제출자
+                            for($i = 0; $i < $count1; $i++) {
+                              $arr = mysql_fetch_array($result1);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr[0]."</td>"; #id
@@ -212,11 +237,9 @@ mysql_query("SET NAMES utf8"); //한글처리
                               echo "<td>".$arr[6]."</td>"; #phone
                               echo "<td>".$arr[7]."</td>"; #grade
                             }
-                            $query = "SELECT * FROM Evaluator";
-                            $result = mysql_query($query, $con);
-                            $count = mysql_num_rows($result);
-                            for($i = 0; $i < $count; $i++) {
-                              $arr = mysql_fetch_array($result);
+                            #평가자
+                            for($i = 0; $i < $count2; $i++) {
+                              $arr = mysql_fetch_array($result2);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr[0]."</td>"; #id
