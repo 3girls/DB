@@ -3,7 +3,7 @@
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
 <?php
-
+  $id = $_SESSION['id'];
   #$myhost = '202.150.213.98';
   $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';
@@ -19,7 +19,7 @@
   $phone = $_POST['Phone'];
   
   $query = "update Submitter set PW = '$pw', Email = '$email', Phone = '$phone'";
-  $qudry.= "where ID = '$id'";
+  $query.= "where ID = '$id'";
   $result = mysql_query($query, $con);
 
   if(!$result){

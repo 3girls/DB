@@ -22,6 +22,7 @@ session_start();
   }
   $row = mysql_fetch_row($result);
   if($result) {
+    $id = $row[0];
     $name = $row[2];
     $gender = $row[3];
     $birth = $row[5];
