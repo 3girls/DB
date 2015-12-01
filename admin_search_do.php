@@ -198,29 +198,51 @@ mysql_query("SET NAMES utf8"); //한글처리
                           <tbody>
                             <?php
                             $search_usertype = $_POST['usertype'];
+                            $search_ageStart = $_POST['ageStart'];
+                            $search_ageEnd = $_POST['ageEnd'];
                             $search_gender = $_POST['gender'];
+                            $search_task = $_POST['task'];
                             $search_id = $_POST['ID'];
 
                             #전체
                             if($search_usertype == "none") {
                               #제출자
                               $query1 = "SELECT * FROM Submitter";
-                              $result1 = mysql_query($query1, $con);
-                              $count1 = mysql_num_rows($result1);
                               #평가자
                               $query2 = "SELECT * FROM Evaluator";
+
+                              #성별 조건
+                              if($search_gender != "none") {
+                                $query1 = $query1." WHERE Gender = ".$search_gender;
+                                $query2 = $query2." WHERE Gender = ".$search_gender;
+
+                                if($search_id != "") {
+                                  $query1 = $query1." AND Gender LIKE '%".$search_id."%'";
+                                  $query2 = $query2." AND Gender LIKE '%".$search_id."%'";
+                                }
+                              }
+                              else {
+                                if($search_id != "") {
+                                  $query1 = $query1." WHERE Gender LIKE '%".$search_id."%'";
+                                  $query2 = $query2." WHERE Gender LIKE '%".$search_id."%'";
+                                }
+                              }
+
+                              $result1 = mysql_query($query1, $con);
+                              $count1 = mysql_num_rows($result1);
+
                               $result2 = mysql_query($query2, $con);
                               $count2 = mysql_num_rows($result2);
                             }
                             else if($search_usertype == "submitter") {
                               #제출자
-                              $query1 = "SELECT * FROM Submitter";
+                              $query1 = "SELECT * FROM Submitter WHERE";
                               $result1 = mysql_query($query1, $con);
                               $count1 = mysql_num_rows($result1);
                             }
                             else if($search_usertype == "evaluator") {
                               #평가자
-                              $query2 = "SELECT * FROM Evaluator";
+                              $query2 = "SELECT * FROM Evaluator WHERE";
                               $result2 = mysql_query($query2, $con);
                               $count2 = mysql_num_rows($result2);
                             }
