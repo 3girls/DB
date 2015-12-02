@@ -58,7 +58,7 @@ mysql_query("SET NAMES utf8"); //한글처리
               <!-- Navigation -->
               <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                   <div class="navbar-header">
-                      <a class="navbar-brand" href="_index.html">
+                      <a class="navbar-brand" href="index.php">
                         <img src="img/logo.png" alt="DataCollector" width="180">
                       </a>
                   </div>
@@ -87,7 +87,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                       <div class="sidebar-nav navbar-collapse">
                           <ul class="nav" id="side-menu">
                               <li>
-                                  <a href="#"><i class="fa fa-search fa-fw"></i> 회원검색</a>
+                                  <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
                               </li>
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
@@ -101,8 +101,8 @@ mysql_query("SET NAMES utf8"); //한글처리
                                       echo "<li>";
                                       echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                       echo "<ul class=\"nav nav-third-level\">";
-                                      echo "<li><a href=\"#\">제출자 관리</a></li>";
-                                      echo "<li><a href=\"#\">원본데이터 타입 관리</a></li>";
+                                      echo "<li><a href=\"admin_tasksubmitter.php\">제출자 관리</a></li>";
+                                      echo "<li><a href=\"admin_taskODT.php\">원본데이터 타입 관리</a></li>";
                                       echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
                                       echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
                                       echo "</ul>";
@@ -110,7 +110,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                                     }
                                      ?>
                                       <li>
-                                        <a href="#"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
+                                        <a href="admin_taskadd.html"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
                                       </li>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -119,10 +119,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
                                       <li>
-                                          <a href="#">제출자</a>
+                                          <a href="admin_submitter.php">제출자</a>
                                       </li>
                                       <li>
-                                          <a href="#">평가자</a>
+                                          <a href='admin_evaluator.php'>평가자</a>
                                       </li>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -133,7 +133,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                   </div>
                   <!-- /.navbar-static-side -->
               </nav>
-
+              
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">

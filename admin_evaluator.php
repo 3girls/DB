@@ -51,7 +51,7 @@ mysql_query("SET NAMES utf8"); //한글처리
               <!-- Navigation -->
               <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                   <div class="navbar-header">
-                      <a class="navbar-brand" href="_index.html">
+                      <a class="navbar-brand" href="index.php">
                         <img src="img/logo.png" alt="DataCollector" width="180">
                       </a>
                   </div>
@@ -67,7 +67,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                               <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
                               </li>
                               <li class="divider"></li>
-                              <li><a href="_login.html"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
+                              <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
                               </li>
                           </ul>
                           <!-- /.dropdown-user -->
@@ -80,30 +80,30 @@ mysql_query("SET NAMES utf8"); //한글처리
                       <div class="sidebar-nav navbar-collapse">
                           <ul class="nav" id="side-menu">
                               <li>
-                                  <a href="#"><i class="fa fa-search fa-fw"></i> 회원검색</a>
+                                  <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
                               </li>
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
+                                    <?php
+                                    $query = "SELECT Name FROM Task";
+                                    $res = mysql_query($query, $con);
+                                    $count = mysql_num_rows($res);
+                                    for($i = 0; $i < $count; $i++) {
+                                      $arr = mysql_fetch_array($res);
+                                      echo "<li>";
+                                      echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                      echo "<ul class=\"nav nav-third-level\">";
+                                      echo "<li><a href=\"admin_tasksubmitter.php\">제출자 관리</a></li>";
+                                      echo "<li><a href=\"admin_taskODT.php\">원본데이터 타입 관리</a></li>";
+                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
+                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
+                                      echo "</ul>";
+                                      echo "</li>";
+                                    }
+                                     ?>
                                       <li>
-                                        <a href="#">태스크1 <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="#">제출자 관리</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">원본데이터 타입 관리</a>
-                                            </li>
-                                            <li>
-                                                <a style="font-size:12px; color:gray;" href="#">파싱데이터시퀀스파일 수: 3</a>
-                                            </li>
-                                            <li>
-                                                <a style="font-size:12px; color:gray;" href="#">튜플 수: 123</a>
-                                            </li>
-                                        </ul>
-                                      </li>
-                                      <li>
-                                        <a href="#"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
+                                        <a href="admin_taskadd.html"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
                                       </li>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -112,10 +112,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
                                       <li>
-                                          <a href="#">제출자</a>
+                                          <a href="admin_submitter.php">제출자</a>
                                       </li>
                                       <li>
-                                          <a href="#">평가자</a>
+                                          <a href='admin_evaluator.php'>평가자</a>
                                       </li>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -126,7 +126,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                   </div>
                   <!-- /.navbar-static-side -->
               </nav>
-
+              
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
@@ -156,7 +156,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                                  $query1 = "SELECT * FROM Evaluator";
                                  $result1 = mysql_query($query1, $con);
                                  $count1 = mysql_num_rows($result1);
-                                
+
 
                                 for($i = 0; $i < $count1; $i++) {
                                 $arr = mysql_fetch_array($result1);
@@ -187,7 +187,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                       if(!empty($_GET['getid']))
                       {
                         $iidd=$_GET['getid'];
-                        
+
                         $query2 = "SELECT P.ID, P.TaskName, S.Name, P.EvaluatorGrade FROM Submitter AS S, Parsing_Sequence_Data_Type AS P WHERE S.ID = P.SID AND P.EID='$iidd' AND P.Estate=1";
                         $result2 = mysql_query($query2, $con);
                         $count2 = mysql_num_rows($result2);
@@ -205,7 +205,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   <th>파일 이름</th>
                                   <th>태스크 이름</th>
                                   <th>제출자 이름</th>';
-                            #  echo    '<th>정량평가점수</th>';   
+                            #  echo    '<th>정량평가점수</th>';
                            echo       '<th>정성평가점수</th>
                                 </tr>
                               </thead>';
@@ -217,7 +217,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   echo "<td>".$task[0]."</td>"; #File ID
                                   echo "<td>".$task[1]."</td>"; #Task Name
                                   echo "<td>".$task[2]."</td>"; #Submitter Name
-                                  echo "<td>".$task[3]."</td>"; #EvaluatorGrade    
+                                  echo "<td>".$task[3]."</td>"; #EvaluatorGrade
 
                                   }
                               echo '</tbody>';
