@@ -150,6 +150,27 @@ include 'basic.php';
                                 </tr>
                               </thead>
                               <tbody>
+                                <?php
+                                $query = "SELECT * FROM Submitter WHERE ID = ("
+                                $query.= "SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='2')";
+                                $res = mysql_query($query, $con);
+                                $count = mysql_num_rows($res);
+
+                                for($i = 0; $i < $count; $i++) {
+                                  $arr = mysql_fetch_array($res);
+                                  echo "<tr>";
+                                  echo "<td>".($i+1)."</td>"; #index
+                                  echo "<td>".$arr['ID']."</td>"; #id
+                                  echo "<td>".$arr['Name']."</td>"; #name
+                                  echo "<td>".$arr['Gender']."</td>"; #gender
+                                  echo "<td>".$arr['Email']."</td>"; #email
+                                  echo "<td>".$arr['Phone']."</td>"; #Phone
+                                  echo "<td>".$arr['Grade']."</td>"; #grade
+                                  echo "</tr>";
+                                }
+                                 ?>
+
+                                <!-- Sample input
                                 <tr>
                                   <td>1</td>
                                   <td>thisisid1</td>
@@ -168,6 +189,7 @@ include 'basic.php';
                                   <td></td>
                                   <td>0</td>
                                 </tr>
+                              -->
                               </tbody>
                             </table>
                           </div>
@@ -186,6 +208,28 @@ include 'basic.php';
                                 </tr>
                               </thead>
                               <tbody>
+                                <?php
+                                $query = "SELECT * FROM Submitter WHERE ID = ("
+                                $query.= "SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='0')";
+                                $res = mysql_query($query, $con);
+                                $count = mysql_num_rows($res);
+
+                                for($i = 0; $i < $count; $i++) {
+                                  $arr = mysql_fetch_array($res);
+                                  echo "<tr>";
+                                  echo "<td>".($i+1)."</td>"; #index
+                                  echo "<td>".$arr['ID']."</td>"; #id
+                                  echo "<td>".$arr['Name']."</td>"; #name
+                                  echo "<td>".$arr['Gender']."</td>"; #gender
+                                  echo "<td>".$arr['Email']."</td>"; #email
+                                  echo "<td>".$arr['Phone']."</td>"; #Phone
+                                  echo "<td>".$arr['Grade']."</td>"; #grade
+                                  echo "<td><button class=\"btn btn-sm btn-success\" type=\"button\" name=\"button\">승인</button>
+                                  <button class=\"btn btn-sm btn-danger\" type=\"button\" name=\"button\">거절</button></td>";
+                                  echo "</tr>";
+                                }
+                                 ?>
+                                <!-- sample input
                                 <tr>
                                   <td>1</td>
                                   <td>thisisid3</td>
@@ -198,7 +242,7 @@ include 'basic.php';
                                     <button class="btn btn-sm btn-success" type="button" name="button">승인</button>
                                     <button class="btn btn-sm btn-danger" type="button" name="button">거절</button>
                                   </td>
-                                </tr>
+                                </tr>-->
                               </tbody>
                             </table>
                           </div>
