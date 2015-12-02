@@ -3,8 +3,10 @@ function CheckSignupForm() {
   {/*if there is no emails, set default values*/
     var input1=document.getElementById("Birth");
     if(input1.value.length==0) input1.value="2000-01-01";
+
     var input2=document.getElementById("Email");
     if(input2.value.length==0) input2.value="name@domain.com";
+    
     var input3=document.getElementById("Phone");
     if(input3.value.length==0) input3.value="01012345678";
   }

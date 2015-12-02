@@ -20,7 +20,7 @@
   $phone = $_POST['Phone'];
   
   $query = "update Administrator set PW = '$pw', Email = '$email', Phone = '$phone'";
-  $qudry.= "where ID = 'admin'";
+  $query.= "where ID = 'admin'";
   $result = mysql_query($query, $con);
 
   if(!$result){

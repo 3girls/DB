@@ -12,6 +12,7 @@ $con = @mysql_connect($myhost, $myid, $mypw);
 $db = mysql_select_db("u729743068_37");
 mysql_query("SET NAMES utf8"); //한글처리
 ?>
+<!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -40,14 +41,6 @@ mysql_query("SET NAMES utf8"); //한글처리
         <![endif]-->
     </head>
     <body>
-    <?php
-      if(!isset($_SESSION["id"])){
-       echo "<script>location.replace('login.php');</script>";
-      }
-      else if($_SESSION["id"]!="admin"){
-        echo "<script>alert('사용자 권한이 없습니다.'); history.back();</script>";
-      }
-      ?>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -74,7 +67,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                               <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
                               </li>
                               <li class="divider"></li>
-                              <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
+                              <li><a href="_login.html"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
                               </li>
                           </ul>
                           <!-- /.dropdown-user -->
@@ -119,10 +112,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
                                       <li>
-                                          <a href="admin_submitter.php">제출자</a>
+                                          <a href="#">제출자</a>
                                       </li>
                                       <li>
-                                          <a href='admin_evaluator.php'>평가자</a>
+                                          <a href="#">평가자</a>
                                       </li>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -137,109 +130,105 @@ mysql_query("SET NAMES utf8"); //한글처리
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
-                          <h1 class="page-header"><i class="fa fa-search fa-fw"></i> 회원검색</h1>
+                          <h1 class="page-header"><i class="fa fa-users fa-fw"></i> 회원관리: 평가자</h1>
                       </div>
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-12">
-                        <form class="form-inline" method="post" action="admin_search_do.php">
-                          <div class="form-group">
-                            <label for="usertype">회원유형</label>
-                            <select class="form-control" style="width:80px;" name="usertype" id="usertype">
-                              <option value="none">전체</option>
-                              <option value="submitter">제출자</option>
-                              <option value="evaluator">평가자</option>
-                            </select>
+                      <div class="page-contents col-lg-7">
+                        <div class="panel panel-info">
+                          <div class="panel-heading">
+                            평가자 목록
                           </div>
-                          <div class="form-group">
-                            <label for="age">나이</label>
-                            <input class="form-control" style="width:80px;" type="number" name="ageStart" id="ageStart" placeholder="0">
-                            ~
-                            <input class="form-control" style="width:80px;" type="number" name="ageEnd" id="ageEnd" placeholder="99">
-                          </div>
-                          <div class="form-group">
-                            <label for="usertype">성별</label>
-                            <select class="form-control" style="width:80px;" name="gender" id="gender">
-                              <option value="none">전체</option>
-                              <option value="M">남자</option>
-                              <option value="F">여자</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="usertype">참여 태스크</label>
-                            <select class="form-control" style="width:160px;" naem="task" id="task">
-                              <option value="none">전체</option>
-                              <option value="task1">태스크1</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="ID">아이디</label>
-                            <input class="form-control" style="width:160px;" type="text" name="ID" id="ID">
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-info" type="submit" name="button">Search</button>
-                          </div>
-                        </form>
-                      </div>
-                      <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-12">
-                        <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>아이디</th>
-                              <th>회원유형</th>
-                              <th>이름</th>
-                              <th>성별</th>
-                              <th>이메일</th>
-                              <th>휴대폰</th>
-                              <th>평가점수</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            #전체
+                          <div class="panel-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>아이디</th>
+                                  <th>이름</th>
+                                  <th>성별</th>
+                                  <th>이메일</th>
+                                  <th>휴대폰</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                  #제출자
+                                 $query1 = "SELECT * FROM Evaluator";
+                                 $result1 = mysql_query($query1, $con);
+                                 $count1 = mysql_num_rows($result1);
+                                
 
-                            #제출자
-                            $query1 = "SELECT * FROM Submitter";
-                            $result1 = mysql_query($query1, $con);
-                            $count1 = mysql_num_rows($result1);
-                            #평가자
-                            $query2 = "SELECT * FROM Evaluator";
-                            $result2 = mysql_query($query2, $con);
-                            $count2 = mysql_num_rows($result2);
+                                for($i = 0; $i < $count1; $i++) {
+                                $arr = mysql_fetch_array($result1);
+                                echo "<tr>";
+                                echo "<td>".($i+1)."</td>"; #index
 
-                            #제출자
-                            for($i = 0; $i < $count1; $i++) {
-                              $arr = mysql_fetch_array($result1);
-                              echo "<tr>";
-                              echo "<td>".($i+1)."</td>"; #index
-                              echo "<td>".$arr[0]."</td>"; #id
-                              echo "<td>"."제출자"."</td>"; #usertype
-                              echo "<td>".$arr[2]."</td>"; #name
-                              echo "<td>".$arr[3]."</td>"; #gender
-                              echo "<td>".$arr[4]."</td>"; #email
-                              echo "<td>".$arr[6]."</td>"; #phone
-                              echo "<td>".$arr[7]."</td>"; #grade
-                            }
-                            #평가자
-                            for($i = 0; $i < $count2; $i++) {
-                              $arr = mysql_fetch_array($result2);
-                              echo "<tr>";
-                              echo "<td>".($i+1)."</td>"; #index
-                              echo "<td>".$arr[0]."</td>"; #id
-                              echo "<td>"."평가자"."</td>"; #usertype
-                              echo "<td>".$arr[2]."</td>"; #name
-                              echo "<td>".$arr[3]."</td>"; #gender
-                              echo "<td>".$arr[4]."</td>"; #email
-                              echo "<td>".$arr[6]."</td>"; #phone
-                              echo "<td>-</td>"; #grade
-                            }
-                             ?>
-                          </tbody>
-                        </table>
+                                $tempid=$arr[0];
+                                $link_address = "admin_evaluator.php";
+                                $link_address = $link_address . "?";
+                                $link_address = $link_address . "getid=";
+                                $link_address = $link_address . $tempid;
+                                echo "<td><a href='$link_address'>".$arr[0]."</a></td>"; #id
+                               # echo "<p><a href='login.php'>aa</a></p>";
+                               # echo "<td>".$arr[0]."</td>"; #id
+                                echo "<td>".$arr[2]."</td>"; #name
+                                echo "<td>".$arr[3]."</td>"; #gender
+                                echo "<td>".$arr[4]."</td>"; #email
+                                echo "<td>".$arr[5]."</td>"; #birth
+                                echo "<td>".$arr[6]."</td>"; #phone
+                                }
+                              ?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                       </div>
-                      <!-- /.col-lg-12 -->
-                  </div>
+                      <!-- /.col-lg-8 -->
+                      <?php
+                      if(!empty($_GET['getid']))
+                      {
+                        $iidd=$_GET['getid'];
+                        
+                        $query2 = "SELECT P.ID, P.TaskName, S.Name, P.EvaluatorGrade FROM Submitter AS S, Parsing_Sequence_Data_Type AS P WHERE S.ID = P.SID AND P.EID='$iidd' AND P.Estate=1";
+                        $result2 = mysql_query($query2, $con);
+                        $count2 = mysql_num_rows($result2);
+
+                      echo '<div class="page-contents col-lg-5">
+                        <div class="panel panel-defaubklt">
+                          <div class="panel-heading">';
+                            echo '<strong>'.$iidd.'</strong> 회원이 평가한 파싱데이터시퀀스파일';
+                          echo '</div>
+                          <div class="panel-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>파일 이름</th>
+                                  <th>태스크 이름</th>
+                                  <th>제출자 이름</th>';
+                            #  echo    '<th>정량평가점수</th>';   
+                           echo       '<th>정성평가점수</th>
+                                </tr>
+                              </thead>';
+                              echo '<tbody>';
+                                for($i = 0; $i < $count2; $i++) {
+                                  $task = mysql_fetch_array($result2);
+                                  echo '<tr>';
+                                  echo "<td>".($i+1)."</td>"; #index
+                                  echo "<td>".$task[0]."</td>"; #File ID
+                                  echo "<td>".$task[1]."</td>"; #Task Name
+                                  echo "<td>".$task[2]."</td>"; #Submitter Name
+                                  echo "<td>".$task[3]."</td>"; #EvaluatorGrade    
+
+                                  }
+                              echo '</tbody>';
+                              echo '</table>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>';
+                        }
+                        ?>
                   <!-- /.row -->
               </div>
               <!-- /#page-wrapper -->
