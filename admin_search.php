@@ -95,7 +95,9 @@ mysql_query("SET NAMES utf8"); //한글처리
                                     <?php
                                     $query = "SELECT Name FROM Task";
                                     $result = mysql_query($query, $con);
-                                    for($arr = mysql_fetch_array($reselt)) {
+                                    $count = mysql_num_rows($result);
+                                    for($i = 0; $i < count; $i++) {
+                                      $arr = mysql_fetch_array($reselt)
                                       echo "<li>";
                                       echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                       echo "<ul class=\"nav nav-third-level\">";
