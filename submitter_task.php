@@ -1,7 +1,9 @@
 <?php
 // Start the session
 session_start();
+include 'basic.php';
 ?>
+
 
 <html class="no-js" lang="">
     <head>
@@ -75,9 +77,18 @@ session_start();
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 참가 중인 태스크<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
-                                      <li>
-                                        <a href="#">태스크1</a>
-                                      </li>
+                                    <?php
+                                      $query = "SELECT Name FROM Participate, Task ";
+                                      $query .= "WHERE Participate.SID='$id' AND Participate.TaskName = Task.Name AND Participate.Accept=1";
+                                      $res = mysql_query($query, $con);
+                                      $count = mysql_num_rows($res);
+                                      for($i = 0; $i < $count; $i++) {
+                                        $arr = mysql_fetch_array($res);
+                                        echo "<li>";
+                                        echo "<a href=\"submitter_taskup.php\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                        echo "</li>";
+                                      }
+                                     ?>
                                   </ul>
                                   <!-- /.nav-second-level -->
                               </li>
@@ -109,11 +120,27 @@ session_start();
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
+                         <!--       <tr>
                                   <td>1</td>
                                   <td>태스크1</td>
                                   <td><button class="btn btn-sm btn-success" type="button" name="button">참여신청</button></td>
                                 </tr>
+                          -->     
+                                <?php
+                                #일단 해당 제출자의 모든 태스크 목록과 상태를 보여주자
+                                $query2 = "SELECT Task.Name FROM Task WHERE not exists (SELECT * FROM Participate WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name)";
+                                $result2 = mysql_query($query2, $con);
+                                $count2 = mysql_num_rows($result2);
+
+                                for($i = 0; $i < $count2; $i++) {
+                                  $arr = mysql_fetch_array($result2);
+                                  echo "<tr>";
+                                  echo "<td>".($i+1)."</td>"; #index
+                                  echo "<td>".$arr[0]."</td>"; #Task Name
+                                  echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_task_do.php?sid=".$id."&taskname=".$arr[0]."'\" type=\"button\" name=\"button\">참여 신청하기</button></td>";
+                                  echo "</tr>";
+                                } 
+                                ?>
                               </tbody>
                             </table>
                           </div>
@@ -123,7 +150,7 @@ session_start();
                       <div class="page-contents col-lg-5">
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <strong>thisisid1</strong> 참여신청 대기 태스크
+                            <strong><?=$id?></strong> 님의 참여신청 대기 태스크
                           </div>
                           <div class="panel-body">
                             <table class="table table-striped">
@@ -134,10 +161,23 @@ session_start();
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>태스크1</td>
-                                </tr>
+                                  <?php
+                                  #참여신청 대기 태스크 목록
+                                  #Participate.Accept = 2
+                                 $query1 = "SELECT Name FROM Task, Participate ";
+                                 $query1 .= "WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name AND Participate.Accept=2";
+                                 $result1 = mysql_query($query1, $con);
+                                 $count1 = mysql_num_rows($result1);
+                                
+
+                                for($i = 0; $i < $count1; $i++) {
+                                $arr = mysql_fetch_array($result1);
+                                echo "<tr>";
+                                echo "<td>".($i+1)."</td>"; #index
+                                echo "<td>".$arr[0]."</td>"; #Task Name
+                                echo "</tr>";                           
+                                }
+                              ?>
                               </tbody>
                             </table>
                           </div>
