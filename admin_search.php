@@ -93,7 +93,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
                                     <?php
-                                    $query = "SELECT Name FROM Task";
+                                    $query = "SELECT * FROM Task";
                                     $result = mysql_query($query, $con);
                                     $count = mysql_num_rows($result);
                                     for($i = 0; $i < count; $i++) {
@@ -189,7 +189,7 @@ mysql_query("SET NAMES utf8"); //한글처리
                             <select class="form-control" style="width:160px;" naem="task" id="task">
                               <option value="none">전체</option>
                               <?php
-                               $query = "SELECT Name FROM Task";
+                               $query = "SELECT * FROM Task";
                                $result = mysql_query($query, $con);
                                $count = mysql_num_rows($result);
                                for($i = 0; $i < count; $i++) {
