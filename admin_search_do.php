@@ -92,23 +92,23 @@ mysql_query("SET NAMES utf8"); //한글처리
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
-                                      <li>
-                                        <a href="#">태스크1 <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="#">제출자 관리</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">원본데이터 타입 관리</a>
-                                            </li>
-                                            <li>
-                                                <a style="font-size:12px; color:gray;" href="#">파싱데이터시퀀스파일 수: 3</a>
-                                            </li>
-                                            <li>
-                                                <a style="font-size:12px; color:gray;" href="#">튜플 수: 123</a>
-                                            </li>
-                                        </ul>
-                                      </li>
+                                    <?php
+                                    $query = "SELECT Name FROM Task";
+                                    $res = mysql_query($query, $con);
+                                    $count = mysql_num_rows($res);
+                                    for($i = 0; $i < $count; $i++) {
+                                      $arr = mysql_fetch_array($res);
+                                      echo "<li>";
+                                      echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                      echo "<ul class=\"nav nav-third-level\">";
+                                      echo "<li><a href=\"#\">제출자 관리</a></li>";
+                                      echo "<li><a href=\"#\">원본데이터 타입 관리</a></li>";
+                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
+                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
+                                      echo "</ul>";
+                                      echo "</li>";
+                                    }
+                                     ?>
                                       <li>
                                         <a href="#"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
                                       </li>
@@ -168,7 +168,15 @@ mysql_query("SET NAMES utf8"); //한글처리
                             <label for="usertype">참여 태스크</label>
                             <select class="form-control" style="width:160px;" naem="task" id="task">
                               <option value="none">전체</option>
-                              <option value="task1">태스크1</option>
+                              <?php
+                               $query = "SELECT Name FROM Task";
+                               $res = mysql_query($query, $con);
+                               $count = mysql_num_rows($res);
+                               for($i = 0; $i < $count; $i++) {
+                                 $arr = mysql_fetch_array($res);
+                                 echo "<option value='".$arr['Name']."'>".$arr['Name']."</option>";
+                               }
+                               ?>
                             </select>
                           </div>
                           <div class="form-group">
@@ -251,25 +259,25 @@ mysql_query("SET NAMES utf8"); //한글처리
                               $arr = mysql_fetch_array($result1);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
-                              echo "<td>".$arr[0]."</td>"; #id
+                              echo "<td>".$arr['ID']."</td>"; #id
                               echo "<td>"."제출자"."</td>"; #usertype
-                              echo "<td>".$arr[2]."</td>"; #name
-                              echo "<td>".$arr[3]."</td>"; #gender
-                              echo "<td>".$arr[4]."</td>"; #email
-                              echo "<td>".$arr[6]."</td>"; #phone
-                              echo "<td>".$arr[7]."</td>"; #grade
+                              echo "<td>".$arr['Name']."</td>"; #name
+                              echo "<td>".$arr['Gender']."</td>"; #gender
+                              echo "<td>".$arr['Email']."</td>"; #email
+                              echo "<td>".$arr['Phone']."</td>"; #phone
+                              echo "<td>".$arr['Grade']."</td>"; #grade
                             }
                             #평가자
                             for($i = 0; $i < $count2; $i++) {
                               $arr = mysql_fetch_array($result2);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
-                              echo "<td>".$arr[0]."</td>"; #id
+                              echo "<td>".$arr['ID']."</td>"; #id
                               echo "<td>"."평가자"."</td>"; #usertype
-                              echo "<td>".$arr[2]."</td>"; #name
-                              echo "<td>".$arr[3]."</td>"; #gender
-                              echo "<td>".$arr[4]."</td>"; #email
-                              echo "<td>".$arr[6]."</td>"; #phone
+                              echo "<td>".$arr['Name']."</td>"; #name
+                              echo "<td>".$arr['Gender']."</td>"; #gender
+                              echo "<td>".$arr['Email']."</td>"; #email
+                              echo "<td>".$arr['Phone']."</td>"; #phone
                               echo "<td>-</td>"; #grade
                             }
                              ?>

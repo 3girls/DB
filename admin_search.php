@@ -109,26 +109,6 @@ mysql_query("SET NAMES utf8"); //한글처리
                                       echo "</li>";
                                     }
                                      ?>
-                                    <!-- Sample
-                                      <li>
-                                        <a href="#">태스크1 <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="#">제출자 관리</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">원본데이터 타입 관리</a>
-                                            </li>
-                                            <li>
-                                                <a style="font-size:12px; color:gray;" href="#">파싱데이터시퀀스파일 수: 3</a>
-                                            </li>
-                                            <li>
-                                                <a style="font-size:12px; color:gray;" href="#">튜플 수: 123</a>
-                                            </li>
-                                        </ul>
-                                      </li>
-                                    -->
-
                                       <li>
                                         <a href="admin_taskadd.html"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
                                       </li>
