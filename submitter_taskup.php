@@ -1,10 +1,10 @@
+<!doctype html>
 <?php
 // Start the session
-session_start();
+#session_start();
+#$id = $_SESSION['id'];
 include 'basic.php';
 ?>
-
-
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -77,18 +77,20 @@ include 'basic.php';
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 참가 중인 태스크<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
-                                    <?php
+                                      <?php
+                                     if (!empty($_GET['sid']))
+                                    { $sid=$_GET['sid'];
                                       $query = "SELECT Name FROM Participate, Task ";
-                                      $query .= "WHERE Participate.SID='$id' AND Participate.TaskName = Task.Name AND Participate.Accept=1";
+                                      $query .= "WHERE Participate.SID='$sid' AND Participate.TaskName = Task.Name AND Participate.Accept=1";
                                       $res = mysql_query($query, $con);
                                       $count = mysql_num_rows($res);
                                       for($i = 0; $i < $count; $i++) {
                                         $arr = mysql_fetch_array($res);
                                         echo "<li>";
-                                        echo "<a href='submitter_taskup.php?sid=".$id."&taskname=".$arr['Name']."'>".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                        echo "<a href='submitter_taskup.php?sid=".$sid."&taskname=".$arr['Name']."'>".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                         echo "</li>";
-
                                       }
+                                    }
                                      ?>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -99,92 +101,89 @@ include 'basic.php';
                   </div>
                   <!-- /.navbar-static-side -->
               </nav>
+              <?php
+              if(!empty($_GET['sid']))
+              {        
+                $sid=$_GET['sid'];
+                $taskname = $_GET['taskname'];
 
-              <div id="page-wrapper">
+             echo '<div id="page-wrapper">
                   <div class="row">
-                      <div class="col-lg-12">
-                          <h1 class="page-header"><i class="fa fa-users fa-fw"></i> 태스크 참가 관리</h1>
+                      <div class="col-lg-12">';
+                          echo '<h1 class="page-header"><i class="fa fa-users fa-fw"></i> 참가 중인 태스크: '.$taskname.'</h1>';
+                      echo '</div>
+                      <!-- /.col-lg-12 -->
+                      <div class="page-contents col-lg-12">
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <label for="origintype">원본데이터 타입</label>
+                            <select class="form-control" id="type">
+                              <option value="1">1</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="age">기간</label>
+                            <input class="form-control" type="date">
+                            ~
+                            <input class="form-control" type="date">
+                          </div>
+                          <div class="form-group">
+                            <input class="form-control" type="file">
+                          </div>
+                          <div class="form-group">
+                            <button class="btn btn-info" type="submit" name="button">등록하기</button>
+                          </div>
+                        </form>
                       </div>
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-7">
-                        <div class="panel panel-info">
-                          <div class="panel-heading">
-                            참여신청 가능 태스크
-                          </div>
-                          <div class="panel-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>태스크 이름</th>
-                                  <th>-</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                         <!--       <tr>
-                                  <td>1</td>
-                                  <td>태스크1</td>
-                                  <td><button class="btn btn-sm btn-success" type="button" name="button">참여신청</button></td>
-                                </tr>
-                          -->     
-                                <?php
-                                #일단 해당 제출자의 모든 태스크 목록과 상태를 보여주자
-                                $query2 = "SELECT Task.Name FROM Task WHERE not exists (SELECT * FROM Participate WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name)";
-                                $result2 = mysql_query($query2, $con);
-                                $count2 = mysql_num_rows($result2);
-
-                                for($i = 0; $i < $count2; $i++) {
-                                  $arr = mysql_fetch_array($result2);
-                                  echo "<tr>";
-                                  echo "<td>".($i+1)."</td>"; #index
-                                  echo "<td>".$arr[0]."</td>"; #Task Name
-                                  echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_agreement.php?sid=".$id."&taskname=".$arr[0]."'\" type=\"button\" name=\"button\">참여 신청하기</button></td>";
-                                  echo "</tr>";
-                                } 
-                                ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.col-lg-8 -->
-                      <div class="page-contents col-lg-5">
+                      <div class="page-contents col-lg-12">
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <strong><?=$id?></strong> 님의 참여신청 대기 태스크
+                            <form class="form-inline">
+                              <div class="form-group">
+                                <select class="form-control">
+                                  <option value="null">전체</option>
+                                  <option value="">옵션1</option>
+                                  <option value="">옵션2</option>
+                                </select>
+                                <label for="">원본데이터 타입 제출 파일 현황</label>
+                                <div class="form-group">
+                                  <button class="btn btn-info btn-sm" type="submit" name="button">
+                                    <i class="fa fa-search fa-fw"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </form>
                           </div>
                           <div class="panel-body">
                             <table class="table table-striped">
                               <thead>
                                 <tr>
-                                  <th>#</th>
-                                  <th>태스크 이름</th>
+                                  <th>회차</th>
+                                  <th>원본데이터 타입</th>
+                                  <th>튜플 수</th>
+                                  <th>null 비율(%)</th>
+                                  <th>정성평가점수</th>
+                                  <th>Pass 여부</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                  <?php
-                                  #참여신청 대기 태스크 목록
-                                  #Participate.Accept = 2
-                                 $query1 = "SELECT Name FROM Task, Participate ";
-                                 $query1 .= "WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name AND Participate.Accept=2";
-                                 $result1 = mysql_query($query1, $con);
-                                 $count1 = mysql_num_rows($result1);
-                                
-
-                                for($i = 0; $i < $count1; $i++) {
-                                $arr = mysql_fetch_array($result1);
-                                echo "<tr>";
-                                echo "<td>".($i+1)."</td>"; #index
-                                echo "<td>".$arr[0]."</td>"; #Task Name
-                                echo "</tr>";                           
-                                }
-                              ?>
+                                <tr>
+                                  <td>1</td>
+                                  <td>option</td>
+                                  <td>20</td>
+                                  <td>1</td>
+                                  <td>null</td>
+                                  <td>대기</td>
+                                </tr>
                               </tbody>
                             </table>
                           </div>
                         </div>
                       </div>
-                  </div>
+                  </div>';
+                }
+                ?>
                   <!-- /.row -->
               </div>
               <!-- /#page-wrapper -->

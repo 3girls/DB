@@ -1,10 +1,10 @@
+<!doctype html>
 <?php
 // Start the session
 session_start();
+#$id = $_SESSION['id'];
 include 'basic.php';
 ?>
-
-
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -77,18 +77,20 @@ include 'basic.php';
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 참가 중인 태스크<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
-                                    <?php
+                                      <?php
+                                     if (!empty($_GET['sid']))
+                                    { $sid=$_GET['sid'];
                                       $query = "SELECT Name FROM Participate, Task ";
-                                      $query .= "WHERE Participate.SID='$id' AND Participate.TaskName = Task.Name AND Participate.Accept=1";
+                                      $query .= "WHERE Participate.SID='$sid' AND Participate.TaskName = Task.Name AND Participate.Accept=1";
                                       $res = mysql_query($query, $con);
                                       $count = mysql_num_rows($res);
                                       for($i = 0; $i < $count; $i++) {
                                         $arr = mysql_fetch_array($res);
                                         echo "<li>";
-                                        echo "<a href='submitter_taskup.php?sid=".$id."&taskname=".$arr['Name']."'>".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                        echo "<a href='submitter_taskup.php?sid=".$sid."&taskname=".$arr['Name']."'>".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                         echo "</li>";
-
                                       }
+                                    }
                                      ?>
                                   </ul>
                                   <!-- /.nav-second-level -->
@@ -99,95 +101,44 @@ include 'basic.php';
                   </div>
                   <!-- /.navbar-static-side -->
               </nav>
+              <?php
+              if(!empty($_GET['sid']))
+              {        
+                $sid=$_GET['sid'];
+                $taskname = $_GET['taskname'];
 
-              <div id="page-wrapper">
+             echo '<div id="page-wrapper">
                   <div class="row">
-                      <div class="col-lg-12">
-                          <h1 class="page-header"><i class="fa fa-users fa-fw"></i> 태스크 참가 관리</h1>
+                      <div class="col-lg-11">
+                          <h1 class="page-header" style="text-align: center;"> 개인 정보 이용 동의</h1>
                       </div>
-                      <!-- /.col-lg-12 -->
+                      <div class="page-contents col-lg-2">
+                      </div>
                       <div class="page-contents col-lg-7">
-                        <div class="panel panel-info">
-                          <div class="panel-heading">
-                            참여신청 가능 태스크
+                        <div class="panel panel-default">';    
+                        echo '<div class="panel-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                  <tr>
+                                    <td> 저희 DataCollector는 태스크에 참여하고자 하는 제출자의 개인정보를 수집하고 있습니다.<br />
+                                         개인정보 수집에 동의하셔야 태스크 참여 신청이 가능합니다.<br />
+                                         이에 동의하십니까?<br />
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div style="text-align: center;">';
+                             echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_task_do.php?sid=".$sid."&taskname=".$taskname."'\" type=\"button\" name=\"button\">동의합니다.</button><br /></td>";
+                             echo '<br />';
+                             echo "<td><button class=\"btn btn-sm btn-danger\" onclick=\"location.href='submitter_task.php'\" type=\"button\" name=\"button\">동의하지 않습니다.</button></td>";
+                         echo  '</div>
                           </div>
-                          <div class="panel-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>태스크 이름</th>
-                                  <th>-</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                         <!--       <tr>
-                                  <td>1</td>
-                                  <td>태스크1</td>
-                                  <td><button class="btn btn-sm btn-success" type="button" name="button">참여신청</button></td>
-                                </tr>
-                          -->     
-                                <?php
-                                #일단 해당 제출자의 모든 태스크 목록과 상태를 보여주자
-                                $query2 = "SELECT Task.Name FROM Task WHERE not exists (SELECT * FROM Participate WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name)";
-                                $result2 = mysql_query($query2, $con);
-                                $count2 = mysql_num_rows($result2);
-
-                                for($i = 0; $i < $count2; $i++) {
-                                  $arr = mysql_fetch_array($result2);
-                                  echo "<tr>";
-                                  echo "<td>".($i+1)."</td>"; #index
-                                  echo "<td>".$arr[0]."</td>"; #Task Name
-                                  echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_agreement.php?sid=".$id."&taskname=".$arr[0]."'\" type=\"button\" name=\"button\">참여 신청하기</button></td>";
-                                  echo "</tr>";
-                                } 
-                                ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
+                       </div>
                       </div>
-                      <!-- /.col-lg-8 -->
-                      <div class="page-contents col-lg-5">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <strong><?=$id?></strong> 님의 참여신청 대기 태스크
-                          </div>
-                          <div class="panel-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>태스크 이름</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                  <?php
-                                  #참여신청 대기 태스크 목록
-                                  #Participate.Accept = 2
-                                 $query1 = "SELECT Name FROM Task, Participate ";
-                                 $query1 .= "WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name AND Participate.Accept=2";
-                                 $result1 = mysql_query($query1, $con);
-                                 $count1 = mysql_num_rows($result1);
-                                
-
-                                for($i = 0; $i < $count1; $i++) {
-                                $arr = mysql_fetch_array($result1);
-                                echo "<tr>";
-                                echo "<td>".($i+1)."</td>"; #index
-                                echo "<td>".$arr[0]."</td>"; #Task Name
-                                echo "</tr>";                           
-                                }
-                              ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
                       </div>
-                  </div>
-                  <!-- /.row -->
-              </div>
-              <!-- /#page-wrapper -->
+                  </div>';
+                }
+                ?>
 
           </div>
           <!-- /#wrapper -->
