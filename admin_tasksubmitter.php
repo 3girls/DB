@@ -222,8 +222,8 @@ include 'basic.php';
                                   echo "<td>".$arr['Email']."</td>"; #email
                                   echo "<td>".$arr['Phone']."</td>"; #Phone
                                   echo "<td>".$arr['Grade']."</td>"; #grade
-                                  echo "<td><button class=\"btn btn-sm btn-success\" type=\"button\" name=\"button\">승인</button>
-                                  <button class=\"btn btn-sm btn-danger\" type=\"button\" name=\"button\">거절</button></td>";
+                                  echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='admin_tasksubmitter_doaccept.php?sid=".$arr[ID]."&taskname=".$taskname."&accept=2'\" type=\"button\" name=\"button\">승인</button>
+                                  <button class=\"btn btn-sm btn-danger\" onclick=\"location.href='admin_tasksubmitter_doaccept.php?sid=".$arr[ID]."&taskname=".$taskname."&accept=1'\" type=\"button\" name=\"button\">거절</button></td>";
                                   echo "</tr>";
                                 }
                                  ?>
