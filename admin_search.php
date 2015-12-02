@@ -190,10 +190,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                               <option value="none">전체</option>
                               <?php
                                $query = "SELECT Name FROM Task";
-                               $result = mysql_query($query, $con);
-                               $count = mysql_num_rows($result);
+                               $res = mysql_query($query, $con);
+                               $count = mysql_num_rows($res);
                                for($i = 0; $i < $count; $i++) {
-                                 $arr = mysql_fetch_array($reselt);
+                                 $arr = mysql_fetch_array($res);
                                  echo "<option value='".$arr['Name']."'>".$arr['Name']."</option>";
                                }
                                ?>
