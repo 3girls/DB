@@ -1,9 +1,4 @@
 <?php
-// Start the session
-session_start();
-// connect mysqldb and $id = session id
-$id = $_SESSION['id'];
-
 include 'basic.php';
 ?>
 <html class="no-js" lang="">
