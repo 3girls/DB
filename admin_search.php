@@ -1,4 +1,6 @@
 <?php
+// Start the session
+session_start();
 include 'basic.php';
 ?>
 <html class="no-js" lang="">
