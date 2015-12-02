@@ -4,14 +4,8 @@
 <body>
 <?php
   $id = $_SESSION['id'];
-  #$myhost = '202.150.213.98';
-  $myhost = 'mysql.hostinger.kr';
-  $myid = 'u729743068_37';
-  $mypw = '123456';
-  $con = mysql_connect($myhost, $myid, $mypw);
 
-  $db = mysql_select_db("u729743068_37");
-  mysql_query("SET NAMES utf8"); //한글처리
+  include 'basic.php';
 
   //기타 추가.. : attribute갯수 정할 수 있게 하기
   //원본스키마 1개 이상이므로, 태스크 등록하자마자 바로 등록할 수 있게하기 
