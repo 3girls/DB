@@ -128,8 +128,15 @@ include 'basic.php';
                                 </tbody>
                               </table>
                               <div style="text-align: center;">';
-                             echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_task_do.php?sid=".$sid."&taskname=".$taskname."'\" type=\"button\" name=\"button\">동의합니다.</button><br /></td>";
-                             echo '<br />';
+                             echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_task_do.php?sid=".$sid."&taskname=".$taskname."'\" type=\"button\" name=\"button\">동의합니다.</button></td>";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
+                             echo "&nbsp;";
                              echo "<td><button class=\"btn btn-sm btn-danger\" onclick=\"location.href='submitter_task.php'\" type=\"button\" name=\"button\">동의하지 않습니다.</button></td>";
                          echo  '</div>
                           </div>
