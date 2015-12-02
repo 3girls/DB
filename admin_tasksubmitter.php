@@ -1,3 +1,4 @@
+<!doctype html>
 <?php
 // Start the session
 session_start();
@@ -7,7 +8,6 @@ $taskname = $_GET['taskname'];
 include 'basic.php';
 ?>
 
-<!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -19,15 +19,15 @@ include 'basic.php';
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <!-- MetisMenu CSS -->
-        <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css">
+        <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css" type="text/css">
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="dist/css/sb-admin-2.css">
+        <link rel="stylesheet" href="dist/css/sb-admin-2.css" type="text/css">
         <!-- Morris Charts CSS -->
-        <link rel="stylesheet" href="bower_components/morrisjs/morris.css">
+        <link rel="stylesheet" href="bower_components/morrisjs/morris.css" type="text/css">
         <!-- Custom Fonts -->
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="js/sign_validation.js"></script>
         <!--Repond.js for IE 8 or less only-->
@@ -90,7 +90,7 @@ include 'basic.php';
                                   echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                   echo "<ul class=\"nav nav-third-level\">";
                                   echo "<li><a href=\"admin_tasksubmitter.php/?taskname=".$arr['Name']."\">제출자 관리</a></li>";
-                                  echo "<li><a href=\"admin_taskODT.php/?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
+                                  echo "<li><a href=\"admin_taskODT.php/?taskname=".$arr['Name']\">원본데이터 타입 관리</a></li>";
                                   echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
                                   echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
                                   echo "</ul>";
