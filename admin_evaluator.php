@@ -174,7 +174,6 @@ mysql_query("SET NAMES utf8"); //한글처리
                                 echo "<td>".$arr[2]."</td>"; #name
                                 echo "<td>".$arr[3]."</td>"; #gender
                                 echo "<td>".$arr[4]."</td>"; #email
-                                echo "<td>".$arr[5]."</td>"; #birth
                                 echo "<td>".$arr[6]."</td>"; #phone
                                 }
                               ?>
