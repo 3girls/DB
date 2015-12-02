@@ -126,7 +126,7 @@ session_start();
                                         </ul>
                                       </li>
                                       <li>
-                                        <a href="#"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
+                                        <a href="admin_taskadd.php"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
                                       </li>
                                   </ul>
                                   <!-- /.nav-second-level -->
