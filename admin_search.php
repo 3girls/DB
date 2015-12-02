@@ -93,10 +93,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
                                     <?php
-                                    $query = "SELECT * FROM Task";
+                                    $query = "SELECT Name FROM Task";
                                     $result = mysql_query($query, $con);
                                     $count = mysql_num_rows($result);
-                                    for($i = 0; $i < count; $i++) {
+                                    for($i = 0; $i < $count; $i++) {
                                       $arr = mysql_fetch_array($reselt);
                                       echo "<li>";
                                       echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
@@ -189,10 +189,10 @@ mysql_query("SET NAMES utf8"); //한글처리
                             <select class="form-control" style="width:160px;" naem="task" id="task">
                               <option value="none">전체</option>
                               <?php
-                               $query = "SELECT * FROM Task";
+                               $query = "SELECT Name FROM Task";
                                $result = mysql_query($query, $con);
                                $count = mysql_num_rows($result);
-                               for($i = 0; $i < count; $i++) {
+                               for($i = 0; $i < $count; $i++) {
                                  $arr = mysql_fetch_array($reselt);
                                  echo "<option value='".$arr['Name']."'>".$arr['Name']."</option>";
                                }
