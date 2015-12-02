@@ -152,7 +152,7 @@ include 'basic.php';
                               <tbody>
                                 <?php
                                 $query = "SELECT * FROM Submitter WHERE ID = ("
-                                $query.= "SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='2')";
+                                $query = $query."SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='2')";
                                 $res = mysql_query($query, $con);
                                 $count = mysql_num_rows($res);
 
@@ -210,7 +210,7 @@ include 'basic.php';
                               <tbody>
                                 <?php
                                 $query = "SELECT * FROM Submitter WHERE ID = ("
-                                $query.= "SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='0')";
+                                $query = $query."SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='0')";
                                 $res = mysql_query($query, $con);
                                 $count = mysql_num_rows($res);
 
