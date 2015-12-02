@@ -8,7 +8,7 @@
   $sid = $_GET['sid'];
   $taskname = $_GET['taskname'];
   $accept = $_GET['accept'];
-  $query = "INSERT INTO(SID, TaskName, Accept) VALUES('".$sid."','".$taskname."','".$accept."')";
+  $query = "INSERT INTO Participate (SID, TaskName, Accept) VALUES ('".$sid."','".$taskname."','".$accept."')";
   mysql_query($query);
   echo "<script>history.back();</script>";
   ?>
