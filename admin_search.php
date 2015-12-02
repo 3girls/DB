@@ -1,3 +1,4 @@
+<!doctype html>
 <?php
 // Start the session
 session_start();
@@ -89,12 +90,11 @@ include 'basic.php';
                                     $count = mysql_num_rows($res);
                                     for($i = 0; $i < $count; $i++) {
                                       $arr = mysql_fetch_array($res);
-                                      $_SESSION['taskname'] = $arr['Name'];
                                       echo "<li>";
                                       echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                       echo "<ul class=\"nav nav-third-level\">";
-                                      echo "<li><a href=\"admin_tasksubmitter.php/?taskname=".$arr['Name']."\">제출자 관리</a></li>";
-                                      echo "<li><a href=\"admin_taskODT.php/?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
+                                      echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
+                                      echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
                                       echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
                                       echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
                                       echo "</ul>";
