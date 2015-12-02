@@ -89,6 +89,7 @@ include 'basic.php';
                                     $count = mysql_num_rows($res);
                                     for($i = 0; $i < $count; $i++) {
                                       $arr = mysql_fetch_array($res);
+                                      $_SESSION['taskname'] = $arr['Name'];
                                       echo "<li>";
                                       echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                       echo "<ul class=\"nav nav-third-level\">";
