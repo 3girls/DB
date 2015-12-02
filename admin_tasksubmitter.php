@@ -151,7 +151,7 @@ include 'basic.php';
                               </thead>
                               <tbody>
                                 <?php
-                                $query = "SELECT * FROM Submitter WHERE ID IN (SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='2')";
+                                $query = "SELECT * FROM Submitter WHERE ID IN (SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='1')";
                                 $res = mysql_query($query, $con);
                                 $count = mysql_num_rows($res);
 
@@ -208,7 +208,7 @@ include 'basic.php';
                               </thead>
                               <tbody>
                                 <?php
-                                $query = "SELECT * FROM Submitter WHERE ID IN (SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='0')";
+                                $query = "SELECT * FROM Submitter WHERE ID IN (SELECT SID FROM Participate WHERE TaskName='".$taskname."' AND Accept='2')";
                                 $res = mysql_query($query, $con);
                                 $count = mysql_num_rows($res);
 
@@ -222,8 +222,8 @@ include 'basic.php';
                                   echo "<td>".$arr['Email']."</td>"; #email
                                   echo "<td>".$arr['Phone']."</td>"; #Phone
                                   echo "<td>".$arr['Grade']."</td>"; #grade
-                                  echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='admin_tasksubmitter_doaccept.php?sid=".$arr[ID]."&taskname=".$taskname."&accept=2'\" type=\"button\" name=\"button\">승인</button>
-                                  <button class=\"btn btn-sm btn-danger\" onclick=\"location.href='admin_tasksubmitter_doaccept.php?sid=".$arr[ID]."&taskname=".$taskname."&accept=1'\" type=\"button\" name=\"button\">거절</button></td>";
+                                  echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='admin_tasksubmitter_doaccept.php?sid=".$arr[ID]."&taskname=".$taskname."&accept=1'\" type=\"button\" name=\"button\">승인</button>
+                                  <button class=\"btn btn-sm btn-danger\" onclick=\"location.href='admin_tasksubmitter_doaccept.php?sid=".$arr[ID]."&taskname=".$taskname."&accept=0'\" type=\"button\" name=\"button\">거절</button></td>";
                                   echo "</tr>";
                                 }
                                  ?>
