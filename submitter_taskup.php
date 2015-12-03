@@ -117,9 +117,18 @@ include 'basic.php';
                         <form class="form-inline" enctype="multipart/form-data" method="post" action="submitter_taskup_do.php">
                           <div class="form-group">
                             <label for="origintype">원본데이터 타입</label>
-                            <select class="form-control" name="original_data_type" id="original_data_type">
-                              <option value="1">1</option>
-                            </select>
+                            <select class="form-control" name="original_data_type" id="original_data_type">';
+                              $query1 ="SELECT Original_Data_Type.ID FROM Participate INNER JOIN Original_Data_Type ON Original_Data_Type.TaskName = Participate.TaskName ";
+                              $query1 .= "WHERE Participate.SID = '$sid' AND Participate.TaskName = '$taskname' AND Participate.Accept=1";
+                              $result1 = mysql_query($query1, $con);
+                              $count1 = mysql_num_rows($result1);
+                                      for($i = 0; $i < $count1; $i++) {
+                                        $arr = mysql_fetch_array($result1);
+                                       echo '<option value="'.$arr[0].'">'.$arr[0].'</option>';                                     
+                                        }  
+                              #option select한거 넘기는거 저렇게 써도 되나용???            
+                              #<option value="1">1</option>
+                          echo '</select>
                           </div>
                           <div class="form-group">
                             <label for="age">기간</label>
