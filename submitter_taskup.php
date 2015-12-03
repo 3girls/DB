@@ -119,13 +119,13 @@ include 'basic.php';
                             <label for="origintype">원본데이터 타입</label>
                             <select class="form-control" name="original_data_type" id="original_data_type">
                               <?php
-                              $sql = "SELECT ID FROM Original_Data_Type WHERE TaskName = \'".$taskname."\'";
+                              $sql = "SELECT * FROM Original_Data_Type WHERE TaskName = \'".$taskname."\'";
                               $res = mysql_query($sql, $con);
                               $count = mysql_num_row($res);
 
                               for($i = 0; $i < $count; $i++) {
                                 $arr = $mysql_fetch_array($res);
-                                echo "<option value=\'".$arr['ID']."\'>".$arr['ID']."</option>";
+                                echo "<option value='".$arr['ID']."'>".$arr['ID']."</option>";
                               }
                               ?>
                               <!-- sample <option value="1">1</option> -->
@@ -154,13 +154,13 @@ include 'basic.php';
                                 <select class="form-control">
                                   <option value="null">전체</option>
                                   <?php
-                                  $sql = "SELECT ID FROM Original_Data_Type WHERE TaskName = \'".$taskname."\'";
+                                  $sql = "SELECT * FROM Original_Data_Type WHERE TaskName = \'".$taskname."\'";
                                   $res = mysql_query($sql, $con);
                                   $count = mysql_num_row($res);
 
                                   for($i = 0; $i < $count; $i++) {
                                     $arr = $mysql_fetch_array($res);
-                                    echo "<option value=\'".$arr['ID']."\'>".$arr['ID']."</option>";
+                                    echo "<option value='".$arr['ID']."'>".$arr['ID']."</option>";
                                   }
                                   ?>
                                   <!-- sample
