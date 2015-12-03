@@ -1,9 +1,9 @@
 <?php
-// Start the session
 session_start();
+// connect mysqldb and $id = session id
+$id = $_SESSION['id'];
 ?>
 <?php
-  $id = $_SESSION['id'];
   include 'basic.php';
 
   $query = "select * from Administrator where ID = '$id'";

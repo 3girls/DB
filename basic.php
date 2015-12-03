@@ -1,5 +1,4 @@
 <?php
-  $id = $_SESSION['id'];
   #$myhost = '202.150.213.98';
   $myhost = 'mysql.hostinger.kr';
   $myid = 'u729743068_37';

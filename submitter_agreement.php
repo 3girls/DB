@@ -2,7 +2,7 @@
 <?php
 // Start the session
 session_start();
-#$id = $_SESSION['id'];
+$id = $_SESSION['id'];
 include 'basic.php';
 ?>
 <html class="no-js" lang="">

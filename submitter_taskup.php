@@ -1,3 +1,8 @@
+<?php
+session_start();
+// connect mysqldb and $id = session id
+$id = $_SESSION['id'];
+?>
 <!doctype html>
 <?php
 // Start the session

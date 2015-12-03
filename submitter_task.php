@@ -1,6 +1,10 @@
 <?php
-// Start the session
 session_start();
+// connect mysqldb and $id = session id
+$id = $_SESSION['id'];
+?>
+<?php
+// Start the session
 include 'basic.php';
 ?>
 

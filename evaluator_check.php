@@ -37,9 +37,6 @@ include 'basic.php';
       if(!isset($_SESSION["id"])){
        echo "<script>location.replace('login.php');</script>";
       }
-      else if($_SESSION["id"]!="admin"){
-        echo "<script>alert('사용자 권한이 없습니다.'); history.back();</script>";
-      }
       ?>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

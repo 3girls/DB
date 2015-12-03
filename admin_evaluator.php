@@ -1,9 +1,7 @@
 <?php
 // Start the session
 session_start();
-// connect mysqldb and $id = session id
 $id = $_SESSION['id'];
-#$myhost = '202.150.213.98';
 include 'basic.php';
 ?>
 <!doctype html>
