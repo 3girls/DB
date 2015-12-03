@@ -103,7 +103,7 @@ include 'basic.php';
               </nav>
               <?php
               if(!empty($_GET['sid']))
-              {        
+              {
                 $sid=$_GET['sid'];
                 $taskname = $_GET['taskname'];
 
@@ -114,21 +114,31 @@ include 'basic.php';
                       echo '</div>
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
-                        <form class="form-inline">
+                        <form class="form-inline" enctype="multipart/form-data" method="post" action="submitter_taskup_do.php">
                           <div class="form-group">
                             <label for="origintype">원본데이터 타입</label>
-                            <select class="form-control" id="type">
-                              <option value="1">1</option>
+                            <select class="form-control" name="original_data_type" id="original_data_type">
+                              <?php
+                              $sql = "SELECT ID FROM Original_Data_Type WHERE TaskName = '".$taskname."'";
+                              $res = mysql_query($sql, $con);
+                              $count = mysql_num_row($res);
+
+                              for($i = 0; $i < $count; $i++) {
+                                $arr = $mysql_fetch_array($res);
+                                echo "<option value=\"".$ID.\"'>".$arr['ID']."</option>";
+                              }
+                              ?>
+                              <!-- sample <option value="1">1</option> -->
                             </select>
                           </div>
                           <div class="form-group">
                             <label for="age">기간</label>
-                            <input class="form-control" type="date">
+                            <input class="form-control" type="date" name="startdate" id="startdate">
                             ~
-                            <input class="form-control" type="date">
+                            <input class="form-control" type="date" name="enddate" id="enddate">
                           </div>
                           <div class="form-group">
-                            <input class="form-control" type="file">
+                            <input class="form-control" type="file" name="upload_file[]" id="upload_file">
                           </div>
                           <div class="form-group">
                             <button class="btn btn-info" type="submit" name="button">등록하기</button>
@@ -139,12 +149,23 @@ include 'basic.php';
                       <div class="page-contents col-lg-12">
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <form class="form-inline">
+                            <form class="form-inline" method="post" action="">
                               <div class="form-group">
                                 <select class="form-control">
                                   <option value="null">전체</option>
+                                  <?php
+                                  $sql = "SELECT ID FROM Original_Data_Type WHERE TaskName = '".$taskname."'";
+                                  $res = mysql_query($sql, $con);
+                                  $count = mysql_num_row($res);
+
+                                  for($i = 0; $i < $count; $i++) {
+                                    $arr = $mysql_fetch_array($res);
+                                    echo "<option value=\"".$ID.\"'>".$arr['ID']."</option>";
+                                  }
+                                  ?>
+                                  <!-- sample
                                   <option value="">옵션1</option>
-                                  <option value="">옵션2</option>
+                                  <option value="">옵션2</option> -->
                                 </select>
                                 <label for="">원본데이터 타입 제출 파일 현황</label>
                                 <div class="form-group">
