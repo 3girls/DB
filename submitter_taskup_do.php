@@ -12,7 +12,7 @@
   $file_name = $_FILES['upload_file']['name'];
 
   # 파일 확장자 구하기
-  $file_type = substr(strrchr($file_name,"."),1);
+  $file_type = substr(strrchr($file_name[0],"."),1);
   echo "<script>alert('".$file_type."');</script>";
   # 파일 확장자가 .csv가 아니면 제출 거절
   #if($file_type != '.csv') {
