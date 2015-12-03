@@ -207,6 +207,9 @@ include 'basic.php';
                             $search_task = $_POST['task'];
                             $search_id = $_POST['ID'];
 
+                            #타임존 설정
+                            date_default_timezone_set('Asia/Seoul');
+
                             #전체
                             if($search_usertype == "none") {
                               #제출자
