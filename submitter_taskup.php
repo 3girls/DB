@@ -118,6 +118,7 @@ include 'basic.php';
                           <div class="form-group">
                             <label for="origintype">원본데이터 타입</label>
                             <select class="form-control" name="original_data_type" id="original_data_type">
+                              <!--
                               <?php
                               $sql = "SELECT * FROM Original_Data_Type WHERE TaskName = \'".$taskname."\'";
                               $res = mysql_query($sql, $con);
@@ -127,8 +128,8 @@ include 'basic.php';
                                 $arr = $mysql_fetch_array($res);
                                 echo "<option value='".$arr['ID']."'>".$arr['ID']."</option>";
                               }
-                              ?>
-                              <!-- sample <option value="1">1</option> -->
+                              ?> -->
+                              <option value="1">1</option>
                             </select>
                           </div>
                           <div class="form-group">
@@ -153,6 +154,7 @@ include 'basic.php';
                               <div class="form-group">
                                 <select class="form-control">
                                   <option value="null">전체</option>
+                                  <!--
                                   <?php
                                   $sql = "SELECT * FROM Original_Data_Type WHERE TaskName = \'".$taskname."\'";
                                   $res = mysql_query($sql, $con);
@@ -162,10 +164,10 @@ include 'basic.php';
                                     $arr = $mysql_fetch_array($res);
                                     echo "<option value='".$arr['ID']."'>".$arr['ID']."</option>";
                                   }
-                                  ?>
-                                  <!-- sample
+                                  ?>-->
+
                                   <option value="">옵션1</option>
-                                  <option value="">옵션2</option> -->
+                                  <option value="">옵션2</option>
                                 </select>
                                 <label for="">원본데이터 타입 제출 파일 현황</label>
                                 <div class="form-group">
