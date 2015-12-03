@@ -9,15 +9,15 @@
   $uploaddir = "/sampledata/";
 
   # 파일 이름 가져오기
-  $file_name = $_FILES['upload_file']['name'];
+  $file_name = $_FILES['upload_file']['name'][0];
 
   # 파일 확장자 구하기
-  $file_type = substr(strrchr($file_name[0],"."),1);
-  echo "<script>alert('".$file_type."');</script>";
+  $file_type = substr(strrchr($file_name,"."),1);
+  #echo "<script>alert('".$file_type."');</script>";
   # 파일 확장자가 .csv가 아니면 제출 거절
-  #if($file_type != '.csv') {
-  #  echo "<script>alert('csv파일만 업로드하실 수 있습니다.'); history.back();</script>";
-  #}
+  if($file_type != '.csv') {
+    echo "<script>alert('csv파일만 업로드하실 수 있습니다.'); history.back();</script>";
+  }
 
   # 파일 복사하기
   if(move_uploaded_file($_FILES['upload_file']['tmp_name'], $file_name)) {
