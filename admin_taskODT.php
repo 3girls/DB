@@ -197,7 +197,7 @@ if(!empty($taskiidd))
                                       echo "<tr>
                                         <td>".($i+1)."</td>
                                         <td>".$arr['ID']."</td>";
-                                      echo "<td>";
+                                      echo "<td>{";
 
 
                                         $ODT_schema = $arr["SchemaInfo"];
@@ -211,8 +211,8 @@ if(!empty($taskiidd))
                                               echo ", ";
                                             }
                                         } 
-                                        echo "</td>
-                                        <td>";
+                                        echo "}</td>
+                                        <td>{";
 
                                         $Mapping_schema = $arr["MappingInfo"];
                                         $Mapping_words = explode(" ", $Mapping_schema);
@@ -227,7 +227,7 @@ if(!empty($taskiidd))
                                         } 
 
 
-                                        echo"</td>";
+                                        echo"}</td>";
 
                                       $dropODTurl = "admin_taskODT_drop.php";
                                       $dropODTurl = $dropODTurl . "?";
