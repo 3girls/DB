@@ -49,85 +49,85 @@ include 'basic.php';
         <!-- Add your site or application content here -->
         <div id="wrapper">
 
-              <!-- Navigation -->
-              <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                  <div class="navbar-header">
-                      <a class="navbar-brand" href="index.php">
-                        <img src="img/logo.png" alt="DataCollector" width="180">
+          <!-- Navigation -->
+          <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="index.php">
+                    <img src="img/logo.png" alt="DataCollector" width="180">
+                  </a>
+              </div>
+              <!-- /.navbar-header -->
+
+              <ul class="nav navbar-top-links navbar-right">
+                  <!-- /.dropdown -->
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                       </a>
-                  </div>
-                  <!-- /.navbar-header -->
+                      <ul class="dropdown-menu dropdown-user">
+                          <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
+                          </li>
+                          <li class="divider"></li>
+                          <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
+                          </li>
+                      </ul>
+                      <!-- /.dropdown-user -->
+                  </li>
+                  <!-- /.dropdown -->
+              </ul>
+              <!-- /.navbar-top-links -->
 
-                  <ul class="nav navbar-top-links navbar-right">
-                      <!-- /.dropdown -->
-                      <li class="dropdown">
-                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                              <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                          </a>
-                          <ul class="dropdown-menu dropdown-user">
-                              <li><a href="admin_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
-                              </li>
-                              <li class="divider"></li>
-                              <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
-                              </li>
-                          </ul>
-                          <!-- /.dropdown-user -->
-                      </li>
-                      <!-- /.dropdown -->
-                  </ul>
-                  <!-- /.navbar-top-links -->
-
-                  <div class="navbar-default sidebar" role="navigation">
-                      <div class="sidebar-nav navbar-collapse">
-                          <ul class="nav" id="side-menu">
-                              <li>
-                                  <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
-                              </li>
-                              <li>
-                                  <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
-                                  <ul class="nav nav-second-level">
-                                    <?php
-                                    $query = "SELECT Name FROM Task";
-                                    $res = mysql_query($query, $con);
-                                    $count = mysql_num_rows($res);
-                                    for($i = 0; $i < $count; $i++) {
-                                      $arr = mysql_fetch_array($res);
-                                      echo "<li>";
-                                      echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
-                                      echo "<ul class=\"nav nav-third-level\">";
-                                      echo "<li><a href=\"admin_tasksubmitter.php\">제출자 관리</a></li>";
-                                      echo "<li><a href=\"admin_taskODT.php\">원본데이터 타입 관리</a></li>";
-                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
-                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
-                                      echo "</ul>";
-                                      echo "</li>";
-                                    }
-                                     ?>
-                                      <li>
-                                        <a href="admin_taskadd.php"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
-                                      </li>
-                                  </ul>
-                                  <!-- /.nav-second-level -->
-                              </li>
-                              <li>
-                                  <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
-                                  <ul class="nav nav-second-level">
-                                      <li>
-                                          <a href="admin_submitter.php">제출자</a>
-                                      </li>
-                                      <li>
-                                          <a href='admin_evaluator.php'>평가자</a>
-                                      </li>
-                                  </ul>
-                                  <!-- /.nav-second-level -->
-                              </li>
-                          </ul>
-                      </div>
-                      <!-- /.sidebar-collapse -->
+              <div class="navbar-default sidebar" role="navigation">
+                  <div class="sidebar-nav navbar-collapse">
+                      <ul class="nav" id="side-menu">
+                          <li>
+                              <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
+                          </li>
+                          <li>
+                              <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
+                              <ul class="nav nav-second-level">
+                                <?php
+                                $query = "SELECT Name FROM Task";
+                                $res = mysql_query($query, $con);
+                                $count = mysql_num_rows($res);
+                                for($i = 0; $i < $count; $i++) {
+                                  $arr = mysql_fetch_array($res);
+                                  echo "<li>";
+                                  echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                  echo "<ul class=\"nav nav-third-level\">";
+                                  echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
+                                  echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
+                                  echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
+                                  echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
+                                  echo "</ul>";
+                                  echo "</li>";
+                                }
+                                 ?>
+                                  <li>
+                                    <a href="admin_taskadd.php"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
+                                  </li>
+                              </ul>
+                              <!-- /.nav-second-level -->
+                          </li>
+                          <li>
+                              <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
+                              <ul class="nav nav-second-level">
+                                  <li>
+                                      <a href="admin_submitter.php">제출자</a>
+                                  </li>
+                                  <li>
+                                      <a href='admin_evaluator.php'>평가자</a>
+                                  </li>
+                              </ul>
+                              <!-- /.nav-second-level -->
+                          </li>
+                      </ul>
                   </div>
-                  <!-- /.navbar-static-side -->
-              </nav>
-              
+                  <!-- /.sidebar-collapse -->
+              </div>
+              <!-- /.navbar-static-side -->
+          </nav>
+
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
@@ -146,9 +146,9 @@ include 'basic.php';
                           </div>
                           <div class="form-group">
                             <label for="age">나이</label>
-                            <input class="form-control" style="width:80px;" type="number" name="ageStart" id="ageStart" placeholder="0">
+                            <input class="form-control" style="width:80px;" type="number" name="ageStart" id="ageStart" placeholder="1" required>
                             ~
-                            <input class="form-control" style="width:80px;" type="number" name="ageEnd" id="ageEnd" placeholder="99">
+                            <input class="form-control" style="width:80px;" type="number" name="ageEnd" id="ageEnd" placeholder="99" required>
                           </div>
                           <div class="form-group">
                             <label for="usertype">성별</label>
@@ -191,6 +191,7 @@ include 'basic.php';
                               <th>아이디</th>
                               <th>회원유형</th>
                               <th>이름</th>
+                              <th>나이</th>
                               <th>성별</th>
                               <th>이메일</th>
                               <th>휴대폰</th>
@@ -217,17 +218,33 @@ include 'basic.php';
                               if($search_gender != "none") {
                                 $query1 = $query1." WHERE Gender = '".$search_gender."'";
                                 $query2 = $query2." WHERE Gender = '".$search_gender."'";
-
+                                #성별, 아이디 조건
                                 if($search_id != "") {
                                   $query1 = $query1." AND ID LIKE '%".$search_id."%'";
                                   $query2 = $query2." AND ID LIKE '%".$search_id."%'";
                                 }
+                                #나이 조건
+                                $query1 = $query1." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                $query2 = $query2." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                               }
                               else {
+                                #아이디 조건
                                 if($search_id != "") {
                                   $query1 = $query1." WHERE ID LIKE '%".$search_id."%'";
                                   $query2 = $query2." WHERE ID LIKE '%".$search_id."%'";
+                                  #나이 조건
+                                  $query1 = $query1." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                  $query2 = $query2." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
+                                #only 나이 조건
+                                $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                               }
 
                               $result1 = mysql_query($query1, $con);
@@ -236,15 +253,65 @@ include 'basic.php';
                               $result2 = mysql_query($query2, $con);
                               $count2 = mysql_num_rows($result2);
                             }
+                            #제출자
                             else if($search_usertype == "submitter") {
                               #제출자
-                              $query1 = "SELECT * FROM Submitter WHERE";
+                              $query1 = "SELECT * FROM Submitter";
+                              #성별 조건
+                              if($search_gender != "none") {
+                                $query1 = $query1." WHERE Gender = '".$search_gender."'";
+                                #성별, 아이디 조건
+                                if($search_id != "") {
+                                  $query1 = $query1." AND ID LIKE '%".$search_id."%'";
+                                }
+                                #나이 조건
+                                $query1 = $query1." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                              }
+                              else {
+                                #아이디 조건
+                                if($search_id != "") {
+                                  $query1 = $query1." WHERE ID LIKE '%".$search_id."%'";
+                                  #나이 조건
+                                  $query1 = $query1." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
+                                #only 나이 조건
+                                $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                              }
+
                               $result1 = mysql_query($query1, $con);
                               $count1 = mysql_num_rows($result1);
                             }
+                            #평가자
                             else if($search_usertype == "evaluator") {
                               #평가자
-                              $query2 = "SELECT * FROM Evaluator WHERE";
+                              $query2 = "SELECT * FROM Evaluator";
+                              #성별 조건
+                              if($search_gender != "none") {
+                                $query2 = $query2." WHERE Gender = '".$search_gender."'";
+                                #성별, 아이디 조건
+                                if($search_id != "") {
+                                  $query2 = $query2." AND ID LIKE '%".$search_id."%'";
+                                }
+                                #성별, (아이디), 나이 조건
+                                $query2 = $query2." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                              }
+                              else {
+                                #아이디 조건
+                                if($search_id != "") {
+                                  $query2 = $query2." WHERE ID LIKE '%".$search_id."%'";
+                                  #아이디, 나이 조건
+                                  $query2 = $query2." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
+                                #only 나이 조건
+                                $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                              }
+
                               $result2 = mysql_query($query2, $con);
                               $count2 = mysql_num_rows($result2);
                             }
@@ -256,6 +323,9 @@ include 'basic.php';
                               echo "<td>".$arr['ID']."</td>"; #id
                               echo "<td>"."제출자"."</td>"; #usertype
                               echo "<td>".$arr['Name']."</td>"; #name
+                              echo "<td>";
+                              echo date('Y') - substr($arr['Birth'], 0, 4);
+                              echo "</td>"; #age
                               echo "<td>".$arr['Gender']."</td>"; #gender
                               echo "<td>".$arr['Email']."</td>"; #email
                               echo "<td>".$arr['Phone']."</td>"; #phone
@@ -269,6 +339,9 @@ include 'basic.php';
                               echo "<td>".$arr['ID']."</td>"; #id
                               echo "<td>"."평가자"."</td>"; #usertype
                               echo "<td>".$arr['Name']."</td>"; #name
+                              echo "<td>";
+                              echo date('Y') - substr($arr['Birth'], 0, 4);
+                              echo "</td>"; #age
                               echo "<td>".$arr['Gender']."</td>"; #gender
                               echo "<td>".$arr['Email']."</td>"; #email
                               echo "<td>".$arr['Phone']."</td>"; #phone

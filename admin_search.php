@@ -147,9 +147,9 @@ include 'basic.php';
                           </div>
                           <div class="form-group">
                             <label for="age">나이</label>
-                            <input class="form-control" style="width:80px;" type="number" name="ageStart" id="ageStart" placeholder="0">
+                            <input class="form-control" style="width:80px;" type="number" name="ageStart" id="ageStart" placeholder="1" required>
                             ~
-                            <input class="form-control" style="width:80px;" type="number" name="ageEnd" id="ageEnd" placeholder="99">
+                            <input class="form-control" style="width:80px;" type="number" name="ageEnd" id="ageEnd" placeholder="99" required>
                           </div>
                           <div class="form-group">
                             <label for="usertype">성별</label>
@@ -192,6 +192,7 @@ include 'basic.php';
                               <th>아이디</th>
                               <th>회원유형</th>
                               <th>이름</th>
+                              <th>나이</th>
                               <th>성별</th>
                               <th>이메일</th>
                               <th>휴대폰</th>
@@ -219,6 +220,9 @@ include 'basic.php';
                               echo "<td>".$arr['ID']."</td>"; #id
                               echo "<td>"."제출자"."</td>"; #usertype
                               echo "<td>".$arr['Name']."</td>"; #name
+                              echo "<td>";
+                              echo date('Y') - substr($arr['Birth'], 0, 4);
+                              echo "</td>"; #age
                               echo "<td>".$arr['Gender']."</td>"; #gender
                               echo "<td>".$arr['Email']."</td>"; #email
                               echo "<td>".$arr['Phone']."</td>"; #phone
@@ -232,6 +236,9 @@ include 'basic.php';
                               echo "<td>".$arr['ID']."</td>"; #id
                               echo "<td>"."평가자"."</td>"; #usertype
                               echo "<td>".$arr['Name']."</td>"; #name
+                              echo "<td>";
+                              echo date('Y') - substr($arr['Birth'], 0, 4);
+                              echo "</td>"; #age
                               echo "<td>".$arr['Gender']."</td>"; #gender
                               echo "<td>".$arr['Email']."</td>"; #email
                               echo "<td>".$arr['Phone']."</td>"; #phone
