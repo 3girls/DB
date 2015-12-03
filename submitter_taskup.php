@@ -125,7 +125,7 @@ include 'basic.php';
 
                               for($i = 0; $i < $count; $i++) {
                                 $arr = $mysql_fetch_array($res);
-                                echo "<option value=\'".$ID."\'>".$arr['ID']."</option>";
+                                echo "<option value=\'".$arr[ID]."\'>".$arr['ID']."</option>";
                               }
                               ?>
                               <!-- sample <option value="1">1</option> -->
@@ -160,7 +160,7 @@ include 'basic.php';
 
                                   for($i = 0; $i < $count; $i++) {
                                     $arr = $mysql_fetch_array($res);
-                                    echo "<option value=\'".$ID."\'>".$arr['ID']."</option>";
+                                    echo "<option value=\'".$arr[ID]."\'>".$arr['ID']."</option>";
                                   }
                                   ?>
                                   <!-- sample
