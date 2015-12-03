@@ -187,24 +187,62 @@ if(!empty($taskiidd))
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>원본데이터1</td>
-                                  <td>{이름, 나이, 성별, 생년월일, 전공, 부전공}</td>
-                                  <td>{이름, 나이, null, null, 전공, null}</td>
-                                  <td>
-                                    <button class="btn btn-sm btn-danger btn-outline" type="button" name="button">삭제하기</button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>원본데이터2</td>
-                                  <td>{이름, 생년월일, 나이, 전공, 부전공}</td>
-                                  <td>{이름, null, 나이, 전공, null}</td>
-                                  <td>
-                                    <button class="btn btn-sm btn-danger btn-outline" type="button" name="button">삭제하기</button>
-                                  </td>
-                                </tr>
+                                    <?php
+                                    $query3 = "SELECT * FROM Original_Data_Type WHERE TaskName ='$taskiidd'";
+                                    $resu = mysql_query($query3, $con);
+                                    $count = mysql_num_rows($resu);
+                                    for($i = 0; $i < $count; $i++) {
+                                      $arr = mysql_fetch_array($resu);
+
+                                      echo "<tr>
+                                        <td>".($i+1)."</td>
+                                        <td>".$arr['ID']."</td>";
+                                      echo "<td>";
+
+
+                                        $ODT_schema = $arr["SchemaInfo"];
+                                        $ODT_words = explode(" ", $ODT_schema);
+                                        $ODT_words_count =  count($ODT_words);
+                                        for($ii = 0 ; $ii < ($ODT_words_count-1) ; $ii+=2)
+                                        {
+                                            $tempattribute=$ODT_words[$ii];
+                                            echo $tempattribute;
+                                            if($ii!=($ODT_words_count-3)){
+                                              echo ", ";
+                                            }
+                                        } 
+                                        echo "</td>
+                                        <td>";
+
+                                        $Mapping_schema = $arr["MappingInfo"];
+                                        $Mapping_words = explode(" ", $Mapping_schema);
+                                        $Mapping_count =  count($Mapping_words);
+                                        for($ii = 0 ; $ii < $Mapping_count-1 ; $ii++)
+                                        {
+                                            $tempattribute=$Mapping_words[$ii];
+                                            echo $tempattribute;
+                                            if($ii!=($Mapping_count-2)){
+                                              echo ", ";
+                                            }
+                                        } 
+
+
+                                        echo"</td>";
+
+                                      $dropODTurl = "admin_taskODT_drop.php";
+                                      $dropODTurl = $dropODTurl . "?";
+                                      $dropODTurl = $dropODTurl . "ODTid=";
+                                      $dropODTurl = $dropODTurl . $arr['ID'];// 안되면 '' 지워보기.
+                                      $dropODTurl = $dropODTurl . "&";
+                                      $dropODTurl = $dropODTurl . "taskid=";
+                                      $dropODTurl = $dropODTurl . $_GET['taskid'];// 안되면 '' 지워보기.
+                                        echo "
+                                        <td>
+                                          <button onclick=\"location.href='".$dropODTurl."' \" class=\"btn btn-sm btn-danger btn-outline\" type=\"button\" name=\"button\">삭제하기</button>
+                                        </td>
+                                      </tr>";
+                                    }
+                                  ?>
                               </tbody>
                             </table>
                           </div>

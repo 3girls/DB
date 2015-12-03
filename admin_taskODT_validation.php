@@ -112,8 +112,13 @@
     }
     else
     {
+
+      $addODTurl = "admin_taskODT.php";
+      $addODTurl = $addODTurl . "?";
+      $addODTurl = $addODTurl . "taskid=";
+      $addODTurl = $addODTurl . $taskiidd;// 안되면 '' 지워보기.
       echo "<script>alert('ODT 생성 성공!');
-              location.replace('admin_taskODT.php');
+              location.replace('".$addODTurl."');
               </script>";
     }
 
