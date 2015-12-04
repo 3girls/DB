@@ -232,7 +232,7 @@ if(!empty($taskiidd))
                                       $dropODTurl = $dropODTurl . $arr['ID'];// 안되면 '' 지워보기.
                                       $dropODTurl = $dropODTurl . "&";
                                       $dropODTurl = $dropODTurl . "taskid=";
-                                      $dropODTurl = $dropODTurl . $_GET['taskid'];// 안되면 '' 지워보기.
+                                      $dropODTurl = $dropODTurl . $taskiidd;// 안되면 '' 지워보기.
                                         echo "
                                         <td>
                                           <button onclick=\"location.href='".$dropODTurl."' \" class=\"btn btn-sm btn-danger btn-outline\" type=\"button\" name=\"button\">삭제하기</button>
