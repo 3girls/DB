@@ -173,10 +173,11 @@ $id = $_SESSION['id'];
     $ecount = mysql_num_rows($result);
     $random_n=rand()%$ecount;
 
-    for($index=0;$index<$random_n;$index++){
+    for($index=0;$index<=$random_n;$index++){
       $row_result=mysql_fetch_row($result);
       $random_eid=$row_result[0];
     }
+    ########select random evaluator###############
 
     $duplicatetuplenum=0;
     $check;
@@ -207,7 +208,6 @@ $id = $_SESSION['id'];
       }
     }
 
-    ########select random evaluator###############
     
     $query = "insert into Parsing_Sequence_Data_Type (TotalTupleNum, DuplicateTupleNum, NullRatio, TaskName, SID, Times, Startdate, Finishdate, OriginalDataTypeID, EID, Estate, P_NP, ID) ";
     $query.= "values ($row, $duplicatetuplenum, $nullratio, '$taskname','$sid','$times','$startdate','$enddate','$original_data_type','$random_eid', 0, 2,'$writefilename')";
