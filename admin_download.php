@@ -28,6 +28,12 @@ session_start();
 	FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"'
 	LINES TERMINATED BY \"\n\"
 	FROM $taskTableName";
+  $TS_result = mysql_query($query, $con);
+  if(!$TS_result){
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+  }
 
   ?>
 </body>
