@@ -77,7 +77,7 @@ include 'basic.php';
                       <div class="sidebar-nav navbar-collapse">
                           <ul class="nav" id="side-menu">
                               <li>
-                                  <a href="evaluator_wating.php"><i class="fa fa-spinner fa-fw"></i> 평가대기 파일</a>
+                                  <a href="evaluator_waiting.php"><i class="fa fa-spinner fa-fw"></i> 평가대기 파일</a>
                               </li>
                               <li>
                                   <a href="evaluator_check.php"><i class="fa fa-check fa-fw"></i> 평가완료 파일</a>

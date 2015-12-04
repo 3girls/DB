@@ -17,8 +17,8 @@ $eid = $_SESSION['id'];
 
   #총 평가점수를 계산하여 패스 여부를 결정
   $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE ID='".$fid."'"
-  $res = mysql_query($query, $con);
-  $arr = mysql_fetch_array($res);
+  $result = mysql_query($query, $con);
+  $arr = mysql_fetch_array($result);
 
   $X = ($arr['DuplicateTupleNum']/$arr['TotalTupleNum'] + $arr['NullRatio']*0.01)*50 + $arr['EvaluatorGrade'];
   #PASS
