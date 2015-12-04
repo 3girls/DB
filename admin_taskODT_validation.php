@@ -115,7 +115,7 @@
 
       $addODTurl = "admin_taskODT.php";
       $addODTurl = $addODTurl . "?";
-      $addODTurl = $addODTurl . "taskid=";
+      $addODTurl = $addODTurl . "taskname=";
       $addODTurl = $addODTurl . $taskiidd;// 안되면 '' 지워보기.
       echo "<script>alert('ODT 생성 성공!');
               location.replace('".$addODTurl."');
