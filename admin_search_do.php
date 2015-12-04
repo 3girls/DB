@@ -249,17 +249,19 @@ include 'basic.php';
                                   $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
                                 #only 나이 조건
-                                $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
-                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
-                                $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
-                                $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                else {
+                                  $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                  $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
                               }
 
                               $result1 = mysql_query($query1, $con);
-                              $count1 = mysql_num_rows($result1);
+                              $count1 = @mysql_num_rows($result1);
 
                               $result2 = mysql_query($query2, $con);
-                              $count2 = mysql_num_rows($result2);
+                              $count2 = @mysql_num_rows($result2);
                             }
                             #제출자
                             else if($search_usertype == "submitter") {
@@ -285,12 +287,14 @@ include 'basic.php';
                                   $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
                                 #only 나이 조건
-                                $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
-                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                else {
+                                  $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
                               }
 
                               $result1 = mysql_query($query1, $con);
-                              $count1 = mysql_num_rows($result1);
+                              $count1 = @mysql_num_rows($result1);
                             }
                             #평가자
                             else if($search_usertype == "evaluator") {
@@ -316,16 +320,19 @@ include 'basic.php';
                                   $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
                                 #only 나이 조건
+                                else {
                                 $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
                                 $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
                               }
 
                               $result2 = mysql_query($query2, $con);
-                              $count2 = mysql_num_rows($result2);
+                              $count2 = @mysql_num_rows($result2);
                             }
+
                             #제출자
                             for($i = 0; $i < $count1; $i++) {
-                              $arr = mysql_fetch_array($result1);
+                              $arr = @mysql_fetch_array($result1);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr['ID']."</td>"; #id
@@ -341,7 +348,7 @@ include 'basic.php';
                             }
                             #평가자
                             for($i = 0; $i < $count2; $i++) {
-                              $arr = mysql_fetch_array($result2);
+                              $arr = @mysql_fetch_array($result2);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr['ID']."</td>"; #id
