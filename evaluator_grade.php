@@ -16,7 +16,7 @@ $eid = $_SESSION['id'];
   mysql_query($query, $con);
 
   #총 평가점수를 계산하여 패스 여부를 결정
-  $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE ID='".$fid."'"
+  $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE ID='".$fid."'";
   $result = mysql_query($query, $con);
   $arr = mysql_fetch_array($result);
 
