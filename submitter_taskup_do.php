@@ -30,7 +30,7 @@ $id = $_SESSION['id'];
   $file_name = $temp_file_name[0];
 
 
-  $query = "SELECT * FROM Parsing_Sequence_Data_Type Where Name=$sid and OriginalDataTypeID='$original_data_type'";
+  $query = "SELECT * FROM Parsing_Sequence_Data_Type Where SID='$sid' and OriginalDataTypeID='$original_data_type'";
   $result = mysql_query($query, $con);
   if(!$result){
   $message  = 'Invalid query: ' . mysql_error() . "\n";
