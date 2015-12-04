@@ -78,54 +78,59 @@ include 'basic.php';
               <!-- /.navbar-top-links -->
 
               <div class="navbar-default sidebar" role="navigation">
-                  <div class="sidebar-nav navbar-collapse">
-                      <ul class="nav" id="side-menu">
-                          <li>
-                              <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
-                          </li>
-                          <li>
-                              <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
-                              <ul class="nav nav-second-level">
-                                <?php
-                                $query = "SELECT Name FROM Task";
-                                $res = mysql_query($query, $con);
-                                $count = mysql_num_rows($res);
-                                for($i = 0; $i < $count; $i++) {
-                                  $arr = mysql_fetch_array($res);
-                                  echo "<li>";
-                                  echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
-                                  echo "<ul class=\"nav nav-third-level\">";
-                                  echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
-                                  echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
-                                  echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
-                                  echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
-                                  echo "</ul>";
-                                  echo "</li>";
-                                }
-                                 ?>
-                                  <li>
-                                    <a href="admin_taskadd.php"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
-                                  </li>
-                              </ul>
-                              <!-- /.nav-second-level -->
-                          </li>
-                          <li>
-                              <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
-                              <ul class="nav nav-second-level">
-                                  <li>
-                                      <a href="admin_submitter.php">제출자</a>
-                                  </li>
-                                  <li>
-                                      <a href='admin_evaluator.php'>평가자</a>
-                                  </li>
-                              </ul>
-                              <!-- /.nav-second-level -->
-                          </li>
-                      </ul>
+                      <div class="sidebar-nav navbar-collapse">
+                          <ul class="nav" id="side-menu">
+                              <li>
+                                  <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
+                              </li>
+                              <li>
+                                  <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
+                                  <ul class="nav nav-second-level">
+                                    <?php
+                                    $query = "SELECT Name FROM Task";
+                                    $res = mysql_query($query, $con);
+                                    $count = mysql_num_rows($res);
+                                    for($i = 0; $i < $count; $i++) {
+                                      $arr = mysql_fetch_array($res);
+                                      echo "<li>";
+                                      echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                      echo "<ul class=\"nav nav-third-level\">";
+                                      echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
+                                      echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
+                                      $query1 = "SELECT COUNT(*), SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
+                                      $query1 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
+                                      $query1 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]'";
+                                      $result1 = mysql_query($query1, $con);
+                                      $arr1 = mysql_fetch_array($result1);
+                                      echo "<li style=\"margin-left:53px; margin-top:10px; margin-bottom:15px; font-size:12px; color:gray;\">파싱데이터시퀀스파일 수: ".$arr1[0]."</li>";
+                                      echo "<li style=\"margin-left:53px; margin-top:15px; margin-bottom:10px; font-size:12px; color:gray;\">튜플 수: ".$arr1[1]."</li>";
+                                      echo "</ul>";
+                                      echo "</li>";
+                                    }
+                                     ?>
+                                      <li>
+                                        <a href="admin_taskadd.php"><i class="fa fa-plus-circle fa-fw"></i> 태스크 추가하기</a>
+                                      </li>
+                                  </ul>
+                                  <!-- /.nav-second-level -->
+                              </li>
+                              <li>
+                                  <a href="#"><i class="fa fa-users fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
+                                  <ul class="nav nav-second-level">
+                                      <li>
+                                          <a href="admin_submitter.php">제출자</a>
+                                      </li>
+                                      <li>
+                                          <a href='admin_evaluator.php'>평가자</a>
+                                      </li>
+                                  </ul>
+                                  <!-- /.nav-second-level -->
+                              </li>
+                          </ul>
+                      </div>
+                      <!-- /.sidebar-collapse -->
                   </div>
-                  <!-- /.sidebar-collapse -->
-              </div>
-              <!-- /.navbar-static-side -->
+                  <!-- /.navbar-static-side -->
           </nav>
 
               <div id="page-wrapper">
