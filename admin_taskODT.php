@@ -5,7 +5,7 @@ session_start();
 $id = $_SESSION['id'];
 
 include 'basic.php';
-$taskiidd=$_GET['taskid'];
+$taskiidd=$_GET['taskname'];
 $taskname=$taskiidd;
 
 if(!empty($taskiidd))
@@ -163,7 +163,7 @@ if(!empty($taskiidd))
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
-                          <h1 class="page-header"><i class="fa fa-tasks fa-fw"></i> <?php echo "$taskiidd"; ?> : 원본데이터 타입 관리</h1>
+                          <h1 class="page-header"><i class="fa fa-tasks fa-fw"></i> <?php echo $taskname; ?> : 원본데이터 타입 관리</h1>
                       </div>
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
