@@ -32,8 +32,6 @@ session_start();
 	{
 		getcsv(array_keys($rows));
 	}
-	
-	$rows = mysql_fetch_assoc($select_table);
 	while($rows)
 	{
 		getcsv($rows);
