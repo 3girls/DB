@@ -86,8 +86,8 @@ include 'basic.php';
                                       echo "<li>";
                                       echo "<a href=\"#\">".$arr['Name']." <span class=\"fa arrow\"></span></a>";
                                       echo "<ul class=\"nav nav-third-level\">";
-                                      echo "<li><a href=\"admin_tasksubmitter.php\">제출자 관리</a></li>";
-                                      echo "<li><a href=\"admin_taskODT.php\">원본데이터 타입 관리</a></li>";
+                                      echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
+                                      echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
                                       echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
                                       echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
                                       echo "</ul>";
@@ -180,7 +180,7 @@ include 'basic.php';
                       {
                         $iidd=$_GET['getid'];
 
-                        $query2 = "SELECT P.ID, P.TaskName, S.Name, P.EvaluatorGrade FROM Submitter AS S, Parsing_Sequence_Data_Type AS P WHERE S.ID = P.SID AND P.EID='$iidd' AND P.Estate=1";
+                        $query2 = "SELECT P.ID, P.TaskName, S.Name, P.EvaluatorGrade, P.P_NP FROM Submitter AS S, Parsing_Sequence_Data_Type AS P WHERE S.ID = P.SID AND P.EID='$iidd' AND P.Estate=1";
                         $result2 = mysql_query($query2, $con);
                         $count2 = mysql_num_rows($result2);
 
@@ -198,7 +198,8 @@ include 'basic.php';
                                   <th>태스크 이름</th>
                                   <th>제출자 이름</th>';
                             #  echo    '<th>정량평가점수</th>';
-                           echo       '<th>정성평가점수</th>
+                           echo   '<th>정성평가점수</th>
+                                  <th>P/NP 여부</th>
                                 </tr>
                               </thead>';
                               echo '<tbody>';
@@ -210,6 +211,12 @@ include 'basic.php';
                                   echo "<td>".$task[1]."</td>"; #Task Name
                                   echo "<td>".$task[2]."</td>"; #Submitter Name
                                   echo "<td>".$task[3]."</td>"; #EvaluatorGrade
+                                  if($task[4]='1') {
+                                  echo "<td>P</td>"; #Pass
+                                  } else if ($task[4]='0'){
+                                    echo "<td>NP</td>"; #Non Pass
+                                  }
+
 
                                   }
                               echo '</tbody>';
