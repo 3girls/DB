@@ -57,6 +57,22 @@ include 'basic.php';
                       <!-- /.dropdown -->
                       <li class="dropdown">
                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            MY GRADE
+                          </a>
+                          <ul class="dropdown-menu dropdown-grade" style="text-align:center;">
+                              <li>
+                                <?php
+                                $query ="SELECT Grade FROM Submitter WHERE ID='$id'";
+                                $res = mysql_query($query, $con);
+                                $arr = mysql_fetch_array($res);
+                                echo $arr['Grade'];
+                                 ?>
+                                Points
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                               <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                           </a>
                           <ul class="dropdown-menu dropdown-user">
@@ -130,7 +146,7 @@ include 'basic.php';
                                   <td>태스크1</td>
                                   <td><button class="btn btn-sm btn-success" type="button" name="button">참여신청</button></td>
                                 </tr>
-                          -->     
+                          -->
                                 <?php
                                 #일단 해당 제출자의 모든 태스크 목록과 상태를 보여주자
                                 $query2 = "SELECT Task.Name FROM Task WHERE not exists (SELECT * FROM Participate WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name)";
@@ -144,7 +160,7 @@ include 'basic.php';
                                   echo "<td>".$arr[0]."</td>"; #Task Name
                                   echo "<td><button class=\"btn btn-sm btn-success\" onclick=\"location.href='submitter_agreement.php?sid=".$id."&taskname=".$arr[0]."'\" type=\"button\" name=\"button\">참여 신청하기</button></td>";
                                   echo "</tr>";
-                                } 
+                                }
                                 ?>
                               </tbody>
                             </table>
@@ -173,14 +189,14 @@ include 'basic.php';
                                  $query1 .= "WHERE Participate.SID = '$id' AND Participate.TaskName = Task.Name AND Participate.Accept=2";
                                  $result1 = mysql_query($query1, $con);
                                  $count1 = mysql_num_rows($result1);
-                                
+
 
                                 for($i = 0; $i < $count1; $i++) {
                                 $arr = mysql_fetch_array($result1);
                                 echo "<tr>";
                                 echo "<td>".($i+1)."</td>"; #index
                                 echo "<td>".$arr[0]."</td>"; #Task Name
-                                echo "</tr>";                           
+                                echo "</tr>";
                                 }
                               ?>
                               </tbody>

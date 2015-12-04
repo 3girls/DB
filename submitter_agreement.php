@@ -53,6 +53,22 @@ include 'basic.php';
                       <!-- /.dropdown -->
                       <li class="dropdown">
                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            MY GRADE
+                          </a>
+                          <ul class="dropdown-menu dropdown-grade" style="text-align:center;">
+                              <li>
+                                <?php
+                                $query ="SELECT Grade FROM Submitter WHERE ID='$id'";
+                                $res = mysql_query($query, $con);
+                                $arr = mysql_fetch_array($res);
+                                echo $arr['Grade'];
+                                 ?>
+                                Points
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                               <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                           </a>
                           <ul class="dropdown-menu dropdown-user">
@@ -103,7 +119,7 @@ include 'basic.php';
               </nav>
               <?php
               if(!empty($_GET['sid']))
-              {        
+              {
                 $sid=$_GET['sid'];
                 $taskname = $_GET['taskname'];
 
@@ -115,7 +131,7 @@ include 'basic.php';
                       <div class="page-contents col-lg-2">
                       </div>
                       <div class="page-contents col-lg-7">
-                        <div class="panel panel-default">';    
+                        <div class="panel panel-default">';
                         echo '<div class="panel-body">
                             <table class="table table-bordered">
                                 <tbody>
