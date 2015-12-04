@@ -106,7 +106,6 @@ include 'basic.php';
                               <th>#</th>
                               <th>태스크 이름</th>
                               <th>파싱시퀀스 파일</th>
-                              <th>상태</th>
                               <th>평가하기</th>
                               <th></th>
                               <th></th>
@@ -124,7 +123,6 @@ include 'basic.php';
                               <td>".($i+1)."</td>
                               <td>".$arr['TaskName']."</td>
                               <td><a href=\"".$arr[ID]."\"download=\"".$arr[ID]."\">".$arr['ID']."</a></td>
-                              <td>대기중</td>
                               <form class=\"form-inline\" method=\"post\" action=\"evaluator_grade.php?fid=".$arr['ID']."\">
                                 <td>
                                   <input class=\"form-control\" type=\"number\" name=\"grade\" id=\"grade\">
