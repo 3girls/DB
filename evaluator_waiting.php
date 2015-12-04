@@ -108,6 +108,8 @@ include 'basic.php';
                               <th>파싱시퀀스 파일</th>
                               <th>상태</th>
                               <th>평가하기</th>
+                              <th></th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -123,14 +125,27 @@ include 'basic.php';
                               <td>".$arr['TaskName']."</td>
                               <td><a href=\"/psf_directory/".$arr[ID]."\"download=\"/psf_directory/".$arr[ID]."\">".$arr['ID']."</a></td>
                               <td>대기중</td>
-                              <td>
-                                <form class=\"form-inline\" method=\"post\" action=\"evaluator_grade.php?fid=".$arr['ID']."\">
+                              <form class=\"form-inline\" method=\"post\" action=\"evaluator_grade.php?fid=".$arr['ID']."\">
+                                <td>
                                   <input class=\"form-control\" type=\"number\" name=\"grade\" id=\"grade\">
+                                </td>
+                                <td>
+                                  <div class=\"form-group\">
+                                    <label class=\"radio-inline\">
+                                      <input type=\"radio\" name=\"PNP\" value=\"1\" checked>P
+                                    </label>
+                                    <label class=\"radio-inline\">
+                                      <input type=\"radio\" name=\"PNP\" value=\"0\">NP
+                                    </label>
+                                  </div>
+                                </td>
+                                </td>
+                                <td>
                                   <button class=\"btn btn-success btn-sm\" type=\"submit\" name=\"button\">
                                     <i class=\"fa fa-check fa-fw\"></i>
                                   </button>
-                                </form>
-                              </td>
+                                </td>
+                              </form>
                             </tr>";
                           }
                            ?>
