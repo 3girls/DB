@@ -246,7 +246,7 @@ if(!empty($taskiidd))
                           <!-- second tab -->
                           <div class="tab-pane fade" id="add">
                                       <?php
-                                      $taskiidd=$_GET['taskid'];
+                                      $taskiidd=$_GET['taskname'];
                                       $addODTurl = "admin_taskODT_validation.php";
                                       $addODTurl = $addODTurl . "?";
                                       $addODTurl = $addODTurl . "taskid=";
