@@ -125,7 +125,7 @@ include 'basic.php';
                                 echo "<tr>
                                   <td>".($i+1)."</td>
                                   <td>".$arr['TaskName']."</td>
-                                  <td><a href=\"".$arr[ID]."\"download=\"".$arr[ID]."\">".$arr['ID']."</a></td>
+                                  <td><a href=\"".$arr['ID']."\"download=\"".$arr['ID']."\">".$arr['ID']."</a></td>
                                   <td>".$pnp."</td>
                                   <td>".$arr['EvaluatorGrade']."</td>
                                 </tr>";

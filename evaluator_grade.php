@@ -11,10 +11,42 @@ $eid = $_SESSION['id'];
   include 'basic.php';
   $grade = $_POST['grade'];
   $fid = $_GET['fid'];
-  if($_POST['PNP']=='1')
+  if($_POST['PNP']=='1'){
     $pnp = 1;
-  else if($_POST['PNP']=='0')
+
+  
+    $handle = fopen($fid,'r');
+    //$handle is file.
+
+    if ($handle  !== FALSE) {
+
+      if(($head = fgetcsv($handle, ",")) !== FALSE){
+        $num = count($head);
+      }
+      while (($data = fgetcsv($handle, ",")) !== FALSE) {
+          $num = count($data);
+          $query = "UPDATE Parsing_Sequence_Data_Type SET ";
+          for ($index=0; $index < $num; $index++) {
+            $query .= $head[$index];
+            $query .= "=";
+            $query .= $data[$index];
+            if($indexx!=($num-1)){
+              $query .= ",";
+            }
+          }
+          $query .= "WHERE ID='";
+          $query .= $fid;
+          $query .= "'";
+      }
+      fclose($handle);
+    }
+
+
+
+  }
+  else if($_POST['PNP']=='0'){
     $pnp = 0;
+  }
 
   $query = "UPDATE Parsing_Sequence_Data_Type SET EvaluatorGrade=".$grade.", Estate=1, P_NP=".$pnp." WHERE ID='".$fid."'";
   mysql_query($query, $con);
