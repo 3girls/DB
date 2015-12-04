@@ -11,6 +11,19 @@ $eid = $_SESSION['id'];
   include 'basic.php';
   $grade = $_POST['grade'];
   $fid = $_GET['fid'];
+  $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE ID='".$fid."'";
+  $res = mysql_query($query, $con);
+  $result_row = mysql_Fetch_array($res);
+  $taskid = $result_row[3];
+  $sid = $result_row[4];
+
+  $query = "SELECT * FROM Task WHERE Name='".$taskid."'";
+  $res = mysql_query($query, $con);
+  $result_row = mysql_Fetch_array($res);
+  $tablename = $result_row[3];
+
+
+
   if($_POST['PNP']=='1'){
     $pnp = 1;
 
@@ -25,7 +38,14 @@ $eid = $_SESSION['id'];
       }
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
-          $query = "UPDATE Parsing_Sequence_Data_Type SET ";
+          $query = "UPDATE ".$tablename." SET ";
+          $query .= "SID";
+          $query .= "=";
+          $query .= $sid;
+          if($num>0){
+            $query .= ",";
+          }
+
           for ($index=0; $index < $num; $index++) {
             $query .= $head[$index];
             $query .= "=";
@@ -34,9 +54,6 @@ $eid = $_SESSION['id'];
               $query .= ",";
             }
           }
-          $query .= "WHERE ID='";
-          $query .= $fid;
-          $query .= "'";
       }
       fclose($handle);
     }
