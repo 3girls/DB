@@ -56,6 +56,7 @@ $eid = $_SESSION['id'];
 
           for ($index=0; $index < $num; $index++) {
               $query .= $data[$index];
+              if($data[$index]=="") $query.="NULL";
               if($index!=($num-1)){
                 $query .= ",";
               }
