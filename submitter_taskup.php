@@ -118,8 +118,19 @@ include 'basic.php';
                           echo '<h1 class="page-header"><i class="fa fa-users fa-fw"></i> 참가 중인 태스크: '.$taskname.'</h1>';
                       echo '</div>
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-12">
-                        <form class="form-inline" enctype="multipart/form-data" method="post" action="submitter_taskup_do.php">
+                      <div class="page-contents col-lg-12">';
+
+                        $taskupDOurl = "submitter_taskup_do.php";
+                        $taskupDOurl = $taskupDOurl . "?";
+                        $taskupDOurl = $taskupDOurl . "taskname=";
+                        $taskupDOurl = $taskupDOurl . $_GET['taskname'];// 안되면 '' 지워보기.
+                        $taskupDOurl = $taskupDOurl . "&";
+                        $taskupDOurl = $taskupDOurl . "sid=";
+                        $taskupDOurl = $taskupDOurl . $_GET['sid'];;// 안되면 '' 지워보기.
+
+                        echo '
+                        <form class="form-inline" enctype="multipart/form-data" method="post" onsubmit=\"return CheckTaskUp()\" action='.$taskupDOurl.'>';
+                          echo '
                           <div class="form-group" style="margin-bottom:5px;">
                             <label for="origintype">원본데이터 타입</label>
                             <select class="form-control input-sm" name="original_data_type" id="original_data_type">';
