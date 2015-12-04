@@ -29,7 +29,7 @@ session_start();
 	header('Content-Disposition: attachment;filename='.$tempname.'');
 
 	//select table to export the data
-	$select_table=mysql_query('select * from $taskTableName');
+	$select_table=mysql_query('select * from '.$taskTableName.'');
 	$rows = mysql_fetch_assoc($select_table);
 
 	if ($rows)
