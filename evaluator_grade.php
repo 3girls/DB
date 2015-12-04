@@ -119,6 +119,7 @@ $eid = $_SESSION['id'];
   }
 
   $Sgrade /= $count;
+  $Sgrade = round($Sgrade);
 
   $query = "UPDATE Submitter SET Grade=".$Sgrade."WHERE ID='".$sid."'";
   mysql_query($query, $con);
