@@ -107,7 +107,7 @@ $eid = $_SESSION['id'];
 
   #관련 제출자 점수
   $Sgrade = 0.0;
-  $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID = '".$sid."'";
+  $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID = '".$sid."' AND Estate = 1";
   $res = mysql_query($query, $con);
   $count = mysql_num_rows($res);
 
@@ -120,7 +120,7 @@ $eid = $_SESSION['id'];
 
   $Sgrade /= $count;
 
-  $query = "UPDATE Submitter SET Grade=".$Sgrade."WHERE ID='".$sid."'";
+  $query = "UPDATE Submitter SET Grade=".round($Sgrade)."WHERE ID='".$sid."'";
   mysql_query($query, $con);
 
   echo "<script>location.replace('evaluator_waiting.php');</script>";
