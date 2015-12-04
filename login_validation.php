@@ -14,7 +14,7 @@ session_start();
     echo "<meta http-equiv='refresh' content='0;url=login.php'>";
     exit;
   }
-  
+
   include 'basic.php';
 
   $id = $_POST["ID"];
@@ -62,15 +62,14 @@ session_start();
 
     }
     else if($count3==1){
-      echo "evaluator";
-
+      echo "<script>location.replace('evaulator_waiting.php');</script>";
     }
   }
   else {
     echo "<script>alert('아이디 또는 비밀번호가 잘못되었습니다.'); history.back();</script>";
   }
   mysql_close($con);
-  
+
 ?>
 </body>
 </html>

@@ -123,7 +123,7 @@ include 'basic.php';
                   </div>
                   <!-- /.navbar-static-side -->
               </nav>
-              
+
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
@@ -190,7 +190,7 @@ include 'basic.php';
                         $count2 = mysql_num_rows($result2);
 
                       echo '<div class="page-contents col-lg-5">
-                        <div class="panel panel-defaubklt">
+                        <div class="panel panel-default">
                           <div class="panel-heading">';
                             echo '<strong>'.$iidd.'</strong> 회원이 평가한 파싱데이터시퀀스파일';
                           echo '</div>
