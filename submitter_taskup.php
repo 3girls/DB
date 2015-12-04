@@ -120,35 +120,37 @@ include 'basic.php';
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
                         <form class="form-inline" enctype="multipart/form-data" method="post" action="submitter_taskup_do.php">
-                          <div class="form-group">
+                          <div class="form-group" style="margin-bottom:5px;">
                             <label for="origintype">원본데이터 타입</label>
-                            <select class="form-control" name="original_data_type" id="original_data_type">';
+                            <select class="form-control input-sm" name="original_data_type" id="original_data_type">';
                               $query1 ="SELECT Original_Data_Type.ID FROM Participate INNER JOIN Original_Data_Type ON Original_Data_Type.TaskName = Participate.TaskName ";
                               $query1 .= "WHERE Participate.SID = '$sid' AND Participate.TaskName = '$taskname' AND Participate.Accept=1";
                               $result1 = mysql_query($query1, $con);
                               $count1 = mysql_num_rows($result1);
                                       for($i = 0; $i < $count1; $i++) {
                                         $arr = mysql_fetch_array($result1);
-                                       echo '<option value="'.$arr[0].'">'.$arr[0].'</option>';                                     
-                                        }  
-                              #option select한거 넘기는거 저렇게 써도 되나용???            
+                                       echo '<option value="'.$arr[0].'">'.$arr[0].'</option>';
+                                        }
+                              #option select한거 넘기는거 저렇게 써도 되나용??? 네 되어오
                               #<option value="1">1</option>
                           echo '</select>
-                          </div>
-                          <div class="form-group">
-                            <label for="age">기간</label>
-                            <input class="form-control" type="date" name="startdate" id="startdate">
+
+                            <label>회차</label>
+                            <input class="form-control input-sm" type="number" min="1" max="999" name="times" id="times">
+
+                            <label for="date">기간</label>
+                            <input class="form-control input-sm" type="date" name="startdate" id="startdate">
                             ~
-                            <input class="form-control" type="date" name="enddate" id="enddate">
+                            <input class="form-control input-sm" type="date" name="enddate" id="enddate">
                           </div>
                           <div class="form-group">
-                            <input class="form-control" type="file" name="upload_file[]" id="upload_file">
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-info" type="submit" name="button">등록하기</button>
+                            <input class="form-control input-sm" type="file" name="upload_file[]" id="upload_file">
+
+                            <button class="btn btn-info btn-sm" type="submit" name="button">등록하기</button>
                           </div>
                         </form>
                       </div>
+
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">
                         <div class="panel panel-default">
@@ -156,10 +158,16 @@ include 'basic.php';
                             <form class="form-inline" method="post" action="">
                               <div class="form-group">
                                 <select class="form-control">
-                                  <option value="null">전체</option>
-                                  <option value="">옵션1</option>
-                                  <option value="">옵션2</option>
-                                </select>
+                                  <option value="null">전체</option>';
+                                  $query1 ="SELECT Original_Data_Type.ID FROM Participate INNER JOIN Original_Data_Type ON Original_Data_Type.TaskName = Participate.TaskName ";
+                                  $query1 .= "WHERE Participate.SID = '$sid' AND Participate.TaskName = '$taskname' AND Participate.Accept=1";
+                                  $result1 = mysql_query($query1, $con);
+                                  $count1 = mysql_num_rows($result1);
+                                          for($i = 0; $i < $count1; $i++) {
+                                            $arr = mysql_fetch_array($result1);
+                                           echo '<option value="'.$arr[0].'">'.$arr[0].'</option>';
+                                            }
+                                echo '</select>
                                 <label for="">원본데이터 타입 제출 파일 현황</label>
                                 <div class="form-group">
                                   <button class="btn btn-info btn-sm" type="submit" name="button">
@@ -181,15 +189,32 @@ include 'basic.php';
                                   <th>Pass 여부</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>option</td>
-                                  <td>20</td>
-                                  <td>1</td>
-                                  <td>null</td>
-                                  <td>대기</td>
-                                </tr>
+                              <tbody>';
+                              $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID='".$sid."' AND TaskName='".$taskname."'";
+                              $res = mysql_query($query, $con);
+                              $count = mysql_num_rows($res);
+                              for($i = 0; $i < $count; $i++) {
+                                  $arr = mysql_fetch_array($res);
+                                  echo '<tr>
+                                    <td>'.$arr['Times'].'</td>
+                                    <td>'.$arr['OriginalDataTypeID'].'</td>
+                                    <td>'.$arr['TotalTupleNum'].'</td>
+                                    <td>'.$arr['NullRatio'].'</td>
+                                    <td>'.$arr['EvaluatorGrade'].'</td>
+                                    <td>';
+                                  if($arr['P_NP']==0) {
+                                      echo 'NonPass';
+                                  }
+                                  else if($arr['P_NP']==1) {
+                                      echo 'Pass';
+                                  }
+                                  else if($arr['P_NP']==2) {
+                                      echo '대기';
+                                  }
+                                  echo'</td>
+                                  </tr>';
+                              }
+                              echo'
                               </tbody>
                             </table>
                           </div>
