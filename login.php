@@ -43,7 +43,7 @@ $id = $_SESSION['id'];
                           <input class="form-control" placeholder="아이디" name="ID" id="ID" type="text" autofocus>
                         </div>
                         <div class="form-group">
-                          <input class="form-control" placeholder="비밀번호" name="PW" id="PW"vtype="password">
+                          <input class="form-control" placeholder="비밀번호" name="PW" id="PW" type="password">
                         </div>
                         <div style="text-align:center">
                           <button class="btn btn-lg btn-info btn-block" type="submit" name="button">로그인</button>
