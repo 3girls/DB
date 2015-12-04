@@ -37,6 +37,8 @@ $eid = $_SESSION['id'];
         $num = count($head);
         echo $head[0];
       }
+    }
+  }
       /*
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
