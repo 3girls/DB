@@ -98,8 +98,13 @@ include 'basic.php';
                                       echo "<ul class=\"nav nav-third-level\">";
                                       echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
                                       echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
-                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: 3</a></li>";
-                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: 123</a></li>";
+                                      $query1 = "SELECT COUNT(*), SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
+                                      $query1 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
+                                      $query1 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]'";
+                                      $result1 = mysql_query($query1, $con);
+                                      $arr1 = mysql_fetch_array($result1);
+                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">파싱데이터시퀀스파일 수: ".$arr1[0]."</a></li>";
+                                      echo "<li><a style=\"font-size:12px; color:gray;\" href=\"#\">튜플 수: ".$arr1[1]."</a></li>";
                                       echo "</ul>";
                                       echo "</li>";
                                     }
