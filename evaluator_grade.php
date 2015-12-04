@@ -23,6 +23,7 @@ $eid = $_SESSION['id'];
   $tablename = $result_row[3];
 
 
+  $makingquery="";
 
   if($_POST['PNP']=='1'){
     $pnp = 1;
@@ -35,28 +36,36 @@ $eid = $_SESSION['id'];
 
       if(($head = fgetcsv($handle, ",")) !== FALSE){
         $num = count($head);
-        echo $head[0];
+        for ($index=0; $index < $num; $index++) {
+            $makingquery .= $head[$index];
+            if($indexx!=($num-1)){
+              $makingquery .= ",";
+            }
+        }
+        //echo $head[0];
       }
-    }
-  }
-      /*
+
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
-          $query = "UPDATE ".$tablename." SET ";
-          $query .= "SID";
-          $query .= "=";
+          $query = "insert into ".$tablename." (SID, ".$makingquery.") values";
+
+          $query .= "(";
           $query .= $sid;
-          if($num>0){
-            $query .= ",";
-          }
+          $query .= ",";
+
 
           for ($index=0; $index < $num; $index++) {
-            $query .= $head[$index];
-            $query .= "=";
-            $query .= $data[$index];
-            if($indexx!=($num-1)){
-              $query .= ",";
-            }
+              $query .= $data[$index];
+              if($indexx!=($num-1)){
+                $query .= ",";
+              }
+          }
+          $query .= ")";
+          $res = mysql_query($query, $con);  
+          if(!$res){
+              $message  = 'Invalid query: ' . mysql_error() . "\n";
+              $message .= 'Whole query: ' . $query;
+              die($message);
           }
       }
       fclose($handle);
@@ -93,6 +102,6 @@ $eid = $_SESSION['id'];
   #  mysql_query($query, $con);
   #}
 
-  echo "<script>location.replace('evaluator_waiting.php');</script>";*/
+  echo "<script>location.replace('evaluator_waiting.php');</script>";
   ?>
 </body>
