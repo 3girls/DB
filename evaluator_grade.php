@@ -35,7 +35,9 @@ $eid = $_SESSION['id'];
 
       if(($head = fgetcsv($handle, ",")) !== FALSE){
         $num = count($head);
+        echo $head[0];
       }
+      /*
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
           $query = "UPDATE ".$tablename." SET ";
@@ -89,6 +91,6 @@ $eid = $_SESSION['id'];
   #  mysql_query($query, $con);
   #}
 
-  echo "<script>location.replace('evaluator_waiting.php');</script>";
+  echo "<script>location.replace('evaluator_waiting.php');</script>";*/
   ?>
 </body>
