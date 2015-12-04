@@ -179,7 +179,23 @@ include 'basic.php';
                       </div>
 
                       <!-- /.col-lg-12 -->
-                      <div class="page-contents col-lg-12">
+                      <div class="page-contents col-lg-12">';
+
+                      $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID='".$id."'";
+                      $res = mysql_query($query, $con);
+                      $count = mysql_num_rows($res);
+
+                      $tasktotaltuple = 0;
+                      for($i = 0; $i < $count; $i++) {
+                        $arr = mysql_fetch_array($res);
+                        $tasktotaltuple += $arr['TotalTupleNum'];
+                      }
+
+                      echo '<div style="text-align:right; color:gray;">';
+                      echo '<p>'.$taskname.'의 총 제출 파일 수: '.$count.'<p>';
+                      echo '<p>태스크 테이블 내 총 튜플 수:'.$tasktotaltuple.'</p></div>';
+
+                      echo '
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <form class="form-inline" method="post" action="">
