@@ -211,18 +211,17 @@ include 'basic.php';
                                 for($i = 0; $i < $count2; $i++) {
                                   $task = mysql_fetch_array($result2);
                                   echo '<tr>';
-                                  echo "<td>".($i+1)."</td>"; #index
-                                  echo "<td>".$task[0]."</td>"; #File ID
+                                  echo "<td>".($i+1)."</td>
+                                  <td><a href=\"".$task[0]."\"download=\"".$task[0]."\">".$task[0]."</a></td>";
                                   echo "<td>".$task[1]."</td>"; #Task Name
                                   echo "<td>".$task[2]."</td>"; #Submitter Name
                                   echo "<td>".$task[3]."</td>"; #EvaluatorGrade
                                   if($task[4]='1') {
-                                  echo "<td>P</td>"; #Pass
+                                  echo "<td>Pass</td>"; #Pass
                                   } else if ($task[4]='0'){
-                                    echo "<td>NP</td>"; #Non Pass
+                                    echo "<td>Non-Pass</td>"; #Non Pass
                                   }
-
-
+                              echo '</tr>';
                                   }
                               echo '</tbody>';
                               echo '</table>
