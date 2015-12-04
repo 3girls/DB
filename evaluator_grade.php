@@ -49,9 +49,9 @@ $eid = $_SESSION['id'];
           $num = count($data);
           $query = "insert into ".$tablename." (SID, ".$makingquery.") values";
 
-          $query .= "(";
+          $query .= "('";
           $query .= $sid;
-          $query .= ",";
+          $query .= "',";
 
 
           for ($index=0; $index < $num; $index++) {
