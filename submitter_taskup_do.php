@@ -28,6 +28,19 @@ $id = $_SESSION['id'];
   $times = $_POST['times'];
   $temp_file_name = $_FILES['upload_file']['name'];
   $file_name = $temp_file_name[0];
+
+
+  $query = "SELECT count(*) FROM Parsing_Sequence_Data_Type Where Name='$sid' OriginalDataTypeID='$original_data_type' ";
+  $result = mysql_query($query, $con);
+  if(!$result){
+  $message  = 'Invalid query: ' . mysql_error() . "\n";
+  $message .= 'Whole query: ' . $query;
+  die($message);
+  }
+  $count1 = mysql_num_rows($result);
+  if($count1==1){
+    echo "<script>alert('중복된 회차입니다.'); history.back();</script>";
+  }
   #echo $original_data_type."<br />\n";
   #echo $startdate."<br />\n";
   #echo $enddate."<br />\n";
