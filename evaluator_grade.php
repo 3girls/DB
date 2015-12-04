@@ -38,7 +38,7 @@ $eid = $_SESSION['id'];
         $num = count($head);
         for ($index=0; $index < $num; $index++) {
             $makingquery .= $head[$index];
-            if($indexx!=($num-1)){
+            if($index!=($num-1)){
               $makingquery .= ",";
             }
         }
@@ -56,7 +56,7 @@ $eid = $_SESSION['id'];
 
           for ($index=0; $index < $num; $index++) {
               $query .= $data[$index];
-              if($indexx!=($num-1)){
+              if($index!=($num-1)){
                 $query .= ",";
               }
           }
