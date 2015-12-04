@@ -111,20 +111,26 @@ include 'basic.php';
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>태스크1</td>
-                              <td><a href=""download="evaluator.html">파일이름</a></td>
-                              <td>Pass</td>
-                              <td>100</td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>태스크2</td>
-                              <td><a href=""download="evaluator.html">파일이름</a></td>
-                              <td>Non-Pass</td>
-                              <td>10</td>
-                            </tr>
+                              <?php
+                              $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE EID='".$id."' AND Estate='1'";
+                              $res = mysql_query($query, $con);
+                              $count = mysql_num_rows($res);
+
+                              for($i = 0; $i < $count; $i++) {
+                                $arr = mysql_fetch_array($res);
+                                if ($arr['P_NP']==1)
+                                  $pnp = 'PASS';
+                                else if ($arr['P_NP']==0)
+                                  $pnp = 'NON-PASS';
+                                echo "<tr>
+                                  <td>".($i+1)."</td>
+                                  <td>".$arr['TaskName']."</td>
+                                  <td><a href=\"".$arr[ID]."\"download=\"".$arr[ID]."\">".$arr['ID']."</a></td>
+                                  <td>".$pnp."</td>
+                                  <td>".$arr['EvaluatorGrade']."</td>
+                                </tr>";
+                              }
+                               ?>
                           </tbody>
                         </table>
                       </div>
