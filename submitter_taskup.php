@@ -185,15 +185,15 @@ include 'basic.php';
                       $res = mysql_query($query, $con);
                       $count = mysql_num_rows($res);
 
-                      $tasktotaltuple = 0;
-                      for($i = 0; $i < $count; $i++) {
-                        $arr = mysql_fetch_array($res);
-                        $tasktotaltuple += $arr['TotalTupleNum'];
-                      }
-
                       echo '<div style="text-align:right; color:gray;">';
                       echo '<p>'.$taskname.'의 총 제출 파일 수: '.$count.'<p>';
-                      echo '<p>태스크 테이블 내 총 튜플 수:'.$tasktotaltuple.'</p></div>';
+
+                      $query2 = "SELECT SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
+                      $query2 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
+                      $query2 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$taskname' AND Parsing_Sequence_Data_Type.P_NP = 1 AND Parsing_Sequence_Data_Type.SID='$id'";
+                      $result2 = mysql_query($query2, $con);
+                      $arr2 = mysql_fetch_array($result2);
+                      echo '<p>태스크 테이블 내 총 튜플 수:'.$arr2[0].'</p></div>';
 
                       echo '
                         <div class="panel panel-default">
