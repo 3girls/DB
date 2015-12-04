@@ -18,6 +18,8 @@ $id = $_SESSION['id'];
   $nullratio=0;
   $nullcount=0;
   $entirecount=0;
+  $row=1;
+  $nullcount=0;
   #echo $sid;
   #echo $taskname;
   $original_data_type = $_POST['original_data_type'];
