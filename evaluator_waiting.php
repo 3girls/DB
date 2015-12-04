@@ -123,7 +123,7 @@ include 'basic.php';
                             echo "<tr>
                               <td>".($i+1)."</td>
                               <td>".$arr['TaskName']."</td>
-                              <td><a href=\"/psf_directory/".$arr[ID]."\"download=\"/psf_directory/".$arr[ID]."\">".$arr['ID']."</a></td>
+                              <td><a href=\"".$arr[ID]."\"download=\"".$arr[ID]."\">".$arr['ID']."</a></td>
                               <td>대기중</td>
                               <form class=\"form-inline\" method=\"post\" action=\"evaluator_grade.php?fid=".$arr['ID']."\">
                                 <td>
