@@ -111,10 +111,10 @@ $eid = $_SESSION['id'];
   $res = mysql_query($query, $con);
   $count = mysql_num_rows($res);
 
-  #((1-중복튜플수/튜플수(작은게 좋음1))*20 + 널레이시오(1)*30 + 평가자점수(10)*5) * n 개
+  #((1-중복튜플수/튜플수(작은게 좋음1))*20 + (1-널레이시오(작은게좋음1))*30 + 평가자점수(10)*5) * n 개
   for($i = 0; $i < $count; $i++) {
     $arr = mysql_fetch_array($res);
-    $tmp = (1-($arr['DuplicateTupleNum']/$arr['TotalTupleNum']))*20 + $arr['NullRatio']*30 + $arr['EvaluatorGrade']*5;
+    $tmp = (1-($arr['DuplicateTupleNum']/$arr['TotalTupleNum']))*20 + (1-$arr['NullRatio'])*30 + $arr['EvaluatorGrade']*5;
     $Sgrade += $tmp;
   }
 
