@@ -121,6 +121,7 @@ $eid = $_SESSION['id'];
   $Sgrade /= $count;
 
   $query = "UPDATE Submitter SET Grade=".$Sgrade."WHERE ID='".$sid."'";
+  mysql_query($query, $con);
 
   echo "<script>location.replace('evaluator_waiting.php');</script>";
   ?>
