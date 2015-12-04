@@ -62,7 +62,7 @@ session_start();
 
     }
     else if($count3==1){
-      echo "<script>location.replace('evaulator_waiting.php');</script>";
+      echo "<script>location.replace('evaluator_waiting.php');</script>";
     }
   }
   else {
