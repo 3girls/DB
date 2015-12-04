@@ -216,9 +216,9 @@ include 'basic.php';
                                   echo "<td>".$task[1]."</td>"; #Task Name
                                   echo "<td>".$task[2]."</td>"; #Submitter Name
                                   echo "<td>".$task[3]."</td>"; #EvaluatorGrade
-                                  if($task[4]='1') {
+                                  if($task[4]=='1') {
                                   echo "<td>Pass</td>"; #Pass
-                                  } else if ($task[4]='0'){
+                                  } else if($task[4]=='0') {
                                     echo "<td>Non-Pass</td>"; #Non Pass
                                   }
                               echo '</tr>';
