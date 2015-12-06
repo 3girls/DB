@@ -79,8 +79,8 @@ include 'basic.php';
                               <li>
                                   <a href="evaluator_waiting.php"><i class="fa fa-spinner fa-fw"></i> 평가대기 파일</a>
                               </li>
-                              <li>
-                                  <a href="evaluator_check.php"><i class="fa fa-check fa-fw"></i> 평가완료 파일</a>
+                              <li class="active">
+                                  <a class="active" href="evaluator_check.php"><i class="fa fa-check fa-fw"></i> 평가완료 파일</a>
                               </li>
                           </ul>
                       </div>
