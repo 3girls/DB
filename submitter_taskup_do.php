@@ -108,10 +108,12 @@ $id = $_SESSION['id'];
     {
         $mappingattribute[$ii]=$words[$ii];
     }
+    echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." "."<br />\n";
+    echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
     #-------------------------------------
     ###########schema가 다른 csv파일 일 때##################처리#########
     ###########CSV_한글 파일일 때 처리__#################처리#########
-    
+    /*
     setlocale(LC_CTYPE, 'ko_KR.eucKR'); ##CSV파일 추출시 한글 깨짐 방지.
 
     $tmpName = $_FILES['upload_file']['tmp_name'];
@@ -140,16 +142,17 @@ $id = $_SESSION['id'];
                 }
             }
           }
-/*
-          for ($c=0;$c<$taskattributenum;$c++){
-            echo $writinglist[$row][$c]." ";
-          }
-          echo "<br />\n";*/
+
+     //     for ($c=0;$c<$taskattributenum;$c++){
+      //      echo $writinglist[$row][$c]." ";
+       //   }
+        //  echo "<br />\n";
           $row++;
       }
 
       fclose($handle);
-    }
+    }*/
+    /*
     $row--;
 
     $entirecount=$row*$taskattributenum;
@@ -240,7 +243,7 @@ $id = $_SESSION['id'];
     }
     fwrite ($csv_handler,$csv);
     fclose($fp);
-
+*/
 
 
   ?>
