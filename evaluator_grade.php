@@ -64,7 +64,7 @@ $eid = $_SESSION['id'];
               }
           }
           $query .= ")";
-          echo $query;
+          echo $query."<br />\n";
 
 
 /*
