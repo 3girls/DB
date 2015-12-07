@@ -21,11 +21,11 @@ $eid = $_SESSION['id'];
   $res = mysql_query($query, $con);
   $result_row = mysql_Fetch_array($res);
   $tablename = $result_row[3];
-  echo $tablename;
-/*
+
   $makingquery="";
 
   if($_POST['PNP']=='1'){
+
     $pnp = 1;
 
 
@@ -64,12 +64,14 @@ $eid = $_SESSION['id'];
               }
           }
           $query .= ")";
+          echo $query;
+/*
           $res = mysql_query($query, $con);
           if(!$res){
               $message  = 'Invalid query: ' . mysql_error() . "\n";
               $message .= 'Whole query: ' . $query;
               die($message);
-          }
+          }*/
       }
       fclose($handle);
     }
@@ -80,7 +82,7 @@ $eid = $_SESSION['id'];
   else if($_POST['PNP']=='0'){
     $pnp = 0;
   }
-
+/*
   $query = "UPDATE Parsing_Sequence_Data_Type SET EvaluatorGrade=".$grade.", Estate=1, P_NP=".$pnp." WHERE ID='".$fid."'";
   mysql_query($query, $con);
 
