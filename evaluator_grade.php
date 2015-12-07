@@ -64,7 +64,9 @@ $eid = $_SESSION['id'];
               }
           }
           $query .= ")";
-          echo $query;
+          echo $query."<br />\n";
+
+
 /*
           $res = mysql_query($query, $con);
           if(!$res){
