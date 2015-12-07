@@ -21,8 +21,8 @@ $eid = $_SESSION['id'];
   $res = mysql_query($query, $con);
   $result_row = mysql_Fetch_array($res);
   $tablename = $result_row[3];
-
-
+  echo $tablename;
+/*
   $makingquery="";
 
   if($_POST['PNP']=='1'){
@@ -123,6 +123,6 @@ $eid = $_SESSION['id'];
   $query = "UPDATE Submitter SET Grade=ROUND(".$Sgrade.") WHERE ID='".$sid."'";
   mysql_query($query, $con);
 
-  echo "<script>location.replace('evaluator_waiting.php');</script>";
+  echo "<script>location.replace('evaluator_waiting.php');</script>";*/
   ?>
 </body>
