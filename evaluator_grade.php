@@ -67,13 +67,13 @@ $eid = $_SESSION['id'];
           echo $query."<br />\n";
 
 
-/*
+
           $res = mysql_query($query, $con);
           if(!$res){
               $message  = 'Invalid query: ' . mysql_error() . "\n";
               $message .= 'Whole query: ' . $query;
               die($message);
-          }*/
+          }
       }
       fclose($handle);
     }
