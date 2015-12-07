@@ -108,8 +108,8 @@ $id = $_SESSION['id'];
     {
         $mappingattribute[$ii]=$words[$ii];
     }
-    echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." "."<br />\n";
-    echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
+    //echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." "."<br />\n";
+    //echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
     #-------------------------------------
     ###########schema가 다른 csv파일 일 때##################처리#########
     ###########CSV_한글 파일일 때 처리__#################처리#########
@@ -142,7 +142,7 @@ $id = $_SESSION['id'];
                 }
             }
           }
-          echo $writinglist[$row][0]." ".$writinglist[$row][1]." ".$writinglist[$row][2]." ".$writinglist[$row][3]." ".$writinglist[$row][4]." "."<br />\n";
+    //      echo $writinglist[$row][0]." ".$writinglist[$row][1]." ".$writinglist[$row][2]." ".$writinglist[$row][3]." ".$writinglist[$row][4]." "."<br />\n";
     
 
      //     for ($c=0;$c<$taskattributenum;$c++){
@@ -154,7 +154,7 @@ $id = $_SESSION['id'];
 
       fclose($handle);
     }
-    /*
+    
     $row--;
 
     $entirecount=$row*$taskattributenum;
@@ -240,12 +240,15 @@ $id = $_SESSION['id'];
 
     $fp = fopen($writefilename, 'w');
 
+    fputs($fp,"\xEF\xBB\xBF");
+    fwrite($fp, '한글');
+
     foreach ($writinglist as $fields) {
         fputcsv($fp, $fields);
     }
     fwrite ($csv_handler,$csv);
     fclose($fp);
-*/
+
 
 
   ?>
