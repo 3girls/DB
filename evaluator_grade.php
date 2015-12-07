@@ -28,7 +28,7 @@ $eid = $_SESSION['id'];
   if($_POST['PNP']=='1'){
     $pnp = 1;
 
-  
+
     $handle = fopen($fid,'r');
     //$handle is file.
 
@@ -64,7 +64,7 @@ $eid = $_SESSION['id'];
               }
           }
           $query .= ")";
-          $res = mysql_query($query, $con);  
+          $res = mysql_query($query, $con);
           if(!$res){
               $message  = 'Invalid query: ' . mysql_error() . "\n";
               $message .= 'Whole query: ' . $query;
@@ -104,6 +104,24 @@ $eid = $_SESSION['id'];
   #  $query = "UPDATE Parsing_Sequence_Data_Type SET P_NP=0 WHERE ID='".$fid."'";
   #  mysql_query($query, $con);
   #}
+
+  #관련 제출자 점수
+  $Sgrade = 0.0;
+  $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID = '".$sid."' AND Estate = 1";
+  $res = mysql_query($query, $con);
+  $count = mysql_num_rows($res);
+
+  #((1-중복튜플수/튜플수(작은게 좋음1))*20 + (1-널레이시오(작은게좋음1))*30 + 평가자점수(10)*5) * n 개
+  for($i = 0; $i < $count; $i++) {
+    $arr = mysql_fetch_array($res);
+    $tmp = (1-($arr['DuplicateTupleNum']/$arr['TotalTupleNum']))*20 + (1-$arr['NullRatio'])*30 + $arr['EvaluatorGrade']*5;
+    $Sgrade += $tmp;
+  }
+
+  $Sgrade /= $count;
+
+  $query = "UPDATE Submitter SET Grade=ROUND(".$Sgrade.") WHERE ID='".$sid."'";
+  mysql_query($query, $con);
 
   echo "<script>location.replace('evaluator_waiting.php');</script>";
   ?>

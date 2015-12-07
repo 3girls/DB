@@ -8,8 +8,8 @@
 
 
   $ODTid=$_GET['ODTid'];
-  $taskid=$_GET['taskid'];
-
+  $taskiidd=$_GET['taskid'];
+  $taskname=$taskiidd;
 
   $query = "delete from Original_Data_Type where ID = '$ODTid'";
   $result = mysql_query($query, $con);
@@ -21,8 +21,8 @@
   else{
   $addODTurl = "admin_taskODT.php";
   $addODTurl = $addODTurl . "?";
-  $addODTurl = $addODTurl . "taskid=";
-  $addODTurl = $addODTurl . $taskid;// 안되면 '' 지워보기.
+  $addODTurl = $addODTurl . "taskname=";
+  $addODTurl = $addODTurl . $taskiidd;// 안되면 '' 지워보기.
   echo "<script>alert('삭제되었습니다.');
   location.replace('".$addODTurl."');
   </script>";

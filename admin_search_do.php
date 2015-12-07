@@ -80,8 +80,8 @@ include 'basic.php';
               <div class="navbar-default sidebar" role="navigation">
                       <div class="sidebar-nav navbar-collapse">
                           <ul class="nav" id="side-menu">
-                              <li>
-                                  <a href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
+                              <li class="active">
+                                  <a class="active" href="admin_search.php"><i class="fa fa-search fa-fw"></i> 회원검색</a>
                               </li>
                               <li>
                                   <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 관리<span class="fa arrow"></span></a>
@@ -97,6 +97,7 @@ include 'basic.php';
                                       echo "<ul class=\"nav nav-third-level\">";
                                       echo "<li><a href=\"admin_tasksubmitter.php?taskname=".$arr['Name']."\">제출자 관리</a></li>";
                                       echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
+                                      echo "<li><a href=\"admin_download.php?taskname=".$arr['Name']."\">테이블 데이터 다운 받기</a></li>";
                                       $query1 = "SELECT COUNT(*), SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
                                       $query1 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
                                       $query1 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]'";
@@ -249,17 +250,19 @@ include 'basic.php';
                                   $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
                                 #only 나이 조건
-                                $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
-                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
-                                $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
-                                $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                else {
+                                  $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                  $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
                               }
 
                               $result1 = mysql_query($query1, $con);
-                              $count1 = mysql_num_rows($result1);
+                              $count1 = @mysql_num_rows($result1);
 
                               $result2 = mysql_query($query2, $con);
-                              $count2 = mysql_num_rows($result2);
+                              $count2 = @mysql_num_rows($result2);
                             }
                             #제출자
                             else if($search_usertype == "submitter") {
@@ -285,12 +288,14 @@ include 'basic.php';
                                   $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
                                 #only 나이 조건
-                                $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
-                                $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                else {
+                                  $query1 = $query1." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
+                                  $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
                               }
 
                               $result1 = mysql_query($query1, $con);
-                              $count1 = mysql_num_rows($result1);
+                              $count1 = @mysql_num_rows($result1);
                             }
                             #평가자
                             else if($search_usertype == "evaluator") {
@@ -316,16 +321,19 @@ include 'basic.php';
                                   $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 }
                                 #only 나이 조건
+                                else {
                                 $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
                                 $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
                               }
 
                               $result2 = mysql_query($query2, $con);
-                              $count2 = mysql_num_rows($result2);
+                              $count2 = @mysql_num_rows($result2);
                             }
+
                             #제출자
                             for($i = 0; $i < $count1; $i++) {
-                              $arr = mysql_fetch_array($result1);
+                              $arr = @mysql_fetch_array($result1);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr['ID']."</td>"; #id
@@ -341,7 +349,7 @@ include 'basic.php';
                             }
                             #평가자
                             for($i = 0; $i < $count2; $i++) {
-                              $arr = mysql_fetch_array($result2);
+                              $arr = @mysql_fetch_array($result2);
                               echo "<tr>";
                               echo "<td>".($i+1)."</td>"; #index
                               echo "<td>".$arr['ID']."</td>"; #id
@@ -371,19 +379,17 @@ include 'basic.php';
           <p><small>Copyright &copy; 3girls</small></p>
         </footer>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <!-- jQuery -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
+
     </body>
 </html>
