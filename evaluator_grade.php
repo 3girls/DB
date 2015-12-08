@@ -65,7 +65,8 @@ $eid = $_SESSION['id'];
 
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
-          $query = "insert into ".$tablename." (".$makingquery.") values";
+          //$query = "insert into ".$tablename." (".$makingquery.") values";
+          $query = "insert into ".$tablename." values";
 
           $query .= "(";
 
