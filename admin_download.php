@@ -23,6 +23,7 @@ session_start();
   //header to give the order to the browser
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment;filename='.$tempname.'');
+	echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel; charset=utf-8\">";
 
 	//select table to export the data
 	$select_table=mysql_query('select * from '.$taskTableName.'');
