@@ -49,7 +49,7 @@ $eid = $_SESSION['id'];
           $num = count($data);
           $query = "insert into ".$tablename." (".$makingquery.") values";
 
-          $query .= "('";
+          $query .= "(";
 
 
           for ($index=0; $index < $num; $index++) {
