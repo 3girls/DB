@@ -267,6 +267,18 @@ if(!empty($taskiidd))
                                 <tbody>
                                 <?php
 
+                                  $query = "SELECT * FROM Task Where Name ='$taskiidd'";
+                                  $TS_result = mysql_query($query, $con);
+                                  if(!$TS_result){
+                                    $message  = 'Invalid query: ' . mysql_error() . "\n";
+                                    $message .= 'Whole query: ' . $query;
+                                    die($message);
+                                  }
+                                  $temp = mysql_fetch_array($TS_result);
+                                  $db_task_table_schema = $temp["TaskDataTableSchemaInfo"];
+                                  $words = explode(" ", $db_task_table_schema);
+                                  $words_count =  count($words);
+
                                 for($j=1;$j<11;$j++)
                                 {
                                   $nameid ='name';
@@ -280,6 +292,7 @@ if(!empty($taskiidd))
 
                                   $lengthid ='length';
                                   $lengthid .= $j;
+
 
                                    echo "<tr>
                                     <td>".$j."</td>
