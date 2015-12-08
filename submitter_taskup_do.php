@@ -16,7 +16,6 @@ $id = $_SESSION['id'];
   $taskname = $_GET['taskname'];
   $duplicatetuplenum=0;
   $nullratio=0;
-  $nullcount=0;
   $entirecount=0;
   $row=1;
   $nullcount=0;
@@ -86,10 +85,11 @@ $id = $_SESSION['id'];
     $Task_words_count =  count($Task_words);
     $taskattributenum=($Task_words_count-1)/2;
     //echo $taskattributenum." ";
+    $writinglist[0][0]="SID";
     for($i = 0 ; $i < ($Task_words_count-1) ; $i+=2)
     {
-      if($i==0) $writinglist[0][0]=$Task_words[$i];
-      else $writinglist[0][$i/2]=$Task_words[$i];
+      if($i==0) $writinglist[0][1]=$Task_words[$i];
+      else $writinglist[0][($i/2)+1]=$Task_words[$i];
     }
 
 
@@ -109,7 +109,7 @@ $id = $_SESSION['id'];
         $mappingattribute[$ii]=$words[$ii];
     }
     //echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." "."<br />\n";
-    //echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
+    echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
     #-------------------------------------
     ###########schema가 다른 csv파일 일 때##################처리#########
     ###########CSV_한글 파일일 때 처리__#################처리#########
@@ -122,16 +122,22 @@ $id = $_SESSION['id'];
     //$handle is file.
 
     if ($handle  !== FALSE) {
-
+/*
       if(($head = fgetcsv($handle, ",")) !== FALSE){
         $num = count($head);
        
-      }
+      }*/ //원본데이터타입에 head row는 없다고 생각.
       $row=1;
       $nullcount=0;
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
           //echo "<p> $num fields in line $row: <br /></p>\n";
+          $writinglist[$row][0]=$sid;
+          for ($index=1;$index<$taskattributenum+1;$index++){
+            $key=array_search($writinglist[0][$index], $mappingattribute);
+            $writinglist[$row][$index]=$data[$key];
+          }
+          /*
           for ($index=0; $index < $num; $index++) {
             if($mappingattribute[$index]!="NULL"){
                 //echo $mappingattribute[$index]." ";
@@ -141,8 +147,13 @@ $id = $_SESSION['id'];
                   $nullcount++;
                 }
             }
+          }*/
+          for ($index=1;$index<$taskattributenum+1;$index++){
+            if($writinglist[$row][$index]==""){
+              $nullcount++;
+            }
           }
-    //      echo $writinglist[$row][0]." ".$writinglist[$row][1]." ".$writinglist[$row][2]." ".$writinglist[$row][3]." ".$writinglist[$row][4]." "."<br />\n";
+          echo $writinglist[$row][0]." ".$writinglist[$row][1]." ".$writinglist[$row][2]." ".$writinglist[$row][3]." ".$writinglist[$row][4]." "."<br />\n";
     
 
      //     for ($c=0;$c<$taskattributenum;$c++){
@@ -162,7 +173,7 @@ $id = $_SESSION['id'];
     if($entirecount!=0){
       $nullratio=$nullcount/$entirecount;
     }
-
+/*
     $writefilename = $uploaddir.$sid."_".$original_data_type."_".$times.".csv";
 
     
@@ -249,7 +260,7 @@ $id = $_SESSION['id'];
     fwrite ($csv_handler,$csv);
     fclose($fp);
 
-
+*/
 
   ?>
 </body>
