@@ -63,34 +63,6 @@ $eid = $_SESSION['id'];
         //echo $head[0];
       }
 
-
-
-
-                $query = "insert into ".$tablename." (".$makingquery.") values";
-
-          $query .= "(";
-
-
-
-              $query .= "'submitter1','김미나',24,'서울대학교','M'";
-          $query .= ")";
-          echo $query."<br />\n";
-
-
-
-          $res = mysql_query($query, $con);
-          if(!$res){
-              $message  = 'Invalid query: ' . mysql_error() . "\n";
-              $message .= 'Whole query: ' . $query;
-              die($message);
-          }
-
-
-
-
-
-
-/*
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
           $query = "insert into ".$tablename." (".$makingquery.") values";
@@ -99,10 +71,10 @@ $eid = $_SESSION['id'];
 
 
           for ($index=0; $index < $num; $index++) {
-              //$query .= "'";
+              $query .= "'";
               $query .= $data[$index];
               //if($data[$index]=="") $query.="NULL";
-              //$query .= "'";
+              $query .= "'";
               if($index!=($num-1)){
                 $query .= ",";
               }
@@ -118,7 +90,7 @@ $eid = $_SESSION['id'];
               $message .= 'Whole query: ' . $query;
               die($message);
           }
-      }*/
+      }
       fclose($handle);
     }
 
