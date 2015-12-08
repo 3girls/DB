@@ -136,8 +136,9 @@ $id = $_SESSION['id'];
           $writinglist[$row][0]=$sid;
           for ($index=1;$index<$taskattributenum+1;$index++){
             $key=array_search($writinglist[0][$index], $mappingattribute);
+            echo $key." ";
             if($key!=false){
-            $writinglist[$row][$index]=$data[$key];
+              $writinglist[$row][$index]=$data[$key];
             }
           }
           /*
