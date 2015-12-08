@@ -241,7 +241,7 @@ $id = $_SESSION['id'];
     $fp = fopen($writefilename, 'w');
 
     fputs($fp,"\xEF\xBB\xBF");
-    fwrite($fp, '한글');
+    //fwrite($fp, '한글');
 
     foreach ($writinglist as $fields) {
         fputcsv($fp, $fields);
