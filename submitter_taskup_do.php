@@ -225,7 +225,7 @@ $id = $_SESSION['id'];
     }
 
     echo $row." ".$duplicatetuplenum." ".$nullcount." ".$entirecount;
-/*
+
     
     $query = "insert into Parsing_Sequence_Data_Type (TotalTupleNum, DuplicateTupleNum, NullRatio, TaskName, SID, Times, Startdate, Finishdate, OriginalDataTypeID, EID, Estate, P_NP, ID) ";
     $query.= "values ($row, $duplicatetuplenum, $nullratio, '$taskname','$sid','$times','$startdate','$enddate','$original_data_type','$random_eid', 0, 2,'$writefilename')";
@@ -262,7 +262,7 @@ $id = $_SESSION['id'];
     fwrite ($csv_handler,$csv);
     fclose($fp);
 
-*/
+
 
   ?>
 </body>
