@@ -49,7 +49,7 @@ $eid = $_SESSION['id'];
     //$handle is file.
 
     if ($handle  !== FALSE) {
-
+      $num;
       if(($head = fgetcsv($handle, ",")) !== FALSE){
         $num = count($head);
         for ($index=0; $index < $num; $index++) {
@@ -64,7 +64,7 @@ $eid = $_SESSION['id'];
       }
 
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
-          $num = count($data);
+          //$num = count($data);
           //$query = "insert into ".$tablename." (".$makingquery.") values";
           $query = "insert into ".$tablename." values";
 
