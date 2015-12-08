@@ -37,11 +37,11 @@ $eid = $_SESSION['id'];
       if(($head = fgetcsv($handle, ",")) !== FALSE){
         $num = count($head);
         for ($index=0; $index < $num; $index++) {
+            $makingquery .="'";
             $makingquery .= $head[$index];
+            $makingquery .="'";
             if($index!=($num-1)){
-              $makingquery .="'";
               $makingquery .= ",";
-              $makingquery .="'";
             }
         }
         //echo $head[0];
