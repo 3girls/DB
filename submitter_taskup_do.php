@@ -110,7 +110,7 @@ $id = $_SESSION['id'];
     }
     echo $taskattributenum."<br />\n";
     echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." ".$writinglist[0][5]." ".$writinglist[0][6]."<br />\n";
-    //echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
+    echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." ".$mappingattribute[5]." ".$mappingattribute[6]." "."<br />\n";
     #-------------------------------------
     ###########schema가 다른 csv파일 일 때##################처리#########
     ###########CSV_한글 파일일 때 처리__#################처리#########
