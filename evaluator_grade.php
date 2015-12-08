@@ -39,7 +39,9 @@ $eid = $_SESSION['id'];
         for ($index=0; $index < $num; $index++) {
             $makingquery .= $head[$index];
             if($index!=($num-1)){
+              $makingquery .="'";
               $makingquery .= ",";
+              $makingquery .="'";
             }
         }
         //echo $head[0];

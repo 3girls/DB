@@ -102,7 +102,7 @@ $id = $_SESSION['id'];
             $words = explode(" ", $tasktableschema);
             $words_count =  count($words);
 
-           $query = "create table $tablename (SID VARCHAR(10) NOT NULL, ";
+           $query = "create table $tablename (SID VARCHAR(20) NOT NULL, ";
            for($i = 0 ; $i < ($words_count-1) ; $i+=2)
            {
             $tempattribute=$words[$i];
