@@ -55,10 +55,10 @@ $eid = $_SESSION['id'];
 
 
           for ($index=0; $index < $num; $index++) {
-              $query .= "'";
+              //$query .= "'";
               $query .= $data[$index];
               //if($data[$index]=="") $query.="NULL";
-              $query .= "'";
+              //$query .= "'";
               if($index!=($num-1)){
                 $query .= ",";
               }
