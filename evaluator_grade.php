@@ -65,13 +65,13 @@ $eid = $_SESSION['id'];
           echo $query."<br />\n";
 
 
-/*
+
           $res = mysql_query($query, $con);
           if(!$res){
               $message  = 'Invalid query: ' . mysql_error() . "\n";
               $message .= 'Whole query: ' . $query;
               die($message);
-          }*/
+          }
       }
       fclose($handle);
     }
@@ -82,7 +82,7 @@ $eid = $_SESSION['id'];
   else if($_POST['PNP']=='0'){
     $pnp = 0;
   }
-/*
+
   $query = "UPDATE Parsing_Sequence_Data_Type SET EvaluatorGrade=".$grade.", Estate=1, P_NP=".$pnp." WHERE ID='".$fid."'";
   mysql_query($query, $con);
 
@@ -125,6 +125,6 @@ $eid = $_SESSION['id'];
   $query = "UPDATE Submitter SET Grade=ROUND(".$Sgrade.") WHERE ID='".$sid."'";
   mysql_query($query, $con);
 
-  echo "<script>location.replace('evaluator_waiting.php');</script>";*/
+  echo "<script>location.replace('evaluator_waiting.php');</script>";
   ?>
 </body>
