@@ -72,7 +72,7 @@ $eid = $_SESSION['id'];
 
 
 
-              $query .= "'submitter1','김미나',24,서울대학교,M";
+              $query .= "'submitter1','김미나',24,'서울대학교',M";
           $query .= ")";
           echo $query."<br />\n";
 
