@@ -157,7 +157,7 @@ $id = $_SESSION['id'];
               $nullcount++;
             }
           }
-          echo $writinglist[$row][0]." ".$writinglist[$row][1]." ".$writinglist[$row][2]." ".$writinglist[$row][3]." ".$writinglist[$row][4]." "."<br />\n";
+          echo $writinglist[$row][0]." ".$writinglist[$row][1]." ".$writinglist[$row][2]." ".$writinglist[$row][3]." ".$writinglist[$row][4]." ".$writinglist[$row][5]." ".$writinglist[$row][6]."<br />\n";
     
 
      //     for ($c=0;$c<$taskattributenum;$c++){
