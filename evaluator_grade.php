@@ -47,11 +47,9 @@ $eid = $_SESSION['id'];
 
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
-          $query = "insert into ".$tablename." (SID, ".$makingquery.") values";
+          $query = "insert into ".$tablename." (".$makingquery.") values";
 
           $query .= "('";
-          $query .= $sid;
-          $query .= "',";
 
 
           for ($index=0; $index < $num; $index++) {
@@ -67,13 +65,13 @@ $eid = $_SESSION['id'];
           echo $query."<br />\n";
 
 
-
+/*
           $res = mysql_query($query, $con);
           if(!$res){
               $message  = 'Invalid query: ' . mysql_error() . "\n";
               $message .= 'Whole query: ' . $query;
               die($message);
-          }
+          }*/
       }
       fclose($handle);
     }
