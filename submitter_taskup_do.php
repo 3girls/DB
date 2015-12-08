@@ -168,6 +168,7 @@ $id = $_SESSION['id'];
     }
     
     $row--;
+    echo $row." ".$nullcount." ".$entirecount;
 
     $entirecount=$row*$taskattributenum;
     
