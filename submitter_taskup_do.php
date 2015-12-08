@@ -168,14 +168,12 @@ $id = $_SESSION['id'];
     }
     
     $row--;
-    echo $row." ".$nullcount." ".$entirecount;
-
     $entirecount=$row*$taskattributenum;
     
     if($entirecount!=0){
       $nullratio=$nullcount/$entirecount;
     }
-/*
+
     $writefilename = $uploaddir.$sid."_".$original_data_type."_".$times.".csv";
 
     
@@ -202,7 +200,7 @@ $id = $_SESSION['id'];
     for($index=1;$index<$row;$index++){
       for($j=$index+1;$j<=$row;$j++){
         $tf = false;
-        for($co=0;$co<$taskattributenum;$co++){
+        for($co=1;$co<$taskattributenum+1;$co++){
           if($writinglist[$index][$co]!=$writinglist[$j][$co]){
             $tf = true;
             break;
@@ -226,6 +224,8 @@ $id = $_SESSION['id'];
       }
     }
 
+    echo $row." ".$duplicatetuplenum." ".$nullcount." ".$entirecount;
+/*
     
     $query = "insert into Parsing_Sequence_Data_Type (TotalTupleNum, DuplicateTupleNum, NullRatio, TaskName, SID, Times, Startdate, Finishdate, OriginalDataTypeID, EID, Estate, P_NP, ID) ";
     $query.= "values ($row, $duplicatetuplenum, $nullratio, '$taskname','$sid','$times','$startdate','$enddate','$original_data_type','$random_eid', 0, 2,'$writefilename')";
