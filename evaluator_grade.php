@@ -19,8 +19,24 @@ $eid = $_SESSION['id'];
 
   $query = "SELECT * FROM Task WHERE Name='".$taskid."'";
   $res = mysql_query($query, $con);
+  if(!$res){
+  $message  = 'Invalid query: ' . mysql_error() . "\n";
+  $message .= 'Whole query: ' . $query;
+  die($message);
+  }
   $result_row = mysql_Fetch_array($res);
   $tablename = $result_row[3];
+  /*
+  $TaskDataTableSchemaInfo = $result_row["TaskDataTableSchemaInfo"];
+  $Task_words = explode(" ", $TaskDataTableSchemaInfo);
+  $Task_words_count =  count($Task_words);
+  $taskattributenum=($Task_words_count-1)/2;
+  //echo $taskattributenum." ";
+  for($i = 1 ; $i < ($Task_words_count-1) ; $i+=2)
+  {
+    if($i==0) $writinglist[0][1]=$Task_words[$i];
+    else $writinglist[0][($i/2)+1]=$Task_words[$i];
+  }*/
 
   $makingquery="";
 
@@ -47,6 +63,34 @@ $eid = $_SESSION['id'];
         //echo $head[0];
       }
 
+
+
+
+                $query = "insert into ".$tablename." (".$makingquery.") values";
+
+          $query .= "(";
+
+
+
+              $query .= "submitter1,김미나,24,서울대학교,M";
+          $query .= ")";
+          echo $query."<br />\n";
+
+
+
+          $res = mysql_query($query, $con);
+          if(!$res){
+              $message  = 'Invalid query: ' . mysql_error() . "\n";
+              $message .= 'Whole query: ' . $query;
+              die($message);
+          }
+
+
+
+
+
+
+/*
       while (($data = fgetcsv($handle, ",")) !== FALSE) {
           $num = count($data);
           $query = "insert into ".$tablename." (".$makingquery.") values";
@@ -74,7 +118,7 @@ $eid = $_SESSION['id'];
               $message .= 'Whole query: ' . $query;
               die($message);
           }
-      }
+      }*/
       fclose($handle);
     }
 
