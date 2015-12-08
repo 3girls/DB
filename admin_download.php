@@ -21,9 +21,10 @@ session_start();
   $tempname .= ".csv";
 
   //header to give the order to the browser
+  	echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel; charset=EUC-KR\">";
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment;filename='.$tempname.'');
-	echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel; charset=EUC-KR\">";
+
 
 	//select table to export the data
 	$select_table=mysql_query('select * from '.$taskTableName.'');
