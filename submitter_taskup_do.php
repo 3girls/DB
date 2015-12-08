@@ -135,7 +135,12 @@ $id = $_SESSION['id'];
           //echo "<p> $num fields in line $row: <br /></p>\n";
           $writinglist[$row][0]=$sid;
           for ($index=1;$index<$taskattributenum+1;$index++){
-            if($key=array_search($writinglist[0][$index], $mappingattribute)){
+            $key=array_search($writinglist[0][$index], $mappingattribute);
+            echo $key." ";
+            if($key===false){
+
+            }
+            else{
               $writinglist[$row][$index]=$data[$key];
             }
           }
