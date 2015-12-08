@@ -109,7 +109,7 @@ $id = $_SESSION['id'];
         $mappingattribute[$ii]=$words[$ii];
     }
     echo $taskattributenum."<br />\n";
-    echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." "."<br />\n";
+    echo $writinglist[0][0]." ".$writinglist[0][1]." ".$writinglist[0][2]." ".$writinglist[0][3]." ".$writinglist[0][4]." ".$writinglist[0][5]." ".$writinglist[0][6]."<br />\n";
     //echo $mappingattribute[0]." ".$mappingattribute[1]." ".$mappingattribute[2]." ".$mappingattribute[3]." ".$mappingattribute[4]." "."<br />\n";
     #-------------------------------------
     ###########schema가 다른 csv파일 일 때##################처리#########
@@ -136,7 +136,9 @@ $id = $_SESSION['id'];
           $writinglist[$row][0]=$sid;
           for ($index=1;$index<$taskattributenum+1;$index++){
             $key=array_search($writinglist[0][$index], $mappingattribute);
+            if($key!=false){
             $writinglist[$row][$index]=$data[$key];
+            }
           }
           /*
           for ($index=0; $index < $num; $index++) {
