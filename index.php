@@ -1,3 +1,7 @@
+<?php
+session_start();
+// connect mysqldb and $id = session id
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +14,13 @@
 <body>
   <?php
   if($_SESSSION['login'] == 'YES'){
-    if($_SESSION['usertype']==1){ //administrator
+    if($_SESSION['usertype'] == 1){ //administrator
       echo "<script>location.replace('admin_search.php');</script>";
     }
-    else if($_SESSION['usertype']==2){
+    else if($_SESSION['usertype'] == 2){
       echo "<script>location.replace('submitter_task.php');</script>";
     }
-    else if($_SESSION['usertype']==1){
+    else if($_SESSION['usertype'] == 3){
       echo "<script>location.replace('evaluator_waiting.php');</script>";
     }
   }
