@@ -19,6 +19,8 @@ session_start();
     $name = $row[2];
     $gender = $row[3];
     $birth = $row[5];
+    $email = $row[4];
+    $phone = $row[6];
   }
   ?>
 
@@ -164,13 +166,13 @@ session_start();
                                   </tr>
                                   <tr>
                                     <th>이메일</th>
-                                    <td><input class="form-control" type="email" name="Email" id="Email" maxlength="35"
-                                       placeholder="이메일 수정"></td>
+                                    <?php echo '<td><input class="form-control" type="email" name="Email" id="Email" maxlength="35"
+                                       placeholder="'.$email.'"></td>'; ?>
                                   </tr>
                                   <tr>
                                     <th>휴대폰</th>
-                                    <td><input class="form-control" type="number" name="Phone" id="Phone" maxlength="11"
-                                       placeholder="휴대폰 번호 수정"></td>
+                                    <?php echo '<td><input class="form-control" type="number" name="Phone" id="Phone" maxlength="11"
+                                       placeholder="'.$phone.'"></td>'; ?>
                                   </tr>
                                 </tbody>
                               </table>
