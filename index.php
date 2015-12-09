@@ -8,7 +8,7 @@ session_start();
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
   <?php
-  if($_SESSSION['login'] == 'YES') {
+  if($_SESSION['login'] == 'YES') {
     if($_SESSION['usertype'] == 1) { //administrator
       echo "<script>location.replace('admin_search.php');</script>";
     }
