@@ -8,6 +8,19 @@
 </script>
 </head>
 <body>
+  <?php
+  if($_SESSSION['login'] == 'YES'){
+    if($_SESSION['usertype']==1){ //administrator
+      echo "<script>location.replace('admin_search.php');</script>";
+    }
+    else if($_SESSION['usertype']==2){
+      echo "<script>location.replace('submitter_task.php');</script>";
+    }
+    else if($_SESSION['usertype']==1){
+      echo "<script>location.replace('evaluator_waiting.php');</script>";
+    }
+  }
+  ?>
 Go to <a href="login.php">login page</a>
 </body>
 </html>

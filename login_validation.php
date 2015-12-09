@@ -54,14 +54,17 @@ session_start();
     //echo "<script>alert('로그인성공!!');</script>";
 
     if($count1==1){ //administrator
+        $_SESSION['usertype'] = 1;
         echo "<script>location.replace('admin_search.php');</script>";
 
     }
     else if($count2==1){
+      $_SESSION['usertype'] = 2;
       echo "<script>location.replace('submitter_task.php');</script>";
 
     }
     else if($count3==1){
+      $_SESSION['usertype'] = 3;
       echo "<script>location.replace('evaluator_waiting.php');</script>";
     }
   }
