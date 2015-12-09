@@ -163,15 +163,15 @@ include 'basic.php';
                           echo '</select>
 
                             <label>회차</label>
-                            <input class="form-control input-sm" type="number" min="1" max="999" name="times" id="times">
+                            <input class="form-control input-sm" type="number" min="1" max="999" name="times" id="times" required>
 
                             <label for="date">기간</label>
-                            <input class="form-control input-sm" type="date" name="startdate" id="startdate">
+                            <input class="form-control input-sm" type="date" name="startdate" id="startdate" required>
                             ~
-                            <input class="form-control input-sm" type="date" name="enddate" id="enddate">
+                            <input class="form-control input-sm" type="date" name="enddate" id="enddate" required>
                           </div>
                           <div class="form-group">
-                            <input class="form-control input-sm" type="file" name="upload_file[]" id="upload_file">
+                            <input class="form-control input-sm" type="file" name="upload_file[]" id="upload_file" required>
 
                             <button class="btn btn-info btn-sm" type="submit" name="button">등록하기</button>
                           </div>
