@@ -123,6 +123,12 @@ include 'basic.php';
                 $sid=$_GET['sid'];
                 $taskname = $_GET['taskname'];
 
+                $query = "SELECT * FROM Task WHERE Name = '".$taskname."'";
+                $res = mysql_query($query);
+                $arr = mysql_fetch_array($res);
+                $description = $arr[1];
+                $period = $arr[2];
+
              echo '<div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-11">
@@ -138,6 +144,9 @@ include 'basic.php';
                                   <tr>
                                     <td> 저희 DataCollector는 태스크에 참여하고자 하는 제출자의 개인정보를 수집하고 있습니다.<br />
                                          개인정보 수집에 동의하셔야 태스크 참여 신청이 가능합니다.<br />
+                                         이 태스크에 대한 설명은 다음과 같습니다.<br />
+                                         태스크 설명: '.$description.'<br />
+                                         업로드 주기(일): '.$period.'<br />
                                          이에 동의하십니까?<br />
                                     </td>
                                   </tr>
