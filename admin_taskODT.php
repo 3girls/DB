@@ -279,7 +279,7 @@ if(!empty($taskiidd))
                                   $words = explode(" ", $db_task_table_schema);
                                   $words_count =  count($words);
 
-                                for($j=1;$j<11;$j++)
+                                for($j=1;$j<=20;$j++)
                                 {
                                   $nameid ='name';
                                   $nameid .= $j;

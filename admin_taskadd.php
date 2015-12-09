@@ -355,6 +355,198 @@ include 'basic.php';
                                     <input class="form-control" type="number" name="length10" id="length10">
                                   </td>
                                 </tr>
+                                <!-- 10 -->
+                                <tr>
+                                  <td>11</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name11" id="name11">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type11" id="type11">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length11" id="length11">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>12</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name12" id="name12">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type12" id="type12">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length12" id="length12">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>13</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name13" id="name13">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type13" id="type13">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length13" id="length13">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>14</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name14" id="name14">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type14" id="type14">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length14" id="length14">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>15</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name15" id="name15">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type15" id="type15">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length15" id="length15">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>16</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name16" id="name16">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type16" id="type16">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length16" id="length16">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>17</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name17" id="name17">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type17" id="type17">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length17" id="length17">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>18</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name18" id="name18">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type18" id="type18">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length18" id="length18">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>19</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name19" id="name19">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type19" id="type19">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length19" id="length19">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>20</td>
+                                  <td>
+                                    <input class="form-control" type="text" name="name20" id="name20">
+                                  </td>
+                                  <td>
+                                    <select class="form-control" name="type20" id="type20">
+                                      <option value="varchar">varchar</option> <!-- m -->
+                                      <option value="char">char</option> <!-- m -->
+                                      <option value="int">int</option>
+                                      <option value="tinyint">tinyint</option> <!-- m -->
+                                      <option value="real">real</option>
+                                      <option value="date">date</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input class="form-control" type="number" name="length20" id="length20">
+                                  </td>
+                                </tr>
+                                <!-- 20 -->
                               </tbody>
                             </table>
                             <p style="color:#d9534f;" id="schema_msg"></p> <!--id_msg-->

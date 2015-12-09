@@ -11,7 +11,7 @@ $id = $_SESSION['id'];
   include 'basic.php';
 
   //기타 추가.. : attribute갯수 정할 수 있게 하기
-  //원본스키마 1개 이상이므로, 태스크 등록하자마자 바로 등록할 수 있게하기 
+  //원본스키마 1개 이상이므로, 태스크 등록하자마자 바로 등록할 수 있게하기
   $taskname = $_POST['taskname'];
   $taskdescription = $_POST['taskdescription'];
   $minuploadperiod = $_POST['minuploadperiod'];
@@ -43,7 +43,7 @@ $id = $_SESSION['id'];
   if($r2[0]>0){
   echo "<script>alert('중복된 테이블 이름입니다.');history.back();</script>";
   }
-  for($i = 1 ; $i <=10 ; $i++){
+  for($i = 1 ; $i <=20 ; $i++){
     $tempname = 'name';
     $tempname .= $i;
     $realname = $_POST[$tempname];
