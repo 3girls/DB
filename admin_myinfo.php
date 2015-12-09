@@ -18,8 +18,8 @@ $id = $_SESSION['id'];
     $name = $row[2];
     $gender = $row[3];
     $birth = $row[5];
-    $email = $row['Email'];
-    $phone = $row['Phone'];
+    $email = $row[4];
+    $phone = $row[6];
   }
   ?>
 <!doctype html>
