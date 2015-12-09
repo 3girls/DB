@@ -59,55 +59,82 @@ session_start();
         <!-- Add your site or application content here -->
         <div id="wrapper">
 
-              <!-- Navigation -->
-              <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                  <div class="navbar-header">
-                      <a class="navbar-brand" href="index.php">
-                        <img src="img/logo.png" alt="DataCollector" width="180">
+          <!-- Navigation -->
+          <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="index.php">
+                    <img src="img/logo.png" alt="DataCollector" width="180">
+                  </a>
+              </div>
+              <!-- /.navbar-header -->
+
+              <ul class="nav navbar-top-links navbar-right">
+                  <!-- /.dropdown -->
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        MY GRADE
                       </a>
-                  </div>
-                  <!-- /.navbar-header -->
+                      <ul class="dropdown-menu dropdown-grade" style="text-align:center;">
+                          <li>
+                            <?php
+                            $query ="SELECT Grade FROM Submitter WHERE ID='$id'";
+                            $res = mysql_query($query, $con);
+                            $arr = mysql_fetch_array($res);
+                            echo $arr['Grade'];
+                             ?>
+                            Points
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                      </a>
+                      <ul class="dropdown-menu dropdown-user">
+                          <li><a href="submitter_myinfo.php"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
+                          </li>
+                          <li class="divider"></li>
+                          <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
+                          </li>
+                      </ul>
+                      <!-- /.dropdown-user -->
+                  </li>
+                  <!-- /.dropdown -->
+              </ul>
+              <!-- /.navbar-top-links -->
 
-                  <ul class="nav navbar-top-links navbar-right">
-                      <!-- /.dropdown -->
-                      <li class="dropdown">
-                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                              <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                          </a>
-                          <ul class="dropdown-menu dropdown-user">
-                              <li><a href="#"><i class="fa fa-gear fa-fw"></i> 회원정보</a>
-                              </li>
-                              <li class="divider"></li>
-                              <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
-                              </li>
-                          </ul>
-                          <!-- /.dropdown-user -->
-                      </li>
-                      <!-- /.dropdown -->
-                  </ul>
-                  <!-- /.navbar-top-links -->
+              <div class="navbar-default sidebar" role="navigation">
+                  <div class="sidebar-nav navbar-collapse">
+                      <ul class="nav" id="side-menu">
+                          <li>
+                              <a href="submitter_task.php"><i class="fa fa-tasks fa-fw"></i> 태스크 참가 관리</a>
+                          </li>
+                          <li>
+                              <a href="#"><i class="fa fa-tasks fa-fw"></i> 참가 중인 태스크<span class="fa arrow"></span></a>
+                              <ul class="nav nav-second-level">
+                                <?php
+                                  $query = "SELECT Name FROM Participate, Task ";
+                                  $query .= "WHERE Participate.SID='$id' AND Participate.TaskName = Task.Name AND Participate.Accept=1";
+                                  $res = mysql_query($query, $con);
+                                  $count = mysql_num_rows($res);
+                                  for($i = 0; $i < $count; $i++) {
+                                    $arr = mysql_fetch_array($res);
+                                    echo "<li>";
+                                    echo "<a href='submitter_taskup.php?sid=".$id."&taskname=".$arr['Name']."'>".$arr['Name']." <span class=\"fa arrow\"></span></a>";
+                                    echo "</li>";
 
-                  <div class="navbar-default sidebar" role="navigation">
-                      <div class="sidebar-nav navbar-collapse">
-                          <ul class="nav" id="side-menu">
-                              <li>
-                                  <a href="#"><i class="fa fa-tasks fa-fw"></i> 태스크 참가 관리</a>
-                              </li>
-                              <li>
-                                  <a href="#"><i class="fa fa-tasks fa-fw"></i> 참가 중인 태스크<span class="fa arrow"></span></a>
-                                  <ul class="nav nav-second-level">
-                                      <li>
-                                        <a href="#">태스크1</a>
-                                      </li>
-                                  </ul>
-                                  <!-- /.nav-second-level -->
-                              </li>
-                          </ul>
-                      </div>
-                      <!-- /.sidebar-collapse -->
+                                  }
+                                 ?>
+                              </ul>
+                              <!-- /.nav-second-level -->
+                          </li>
+                      </ul>
                   </div>
-                  <!-- /.navbar-static-side -->
-              </nav>
+                  <!-- /.sidebar-collapse -->
+              </div>
+              <!-- /.navbar-static-side -->
+          </nav>
+
               <div id="page-wrapper">
                   <div class="row">
                       <div class="col-lg-12">
