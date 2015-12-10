@@ -98,8 +98,15 @@ include 'basic.php';
                                       $query1 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]'";
                                       $result1 = mysql_query($query1, $con);
                                       $arr1 = mysql_fetch_array($result1);
+
+                                      $query3 = "SELECT COUNT(*), SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
+                                      $query3 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
+                                      $query3 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]' and Parsing_Sequence_Data_Type.P_NP = '1'";
+                                      $result3 = mysql_query($query3, $con);
+                                      $arr3 = mysql_fetch_array($result3);
+                                      
                                       echo "<li style=\"margin-left:53px; margin-top:10px; margin-bottom:15px; font-size:12px; color:gray;\">파싱데이터시퀀스파일 수: ".$arr1[0]."</li>";
-                                      echo "<li style=\"margin-left:53px; margin-top:15px; margin-bottom:10px; font-size:12px; color:gray;\">튜플 수: ".$arr1[1]."</li>";
+                                      echo "<li style=\"margin-left:53px; margin-top:15px; margin-bottom:10px; font-size:12px; color:gray;\">튜플 수: ".$arr3[1]."</li>";
                                       echo "</ul>";
                                       echo "</li>";
                                     }
@@ -178,6 +185,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -197,6 +205,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -216,6 +225,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -235,6 +245,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -254,6 +265,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -273,6 +285,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -292,6 +305,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -311,6 +325,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -330,6 +345,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -349,6 +365,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -369,6 +386,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -388,6 +406,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -407,6 +426,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -426,6 +446,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -445,6 +466,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -464,6 +486,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -483,6 +506,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -502,6 +526,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -521,6 +546,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>
@@ -540,6 +566,7 @@ include 'basic.php';
                                       <option value="tinyint">tinyint</option> <!-- m -->
                                       <option value="real">real</option>
                                       <option value="date">date</option>
+                                      <option value="datetime">datetime</option>
                                     </select>
                                   </td>
                                   <td>

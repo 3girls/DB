@@ -258,7 +258,6 @@ $id = $_SESSION['id'];
     }
 
     $fp = fopen($writefilename, 'w');
-
     fputs($fp,"\xEF\xBB\xBF");
     //fwrite($fp, '한글');
 

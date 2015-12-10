@@ -100,19 +100,20 @@ include 'basic.php';
                                       echo "<li><a href=\"admin_taskODT.php?taskname=".$arr['Name']."\">원본데이터 타입 관리</a></li>";
                                       echo "<li><a href=\"admin_download.php?taskname=".$arr['Name']."\">테이블 데이터 다운 받기</a></li>";
 
-                                      $query1 = "SELECT COUNT(*) ";
+                                      $query1 = "SELECT COUNT(*), SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
                                       $query1 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
                                       $query1 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]'";
                                       $result1 = mysql_query($query1, $con);
                                       $arr1 = mysql_fetch_array($result1);
-                                      echo "<li style=\"margin-left:53px; margin-top:10px; margin-bottom:15px; font-size:12px; color:gray;\">파싱데이터시퀀스파일 수: ".$arr1[0]."</li>";
 
-                                      $query2 = "SELECT SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
-                                      $query2 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
-                                      $query2 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]' AND Parsing_Sequence_Data_Type.P_NP = 1";
-                                      $result2 = mysql_query($query2, $con);
-                                      $arr2 = mysql_fetch_array($result2);
-                                      echo "<li style=\"margin-left:53px; margin-top:15px; margin-bottom:10px; font-size:12px; color:gray;\">튜플 수: ".$arr2[0]."</li>";
+                                      $query3 = "SELECT COUNT(*), SUM(Parsing_Sequence_Data_Type.TotalTupleNum) ";
+                                      $query3 .= "FROM Task join Parsing_Sequence_Data_Type on Task.Name = Parsing_Sequence_Data_Type.TaskName ";
+                                      $query3 .= "WHERE Parsing_Sequence_Data_Type.TaskName = '$arr[0]' and Parsing_Sequence_Data_Type.P_NP = '1'";
+                                      $result3 = mysql_query($query3, $con);
+                                      $arr3 = mysql_fetch_array($result3);
+                                      
+                                      echo "<li style=\"margin-left:53px; margin-top:10px; margin-bottom:15px; font-size:12px; color:gray;\">파싱데이터시퀀스파일 수: ".$arr1[0]."</li>";
+                                      echo "<li style=\"margin-left:53px; margin-top:15px; margin-bottom:10px; font-size:12px; color:gray;\">튜플 수: ".$arr3[1]."</li>";
                                       echo "</ul>";
                                       echo "</li>";
                                     }
