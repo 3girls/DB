@@ -181,7 +181,7 @@ include 'basic.php';
                       <!-- /.col-lg-12 -->
                       <div class="page-contents col-lg-12">';
 
-                      $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID='".$id."'";
+                      $query = "SELECT * FROM Parsing_Sequence_Data_Type WHERE SID='".$id."' and TaskName= = '$taskname'";
                       $res = mysql_query($query, $con);
                       $count = mysql_num_rows($res);
 
