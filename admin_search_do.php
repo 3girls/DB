@@ -226,7 +226,7 @@ include 'basic.php';
                             #전체
                             if($search_usertype == "none") {
                               #제출자
-                              $query1 = "SELECT * FROM Submitter";
+                              $query1 = "SELECT * FROM Submitter LEFT OUTER JOIN Participate ON Submitter.ID=Participate.SID";
                               #평가자
                               $query2 = "SELECT * FROM Evaluator";
 
@@ -244,6 +244,11 @@ include 'basic.php';
                                 $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                 $query2 = $query2." AND BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
                                 $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                #성별, 아이디 조건
+                                if($search_task != "none") {
+                                  $query1 = $query1." AND TaskName LIKE '%".$search_task."%'";
+                                  $query2 = $query2." AND TaskName LIKE '%".$search_task."%'";
+                                }
                               }
                               else {
                                 #아이디 조건
@@ -262,6 +267,10 @@ include 'basic.php';
                                   $query1 = $query1." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
                                   $query2 = $query2." WHERE BIRTH <= '".(date('Y')-$search_ageStart)."-12-31'";
                                   $query2 = $query2." AND BIRTH >= '".(date('Y')-$search_ageEnd)."-01-01'";
+                                }
+                                if($search_task != "none") {
+                                  $query1 = $query1." AND TaskName LIKE '%".$search_task."%'";
+                                  $query2 = $query2." AND TaskName LIKE '%".$search_task."%'";
                                 }
                               }
 
